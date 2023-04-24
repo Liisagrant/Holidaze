@@ -1,9 +1,14 @@
 import './index.css';
 
-function App() 
-const nouse = "hello"
-{
+function App() {
   return <h1> hello</h1>;
 }
 
 export default App;
+
+{
+  {
+    {
+    }
+  }
+}
