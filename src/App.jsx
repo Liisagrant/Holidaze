@@ -1,6 +1,8 @@
 import './index.css';
 
-function App() {
+function App() 
+const nouse = "hello"
+{
   return <h1> hello</h1>;
 }
 
