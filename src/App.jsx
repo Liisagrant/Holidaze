@@ -1,7 +1,7 @@
 import './index.css';
 
 function App() {
-  return <h1> hello</h1>;
+  return <h1 className="font-header font-bold bg-main"> hello</h1>;
 }
 
 export default App;
