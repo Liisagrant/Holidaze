@@ -18,7 +18,7 @@ module.exports = {
         paragraph: ['Roboto', 'sans-serif'],
       },
       colors: {
-        main: '#3A86FF',
+        main: '#265399',
         second: '#FF9F1C',
         lightgray: '#E6E6E6',
         backgroundwhite: '#FBF9F6',
