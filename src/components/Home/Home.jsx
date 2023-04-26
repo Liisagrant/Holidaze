@@ -1,11 +1,7 @@
-
+import Herobanner from './Herobanner';
 
 function Home() {
-  return (
-    <div className="mt-80 h-80">
-      <h1>Welcome to my home page</h1>
-    </div>
-  );
+  return <Herobanner />;
 }
 
 export default Home;
