@@ -2,8 +2,8 @@ import React from 'react';
 
 const ImageGrid = () => {
   return (
-    <div className="container mx-auto p-8 max-w-7xl ">
-      <div className="flex flex-row flex-wrap -mx-2">
+    <div className="container mx-auto max-w-7xl ">
+      <div className="flex flex-row flex-wrap mx-2">
         <div className="w-full md:w-1/2 h-64 md:h-auto mb-4 px-2 relative">
           <img
             className="block w-full h-full object-cover rounded-md"

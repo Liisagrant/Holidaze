@@ -9,7 +9,7 @@ export default function Header() {
   }
 
   const generateNavLinkClass = (isActive) =>
-    `inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium text-backgroundwhite hover:text-darkblue ${
+    `inline-flex items-center border-b-2 px-1 pt-1 text-sm font-header font-md text-backgroundwhite hover:text-darkblue ${
       isActive
         ? 'font-bold border-b-2 border-backgroundwhite'
         : 'border-transparent'
