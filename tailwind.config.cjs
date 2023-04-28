@@ -24,6 +24,7 @@ module.exports = {
         lightgray: '#E6E6E6',
         backgroundwhite: '#FBF9F6',
         darkblue: '#102835',
+        hovercolor: '#063785',
       },
     },
   },

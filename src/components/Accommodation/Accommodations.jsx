@@ -1,8 +1,8 @@
-
+import FilterBox from './FilterBox';
 function Accommodations() {
   return (
-    <div className="mt-80 h-80">
-      <h1>Welcome to Accommodation</h1>
+    <div>
+      <FilterBox />
     </div>
   );
 }
