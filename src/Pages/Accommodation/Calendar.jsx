@@ -85,12 +85,12 @@ export default function Example() {
 
   return (
     <div>
-      <div className="w-72 mx-auto">
-        <div className="mt-16 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
+      <div className="w-60 mx-auto p-1">
+        <div className="text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
           <div className="flex items-center text-gray-900">
             <button
               type="button"
-              className="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+              className="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
             >
               <span className="sr-only">Previous month</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
