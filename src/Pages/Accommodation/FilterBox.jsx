@@ -3,8 +3,8 @@ import Calendar from './Calendar';
 
 const FilterBox = () => {
   return (
-    <div className="mt-40 ml-16 max-w-7xl">
-      <div className="w-80 bg-lightgray py-4 rounded-md">
+    <div className="mx-auto mb-4 md:ml-16 max-w-7xl">
+      <div className="w-60 bg-lightgray rounded-md">
         <Calendar />
         <label for="price-range">Price Range</label>
         <input

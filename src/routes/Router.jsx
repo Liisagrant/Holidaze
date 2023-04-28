@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from '../components/Home/Home';
-import Accommodations from '../components/Accommodation/Accommodations';
-import AccommodationDetail from '../components/AccommodationDetail/AccommodationsDetail';
-import Login from '../components/Login/Login';
-import Signup from '../components/Signup/Signup';
-import Contact from '../components/Contact/Contact';
+import Home from '../Pages/Home/Home';
+import Accommodations from '../Pages/Accommodation/Accommodations';
+import AccommodationDetail from '../Pages/AccommodationDetail/AccommodationsDetail';
+import Login from '../Pages/Login/Login';
+import Signup from '../Pages/Signup/Signup';
+import Contact from '../Pages/Contact/Contact';
 
 function Router() {
   return (
