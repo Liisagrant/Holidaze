@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchVenues, fetchSingleVenue } from '../../store/modules/VenuesSlice';
 import Amenities from './Amenites';
@@ -46,13 +47,14 @@ const AllAccommodations = () => {
               <p className="font-paragraph text-sm pt-6 px-2 max-w-xs lg:max-w-lg max-h-20 overflow-hidden">
                 {venue.description}
               </p>
-
-              <button
-                type="button"
-                className="m-8 w-60 mx-10 rounded-md bg-main px-3 py-2 text-sm font-semibold font-header text-backgroundwhite shadow hover:bg-hovercolor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Check date
-              </button>
+              <Link to={`/Accommodation/${venue.id}`}>
+                <button
+                  type="button"
+                  className="m-8 w-60 mx-10 rounded-md bg-main px-3 py-2 text-sm font-semibold font-header text-backgroundwhite shadow hover:bg-hovercolor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  View more!
+                </button>
+              </Link>
             </div>
           </div>
         </div>

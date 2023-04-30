@@ -4,7 +4,7 @@ const Herobanner = () => {
   return (
     <div className="relative">
       <img
-        src="../public/herobanner-image.jpg"
+        src="../herobanner-image.jpg"
         alt="Background image"
         className="w-full h-96 md:h-[700px] object-cover"
       />
