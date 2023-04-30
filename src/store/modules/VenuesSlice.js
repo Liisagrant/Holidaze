@@ -32,7 +32,7 @@ export const fetchSingleVenue = createAsyncThunk(
   async (id) => {
     try {
       const response = await fetch(
-        `https://nf-api.onrender.com/api/v1/holidaze/venues${id}`
+        `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}`
       );
       const data = await response.json();
       console.log(data);
