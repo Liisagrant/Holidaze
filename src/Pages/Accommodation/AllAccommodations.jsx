@@ -28,7 +28,7 @@ const AllAccommodations = () => {
                 alt={venue.name}
               />
             </div>
-            <div>
+            <div className="lg:ml-12">
               <h2 className="text-1xl font-header text-darkblue font-bold p-2">
                 {venue.name}
               </h2>
