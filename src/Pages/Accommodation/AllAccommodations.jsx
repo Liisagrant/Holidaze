@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchVenues, fetchSingleVenue } from '../../store/modules/VenuesSlice';
 import Amenities from './Amenites';
+import NoSearch from '../../../public/NoSearch.svg';
 
 const AllAccommodations = () => {
   const dispatch = useDispatch();
   const venues = useSelector((state) => state.Venues.venues);
+  const searchQuery = useSelector((state) => state.Venues.search);
+
+  const filteredVenues = venues.filter((venue) =>
+    venue.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   useEffect(() => {
     dispatch(fetchVenues());
@@ -15,7 +21,19 @@ const AllAccommodations = () => {
 
   return (
     <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl ">
-      {venues.map((venue) => (
+      {filteredVenues.length === 0 && (
+        <div className="mx-8 md:mx-auto flex flex-col justify-center">
+          <p className="font-header text-4xl lg:text-5xl text-bold text-main text-shadow-md">
+            No accommodations match your search
+          </p>
+          <img
+            src={NoSearch}
+            alt="No search matches"
+            className="h-60 lg:h-96"
+          />
+        </div>
+      )}
+      {filteredVenues.map((venue) => (
         <div
           key={venue.id}
           className="bg-lightgray mb-4 sx:mx-4 mx-auto rounded-md lg:w-full"
