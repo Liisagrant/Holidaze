@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Amenities = ({ wifi, parking, pets, breakfast }) => {
   return (
     <div className="flex flex-row">

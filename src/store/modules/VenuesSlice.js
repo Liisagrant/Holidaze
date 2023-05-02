@@ -6,20 +6,6 @@ export const fetchVenues = createAsyncThunk('venues/fetchVenues', async () => {
       'https://nf-api.onrender.com/api/v1/holidaze/venues'
     );
     const data = await response.json();
-    // let topRated = [];
-    // for (let i = 0; i < data.length; i++) {
-    //   // use the 'data' variable instead of 'venues'
-    //   let venue = data[i];
-    //   if (topRated.length < 3) {
-    //     topRated.push(venue);
-    //     topRated.sort((a, b) => b.rating - a.rating);
-    //   } else if (venue.rating > topRated[2].rating) {
-    //     topRated.pop();
-    //     topRated.push(venue);
-    //     topRated.sort((a, b) => b.rating - a.rating);
-    //   }
-    // }
-    // console.log(topRated);
     console.log(data);
     return data;
   } catch (e) {
@@ -50,8 +36,13 @@ const venuesSlice = createSlice({
     singleVenue: null,
     lowPricedHouses: [],
     topRatedHouses: [],
+    search: '',
   },
-  reducers: {},
+  reducers: {
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchVenues.fulfilled, (state, action) => {
       console.log('Fetched venues data:', action.payload);
@@ -89,5 +80,6 @@ const venuesSlice = createSlice({
     });
   },
 });
+export const { setSearch } = venuesSlice.actions;
 
 export default venuesSlice.reducer;
