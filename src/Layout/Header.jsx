@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -52,35 +53,7 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-            <div className="relative z-0 flex flex-1 items-center justify-center px-2">
-              <div className="w-full sm:max-w-xs">
-                <label htmlFor="search" className="sr-only">
-                  Search
-                </label>
-                <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    <svg
-                      className="h-5 w-5 text-gray-400"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <input
-                    name="search"
-                    className="block w-full rounded-md border-0 bg-backgroundwhite py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:placeholder:text-gray-500 sm:text-sm sm:leading-6 focus:outline-none"
-                    placeholder="Search"
-                    type="search"
-                  />
-                </div>
-              </div>
-            </div>
+            <SearchBar />
             {/* TODO:This is the profile image it shall only be showen if user is logged in */}
             {/* <div className="flex items-center ml-4 flex-shrink-0">
               <div>
