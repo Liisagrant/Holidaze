@@ -1,7 +1,9 @@
+import SignupForm from './signupForm';
+
 function Signup() {
   return (
-    <div className="mt-80 h-80">
-      <h1>Welcome to Signup</h1>
+    <div className="mt-40">
+      <SignupForm />
     </div>
   );
 }
