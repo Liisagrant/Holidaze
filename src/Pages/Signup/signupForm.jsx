@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import SignupImage from '../../../public/SignupImage.jpg';
+import SignupImage from '../../../public/SignUpImage.jpg';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
