@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { SearchBar } from './SearchBar';
+import { isLoggedIn, handleLogout } from '../utils/Auth';
+import LogoutBtn from './LogoutBtn';
+import ProfileImage from './ProfileImage';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showLogoutButton, setShowLogoutButton] = useState(true);
 
   function toggleMobileMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -54,26 +58,7 @@ export default function Header() {
               </div>
             </div>
             <SearchBar />
-            {/* TODO:This is the profile image it shall only be showen if user is logged in */}
-            {/* <div className="flex items-center ml-4 flex-shrink-0">
-              <div>
-                <button
-                  type="button"
-                  className="flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  id="user-menu-button"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  <span class="sr-only">Open user menu</span>
-                  <img
-                    className="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </div> */}
-
+            {isLoggedIn() && <ProfileImage />}
             <div className="relative z-10 flex items-center lg:hidden">
               <button
                 onClick={toggleMobileMenu}
@@ -138,28 +123,43 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
-                  to="/Login"
-                  className={({ isActive }) => generateNavLinkClass(isActive)}
-                >
-                  Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/Signup"
-                  className={({ isActive }) => generateNavLinkClass(isActive)}
-                >
-                  SignUp
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
                   to="/Contact"
                   className={({ isActive }) => generateNavLinkClass(isActive)}
                 >
                   Contact
                 </NavLink>
               </li>
+              {isLoggedIn() ? (
+                <li>
+                  <LogoutBtn handleLogout={handleLogout} />
+                </li>
+              ) : (
+                ''
+              )}
+              {!isLoggedIn() && (
+                <>
+                  <li>
+                    <NavLink
+                      to="/Login"
+                      className={({ isActive }) =>
+                        generateNavLinkClass(isActive)
+                      }
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/Signup"
+                      className={({ isActive }) =>
+                        generateNavLinkClass(isActive)
+                      }
+                    >
+                      SignUp
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </div>
@@ -188,28 +188,32 @@ export default function Header() {
             </li>
             <li>
               <NavLink
-                to="/Login"
-                className={({ isActive }) => generateNavLinkClass(isActive)}
-              >
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Signup"
-                className={({ isActive }) => generateNavLinkClass(isActive)}
-              >
-                SignUp
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="/Contact"
                 className={({ isActive }) => generateNavLinkClass(isActive)}
               >
                 Contact
               </NavLink>
             </li>
+            {!isLoggedIn() && (
+              <>
+                <li>
+                  <NavLink
+                    to="/Login"
+                    className={({ isActive }) => generateNavLinkClass(isActive)}
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/Signup"
+                    className={({ isActive }) => generateNavLinkClass(isActive)}
+                  >
+                    SignUp
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
