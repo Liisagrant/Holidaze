@@ -20,21 +20,54 @@ function AccommodationCard() {
     singleAccommodation || {};
 
   return (
-    <div className="mt-40 flex justify-center">
+    <div className="flex items-center justify-center mt-10">
       {singleAccommodation && (
-        <div className="flex flex-col-reverse md:flex-row-reverse bg-lightgray rounded-md">
-          {/* Accommodation details container */}
-          <div className="p-4">
-            <h1 className="font-header font-bold text-xl text-shadow-md py-2 text-main">
-              {name}
-            </h1>
-            <p className="font-bold font-header text-darkblue">
-              Price: {price} kr
-            </p>
-            <p className="font-bold font-header text-darkblue">
-              Max Guests: {maxGuests}
-            </p>
-            <div className="mt-8">
+        <div className="flex flex-col md:flex-row bg-backgroundwhite shadow-lg rounded-md overflow-hidden">
+          <div className="p-4 flex-shrink-0">
+            {media && (
+              <div>
+                <img
+                  src={media[activeImage]}
+                  alt={`Venue ${activeImage}`}
+                  className="w-80 h-80 object-cover rounded-md mb-4"
+                />
+                {media.length > 1 && (
+                  <div className="flex justify-center">
+                    {media.map((image, index) => (
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`Thumbnail ${index}`}
+                        onClick={() => setActiveImage(index)}
+                        className={`w-24 h-20 object-cover rounded-md mx-auto cursor-pointer ${
+                          activeImage === index
+                            ? 'border-2 border-blue-500'
+                            : 'border border-gray-200'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div className="p-4 flex-1">
+            <h1 className="font-bold text-2xl text-gray-800 mb-4">{name}</h1>
+            <div className="flex items-center mb-2">
+              <span className="font-medium text-gray-600 mr-2">Price:</span>
+              <span className="font-semibold text-gray-800">{price} kr</span>
+            </div>
+            <div className="flex items-center mb-2">
+              <span className="font-medium text-gray-600 mr-2">
+                Max Guests:
+              </span>
+              <span className="font-semibold text-gray-800">{maxGuests}</span>
+            </div>
+            <div className="mt-4">
+              <span className="font-semibold text-gray-800 mr-2">
+                Facilities:
+              </span>
               {meta && (
                 <Amenities
                   wifi={meta.wifi}
@@ -44,33 +77,7 @@ function AccommodationCard() {
                 />
               )}
             </div>
-            <p className="font-paragraph py-1 mt-8 max-w-md">{description}</p>
-          </div>
-
-          {/* Image gallery container */}
-          <div className="p-4">
-            {media && (
-              <div>
-                <img
-                  src={media[activeImage]}
-                  alt={`Venue ${activeImage}`}
-                  className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-md"
-                />
-                {media.length > 1 && (
-                  <div className="mt-4 flex gap-2 justify-between">
-                    {media.map((image, index) => (
-                      <img
-                        key={index}
-                        src={image}
-                        alt={`Thumbnail ${index}`}
-                        onClick={() => setActiveImage(index)}
-                        className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-md cursor-pointer"
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
+            <p className="text-gray-700 mt-6 max-w-md">{description}</p>
           </div>
         </div>
       )}

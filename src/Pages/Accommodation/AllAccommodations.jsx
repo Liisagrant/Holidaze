@@ -20,7 +20,7 @@ const AllAccommodations = () => {
   }, [dispatch]);
 
   return (
-    <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl ">
+    <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-wrap max-w-7xl ">
       {filteredVenues.length === 0 && (
         <div className="mx-8 md:mx-auto flex flex-col justify-center">
           <p className="font-header text-4xl lg:text-5xl text-bold text-main text-shadow-md">
@@ -36,9 +36,9 @@ const AllAccommodations = () => {
       {filteredVenues.map((venue) => (
         <div
           key={venue.id}
-          className="bg-lightgray mb-4 sx:mx-4 mx-auto rounded-md lg:w-full"
+          className="bg-backgroundwhite shadow-lg mb-8 sx:mx-4 mx-auto rounded-md lg:w-96"
         >
-          <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col">
             <div>
               <img
                 className="h-80 w-80 lg:w-96 object-cover sm:rounded-t-md md:rounded-l-md md:rounded-tr-none "
@@ -46,8 +46,8 @@ const AllAccommodations = () => {
                 alt={venue.name}
               />
             </div>
-            <div className="lg:ml-12">
-              <h2 className="text-1xl font-header text-darkblue font-bold p-2">
+            <div>
+              <h2 className="text-2xl text-shadow-md font-header text-darkblue font-bold p-2">
                 {venue.name}
               </h2>
               <Amenities
@@ -56,21 +56,18 @@ const AllAccommodations = () => {
                 pets={venue.meta.pets}
                 breakfast={venue.meta.breakfast}
               />
-              <p className="font-header text-md font-bold px-2">
+              <p className="font-header text-md font-bold mt-6 px-2">
                 Price: {venue.price} kr
               </p>
               <p className="font-header text-md font-bold px-2">
                 Max guests: {venue.maxGuests}
               </p>
-              <p className="font-paragraph text-sm pt-6 px-2 max-w-xs lg:max-w-lg max-h-20 overflow-hidden">
+              <p className="font-paragraph text-sm pt-6 px-2 max-w-xs lg:max-w-lg h-20 overflow-hidden truncate">
                 {venue.description}
               </p>
-              <div className="flex lg:justify-end">
+              <div className="flex justify-center p-2 my-4">
                 <Link to={`/Accommodation/${venue.id}`}>
-                  <button
-                    type="button"
-                    className="m-8 w-60 mx-10 rounded-md bg-main px-3 py-2 text-sm font-semibold font-header text-backgroundwhite shadow hover:bg-hovercolor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
+                  <button className="rounded-md bg-main px-3 py-2 text-sm font-semibold font-header text-backgroundwhite shadow hover:bg-hovercolor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     View more!
                   </button>
                 </Link>
