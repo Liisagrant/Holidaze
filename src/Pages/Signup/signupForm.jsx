@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import SignupImage from '../../../public/SignupImage.jpg';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -70,10 +71,10 @@ export default function SignupForm() {
       <div className="flex max-w-4xl mx-auto bg-lightgray rounded-md">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
-            <div>
+            <div className="flex flex-col items-center">
               <svg
-                width="122"
-                height="36"
+                width="150"
+                height="50"
                 viewBox="0 0 122 36"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,11 +84,11 @@ export default function SignupForm() {
                   fill="#265399"
                 />
               </svg>
-              <h2 className="mt-8 text-2xl font-bold font-header leading-9 tracking-tight text-gray-900">
+              <h2 className="mt-4 text-2xl font-bold font-header leading-9 tracking-tight text-gray-900">
                 Make and account Today!
               </h2>
               <p className="mt-2 text-sm leading-6 font-paragraph text-gray-500">
-                Already a member??{' '}
+                Already have an account?{' '}
                 <Link
                   href="/Login"
                   className="font-semibold font-paragraph text-main hover:text-darkblue"
@@ -235,7 +236,7 @@ export default function SignupForm() {
                     </div>
                   </div>
                   <fieldset className="flex flex-col md:flex-row gap-4 md:gap-12">
-                    <p>Are you renting out?</p>
+                    <p>Do you want to rent out an accommodation??</p>
                     <div>
                       <input
                         checked={formik.values.venueManager}
@@ -267,7 +268,7 @@ export default function SignupForm() {
                         type="radio"
                         id="no"
                         name="venueManager"
-                        value={false} // set to false (boolean), not 'false' (string)
+                        value={false}
                       />
                       <label htmlFor="no" className="ml-1">
                         No
@@ -290,8 +291,8 @@ export default function SignupForm() {
         <div className="relative hidden w-0 flex-1 lg:block">
           <img
             className="absolute inset-0 h-full w-80 object-cover rounded-tr-md rounded-br-md"
-            src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
-            alt=""
+            src={SignupImage}
+            alt="Image of a beach with lovely blue water"
           />
         </div>
       </div>
