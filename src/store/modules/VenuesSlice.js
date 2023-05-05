@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchVenues = createAsyncThunk('venues/fetchVenues', async () => {
   try {
     const response = await fetch(
-      'https://nf-api.onrender.com/api/v1/holidaze/venues'
+      'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
     );
     const data = await response.json();
     console.log(data);
@@ -18,7 +18,7 @@ export const fetchSingleVenue = createAsyncThunk(
   async (id) => {
     try {
       const response = await fetch(
-        `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}`
+        `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}?_owner=true&_bookings=true`
       );
       const data = await response.json();
       console.log(data);

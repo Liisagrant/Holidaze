@@ -4,14 +4,23 @@ import { SearchBar } from './SearchBar';
 import { isLoggedIn, handleLogout } from '../utils/Auth';
 import LogoutBtn from './LogoutBtn';
 import ProfileImage from './ProfileImage';
+import { getUserDetails } from '../utils/Auth';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showLogoutButton, setShowLogoutButton] = useState(true);
+  const [userAvatar, setUserAvatar] = useState('');
 
   function toggleMobileMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   }
+
+  useEffect(() => {
+    if (isLoggedIn()) {
+      const userDetails = getUserDetails();
+      setUserAvatar(userDetails.avatar);
+    }
+  }, []);
 
   const generateNavLinkClass = (isActive) =>
     `inline-flex items-center border-b-2 px-1 pt-1 text-sm font-header font-md text-backgroundwhite hover:text-darkblue ${
@@ -58,7 +67,7 @@ export default function Header() {
               </div>
             </div>
             <SearchBar />
-            {isLoggedIn() && <ProfileImage />}
+            {isLoggedIn() && <ProfileImage avatar={userAvatar} />}
             <div className="relative z-10 flex items-center lg:hidden">
               <button
                 onClick={toggleMobileMenu}

@@ -12,7 +12,11 @@ const ProfileImage = ({ avatar }) => {
           aria-haspopup="true"
         >
           <span className="sr-only">Open user menu</span>
-          <img className="h-8 w-8 rounded-full" src="" alt="user avatar" />
+          <img
+            className="h-8 w-8 rounded-full"
+            src={avatar}
+            alt="user avatar"
+          />
         </button>
       </div>
     </div>
