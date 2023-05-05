@@ -3,17 +3,20 @@ export function isLoggedIn() {
 }
 
 export function handleLogout() {
-  localStorage.removeItem('userName');
-  localStorage.removeItem('accessToken');
-  localStorage.removeItem('avatar');
+  localStorage.clear();
   window.location.href = '/';
 }
 
 export const getUserDetails = () => {
+  const username = localStorage.getItem('username');
+  const avatar = localStorage.getItem('avatar');
+  const token = localStorage.getItem('accessToken');
+
   console.log(username, avatar, token);
+
   return {
-    username: localStorage.getItem('username'),
-    avatar: localStorage.getItem('avatar'),
-    token: localStorage.getItem('accesstoken'),
+    username: username,
+    avatar: avatar,
+    token: token,
   };
 };
