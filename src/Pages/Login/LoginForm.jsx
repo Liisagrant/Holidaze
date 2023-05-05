@@ -54,7 +54,7 @@ export default function LoginForm() {
   });
   return (
     <>
-      <div className="flex max-w-4xl mx-auto bg-lightgray rounded-md">
+      <div className="flex max-w-4xl mx-8  md:mx-auto bg-lightgray rounded-md">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div className="flex flex-col items-center">

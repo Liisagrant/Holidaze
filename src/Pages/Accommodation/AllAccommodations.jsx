@@ -40,7 +40,7 @@ const AllAccommodations = () => {
       {filteredVenues.map((venue) => (
         <div
           key={venue.id}
-          className="bg-backgroundwhite border-lightblue border-2 shadow-md mb-4 sx:mx-4 mx-auto rounded-md lg:w-[900px]"
+          className="bg-backgroundwhite border-lightgray border-2 shadow-md mb-4 sx:mx-4 mx-auto rounded-md lg:w-[900px]"
         >
           <div className="flex flex-col md:flex-row">
             <div>
