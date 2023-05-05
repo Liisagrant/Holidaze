@@ -29,7 +29,7 @@ const TopRated = () => {
               key={venue.id}
               className="max-w-sm bg-white border border-gray-100 rounded-lg shadow mx-2 my-2 md:my-0"
             >
-              <Link to="#">
+              <Link to={`/Accommodation/${venue.id}`}>
                 <img
                   className="rounded-t-lg object-cover w-72 h-64"
                   src={venue.media ? venue.media : defaultTopRatedImage}
@@ -55,7 +55,7 @@ const TopRated = () => {
                   {venue.description}
                 </p>
                 <Link
-                  to="#"
+                  to={`/Accommodation/${venue.id}`}
                   className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-main rounded-lg hover:bg-hovercolor"
                 >
                   Read more
