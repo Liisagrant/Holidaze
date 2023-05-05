@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchVenues, fetchSingleVenue } from '../../store/modules/VenuesSlice';
-import Amenities from './Amenites';
 import NoSearch from '../../../public/NoSearch.svg';
+import NoImage from '../../../public/NoImage.png';
 
 const AllAccommodations = () => {
   const dispatch = useDispatch();
@@ -14,13 +14,17 @@ const AllAccommodations = () => {
     venue.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleImageError = (e) => {
+    e.target.src = NoImage;
+  };
+
   useEffect(() => {
     dispatch(fetchVenues());
     dispatch(fetchSingleVenue('venueId'));
   }, [dispatch]);
 
   return (
-    <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-wrap max-w-7xl ">
+    <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl ">
       {filteredVenues.length === 0 && (
         <div className="mx-8 md:mx-auto flex flex-col justify-center">
           <p className="font-header text-4xl lg:text-5xl text-bold text-main text-shadow-md">
@@ -36,38 +40,47 @@ const AllAccommodations = () => {
       {filteredVenues.map((venue) => (
         <div
           key={venue.id}
-          className="bg-backgroundwhite shadow-lg mb-8 sx:mx-4 mx-auto rounded-md lg:w-96"
+          className="bg-backgroundwhite border-lightblue border-2 shadow-md mb-4 sx:mx-4 mx-auto rounded-md lg:w-[900px]"
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col md:flex-row">
             <div>
               <img
                 className="h-80 w-80 lg:w-96 object-cover sm:rounded-t-md md:rounded-l-md md:rounded-tr-none "
-                src={venue.media.length > 0 ? venue.media[0] : '/NoImage.png'}
+                src={venue.media.length > 0 ? venue.media[0] : NoImage}
                 alt={venue.name}
+                onError={handleImageError}
               />
             </div>
-            <div>
-              <h2 className="text-2xl text-shadow-md font-header text-darkblue font-bold p-2">
+            <div className="md:ml-8 w-full">
+              <h2 className="ml-2 md:ml-none my-6 text-2xl font-header font-bold tracking-tight text-darkblue">
                 {venue.name}
               </h2>
-              <Amenities
-                wifi={venue.meta.wifi}
-                parking={venue.meta.parking}
-                pets={venue.meta.pets}
-                breakfast={venue.meta.breakfast}
-              />
-              <p className="font-header text-md text-main font-bold mt-6 px-2">
-                Price: {venue.price} kr
-              </p>
-              <p className="font-header text-md font-bold px-2">
-                Max guests: {venue.maxGuests}
-              </p>
-              <p className="font-paragraph text-sm pt-6 px-2 max-w-xs lg:max-w-lg h-20 overflow-hidden truncate">
+              <div className="flex items-center mb-2">
+                <span className=" ml-2 md:ml-none font-medium text-gray-600 mr-2">
+                  Price:
+                </span>
+                <span className=" ml-2 md:ml-none font-semibold text-darkblue">
+                  {venue.price} kr
+                </span>
+              </div>
+              <div className="flex items-center mb-2">
+                <span className=" ml-2 md:ml-none font-medium text-gray-600 mr-2">
+                  Max Guests:
+                </span>
+                <span className=" ml-2 md:ml-none font-semibold text-darkblue">
+                  {venue.maxGuests} people
+                </span>
+              </div>
+              <div class="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
+              <p className="ml-2 md:ml-none font-paragraph text-sm pt-6 pr-2 max-w-xs lg:max-w-lg max-h-20 overflow-hidden">
                 {venue.description}
               </p>
-              <div className="flex justify-center p-2 my-4">
+              <div className="flex lg:justify-end">
                 <Link to={`/Accommodation/${venue.id}`}>
-                  <button className="rounded-md bg-main px-3 py-2 text-sm font-semibold font-header text-backgroundwhite shadow hover:bg-hovercolor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  <button
+                    type="button"
+                    className="my-6 w-60 mx-8 rounded-md bg-main px-3 py-2 text-sm font-semibold font-header text-backgroundwhite shadow hover:bg-hovercolor"
+                  >
                     View more!
                   </button>
                 </Link>

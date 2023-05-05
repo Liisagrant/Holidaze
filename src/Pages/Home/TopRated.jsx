@@ -27,7 +27,7 @@ const TopRated = () => {
           {topRatedVenues.slice(0, 3).map((venue) => (
             <div
               key={venue.id}
-              className="max-w-sm bg-white border border-gray-100 rounded-lg shadow dark:bg-backgraungwhite dark:border-gray-200 mx-2 my-2 md:my-0"
+              className="max-w-sm bg-white border border-gray-100 rounded-lg shadow mx-2 my-2 md:my-0"
             >
               <Link to="#">
                 <img
