@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ProfileImage = ({ avatar }) => {
+const ProfileAvatar = ({ avatar }) => {
   return (
     <div className="flex items-center ml-4 flex-shrink-0">
-      <div>
+      <Link to="/Profile">
         <button
           type="button"
           className="flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -18,9 +19,9 @@ const ProfileImage = ({ avatar }) => {
             alt="user avatar"
           />
         </button>
-      </div>
+      </Link>
     </div>
   );
 };
 
-export default ProfileImage;
+export default ProfileAvatar;

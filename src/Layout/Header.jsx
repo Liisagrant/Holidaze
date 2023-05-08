@@ -3,12 +3,11 @@ import { NavLink, Link } from 'react-router-dom';
 import { SearchBar } from './SearchBar';
 import { isLoggedIn, handleLogout } from '../utils/Auth';
 import LogoutBtn from './LogoutBtn';
-import ProfileImage from './ProfileImage';
+import ProfileAvatar from './ProfileAvatar';
 import { getUserDetails } from '../utils/Auth';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showLogoutButton, setShowLogoutButton] = useState(true);
   const [userAvatar, setUserAvatar] = useState('');
 
   function toggleMobileMenu() {
@@ -67,7 +66,7 @@ export default function Header() {
               </div>
             </div>
             <SearchBar />
-            {isLoggedIn() && <ProfileImage avatar={userAvatar} />}
+            {isLoggedIn() && <ProfileAvatar avatar={userAvatar} />}
             <div className="relative z-10 flex items-center lg:hidden">
               <button
                 onClick={toggleMobileMenu}
@@ -203,6 +202,13 @@ export default function Header() {
                 Contact
               </NavLink>
             </li>
+            {isLoggedIn() ? (
+              <li>
+                <LogoutBtn handleLogout={handleLogout} />
+              </li>
+            ) : (
+              ''
+            )}
             {!isLoggedIn() && (
               <>
                 <li>

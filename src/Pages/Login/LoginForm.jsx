@@ -45,6 +45,8 @@ export default function LoginForm() {
           localStorage.setItem('userName', data.name);
           localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('avatar', data.avatar);
+          localStorage.setItem('email', data.email);
+          localStorage.setItem('venueManager', data.venueManager);
           window.location.href = '/';
         })
         .catch((error) => {
