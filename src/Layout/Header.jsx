@@ -137,6 +137,14 @@ export default function Header() {
                   Contact
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/Profile"
+                  className={({ isActive }) => generateNavLinkClass(isActive)}
+                >
+                  Profile
+                </NavLink>
+              </li>
               {isLoggedIn() ? (
                 <li>
                   <LogoutBtn handleLogout={handleLogout} />
@@ -177,7 +185,7 @@ export default function Header() {
           } justify-center`}
           aria-label="Global"
         >
-          <ul className="space-y-1 px-2 pt-2 pb-3 flex flex-col items-center">
+          <ul className="space-y-1 my-4 px-2 pt-2 pb-3 flex flex-col items-center">
             <li>
               <NavLink
                 to="/"
@@ -200,6 +208,14 @@ export default function Header() {
                 className={({ isActive }) => generateNavLinkClass(isActive)}
               >
                 Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Profile"
+                className={({ isActive }) => generateNavLinkClass(isActive)}
+              >
+                Profile
               </NavLink>
             </li>
             {isLoggedIn() ? (

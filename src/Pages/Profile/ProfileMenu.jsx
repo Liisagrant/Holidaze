@@ -99,7 +99,7 @@ const ProfileMenu = ({ avatar, userEmail, userName }) => {
           </div>
         </div>
       )}
-      <div className="bg-main w-full rounded-md p-4 md:p-8">
+      <div className="bg-main rounded-md p-4 md:p-8 mx-4">
         <div className="flex flex-row md:flex-col">
           <div className="flex items-center justify-center">
             <div className="bg-backgroundwhite p-2 rounded-full">
@@ -120,7 +120,7 @@ const ProfileMenu = ({ avatar, userEmail, userName }) => {
             <button
               type="submit"
               onClick={() => setIsModalOpen(true)}
-              className="flex w-full font-header justify-center rounded-md bg-second px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+              className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-second px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
             >
               Update Avatar
             </button>
