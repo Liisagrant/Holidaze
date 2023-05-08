@@ -8,15 +8,21 @@ export function handleLogout() {
 }
 
 export const getUserDetails = () => {
-  const username = localStorage.getItem('username');
+  const username = localStorage.getItem('userName');
   const avatar = localStorage.getItem('avatar');
   const token = localStorage.getItem('accessToken');
+  const email = localStorage.getItem('email');
 
-  console.log(username, avatar, token);
+  console.log(username, avatar, token, email);
 
   return {
     username: username,
     avatar: avatar,
     token: token,
+    email: email,
   };
 };
+
+export function updateLocalStorage(key, value) {
+  localStorage.setItem(key, value);
+}
