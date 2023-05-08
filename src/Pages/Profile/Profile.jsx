@@ -3,6 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileMenu from './ProfileMenu';
 import { getUserDetails } from '../../utils/Auth';
 import { fetchSingleProfile } from '../../store/modules/ProfileSlice';
+import AddAccommodation from './AddAccommodation';
+import Helper from './Helper';
+import UserBookings from './UserBookings';
+import RentOuts from './RentOuts';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -27,12 +31,22 @@ const Profile = () => {
   console.log(userDetails);
 
   return (
-    <div className="flex justify-center mt-40">
-      <ProfileMenu
-        avatar={userAvatar}
-        userEmail={userEmail}
-        userName={userName}
-      />
+    <div className="flex justify-center flex-col lg:flex-row mt-40 max-w-7xl mx-auto">
+      <div className="m-2">
+        <ProfileMenu
+          avatar={userAvatar}
+          userEmail={userEmail}
+          userName={userName}
+        />
+      </div>
+      <div className="m-2">
+        <AddAccommodation />
+        <UserBookings />
+      </div>
+      <div className="m-2">
+        <Helper />
+        <RentOuts />
+      </div>
     </div>
   );
 };
