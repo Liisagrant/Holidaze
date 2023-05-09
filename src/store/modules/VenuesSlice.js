@@ -1,34 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchVenues = createAsyncThunk('venues/fetchVenues', async () => {
-  try {
-    const response = await fetch(
-      'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
-    );
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
-});
-
-export const fetchSingleVenue = createAsyncThunk(
-  'venues/fetchSingleVenue',
-  async (id) => {
-    try {
-      const response = await fetch(
-        `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}?_owner=true&_bookings=true`
-      );
-      const data = await response.json();
-      console.log(data);
-      return data;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-);
-
 const venuesSlice = createSlice({
   name: 'Venues',
   initialState: {
@@ -41,6 +12,9 @@ const venuesSlice = createSlice({
   reducers: {
     setSearch: (state, action) => {
       state.search = action.payload;
+    },
+    addNewVenue: (state, action) => {
+      state.venues.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -80,6 +54,60 @@ const venuesSlice = createSlice({
     });
   },
 });
-export const { setSearch } = venuesSlice.actions;
+
+const accessToken = localStorage.getItem('accessToken');
+
+export const fetchVenues = createAsyncThunk('venues/fetchVenues', async () => {
+  try {
+    const response = await fetch(
+      'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
+    );
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+export const fetchSingleVenue = createAsyncThunk(
+  'venues/fetchSingleVenue',
+  async (id) => {
+    try {
+      const response = await fetch(
+        `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}?_owner=true&_bookings=true`
+      );
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const createVenue = (venueData) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      'https://nf-api.onrender.com/api/v1/holidaze/venues',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(venueData),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    dispatch(addNewVenue(data));
+    // window.location.href = '/';
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const { setSearch, addNewVenue } = venuesSlice.actions;
 
 export default venuesSlice.reducer;

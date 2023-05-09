@@ -6,6 +6,7 @@ import Login from '../Pages/Login/Login';
 import Signup from '../Pages/Signup/Signup';
 import Contact from '../Pages/Contact/Contact';
 import Profile from '../Pages/Profile/Profile';
+import AddNewAccommodation from '../Pages/Profile/AddNewAccommodation';
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/AddNewAccommodation" element={<AddNewAccommodation />} />
       </Routes>
     </>
   );
