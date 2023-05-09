@@ -40,7 +40,7 @@ const Profile = () => {
         />
       </div>
       <div className="m-2">
-        <AddAccommodation />
+        <AddAccommodation userName={userName} />
         <UserBookings />
       </div>
       <div className="m-2">
