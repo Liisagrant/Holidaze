@@ -40,12 +40,12 @@ const AllAccommodations = () => {
       {filteredVenues.map((venue) => (
         <div
           key={venue.id}
-          className="bg-backgroundwhite border-lightgray border-2 shadow-md mb-4 sx:mx-4 mx-auto rounded-md lg:w-[900px]"
+          className="bg-backgroundwhite border-lightgray border-2 shadow-md mb-4 mx-4 md:mx-auto rounded-md lg:w-[900px]"
         >
           <div className="flex flex-col md:flex-row">
             <div>
               <img
-                className="h-80 w-80 lg:w-96 object-cover sm:rounded-t-md md:rounded-l-md md:rounded-tr-none "
+                className="h-80 w-full lg:w-96 object-cover sm:rounded-t-md md:rounded-l-md md:rounded-tr-none "
                 src={venue.media.length > 0 ? venue.media[0] : NoImage}
                 alt={venue.name}
                 onError={handleImageError}
