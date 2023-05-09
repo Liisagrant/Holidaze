@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createVenue } from '../../store/modules/VenuesSlice';
-// import AddMediaToAccommodation from './AddMediaToAccommodation';
+import AddMediaToAccommodation from './AddMediaToAccommodation';
 import AddMetaToAccommodations from './AddMetaToAccommodations';
 import AddInfoAccommodation from './AddInfoAccommodation';
 import { useFormik } from 'formik';
@@ -33,6 +33,7 @@ const validationSchema = Yup.object().shape({
 
 const AddAccommodationForm = () => {
   const dispatch = useDispatch();
+  const [mediaArray, setMediaArray] = useState([]);
   const [amenities, setAmenities] = useState({
     wifi: false,
     parking: false,
@@ -53,8 +54,13 @@ const AddAccommodationForm = () => {
         pets: amenities.pets,
       },
       location: {
+        address: '',
         city: '',
+        zip: '',
         country: '',
+        continent: '',
+        lat: 0,
+        lng: 0,
       },
     },
     validationSchema,
@@ -62,7 +68,7 @@ const AddAccommodationForm = () => {
       const venueData = {
         name: values.name,
         description: values.description,
-        media: values.media,
+        media: mediaArray,
         price: values.price,
         maxGuests: values.maxGuests,
         rating: 5,
@@ -82,6 +88,7 @@ const AddAccommodationForm = () => {
           lng: 0,
         },
       };
+      console.log(venueData.media);
       console.log(venueData);
       dispatch(createVenue(venueData));
     },
@@ -95,7 +102,7 @@ const AddAccommodationForm = () => {
             <div>
               <form onSubmit={formik.handleSubmit} className="space-y-6">
                 <AddInfoAccommodation formik={formik} />
-                {/* <AddMediaToAccommodation formik={formik} /> */}
+                <AddMediaToAccommodation formik={formik} />
                 <AddMetaToAccommodations
                   amenities={amenities}
                   setAmenities={setAmenities}
