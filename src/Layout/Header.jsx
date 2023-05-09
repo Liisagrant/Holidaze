@@ -137,18 +137,22 @@ export default function Header() {
                   Contact
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/Profile"
-                  className={({ isActive }) => generateNavLinkClass(isActive)}
-                >
-                  Profile
-                </NavLink>
-              </li>
               {isLoggedIn() ? (
-                <li>
-                  <LogoutBtn handleLogout={handleLogout} />
-                </li>
+                <>
+                  <li>
+                    <NavLink
+                      to="/Profile"
+                      className={({ isActive }) =>
+                        generateNavLinkClass(isActive)
+                      }
+                    >
+                      Profile
+                    </NavLink>
+                  </li>
+                  <li>
+                    <LogoutBtn handleLogout={handleLogout} />
+                  </li>
+                </>
               ) : (
                 ''
               )}
@@ -210,18 +214,20 @@ export default function Header() {
                 Contact
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/Profile"
-                className={({ isActive }) => generateNavLinkClass(isActive)}
-              >
-                Profile
-              </NavLink>
-            </li>
             {isLoggedIn() ? (
-              <li>
-                <LogoutBtn handleLogout={handleLogout} />
-              </li>
+              <>
+                <li>
+                  <NavLink
+                    to="/Profile"
+                    className={({ isActive }) => generateNavLinkClass(isActive)}
+                  >
+                    Profile
+                  </NavLink>
+                </li>
+                <li>
+                  <LogoutBtn handleLogout={handleLogout} />
+                </li>
+              </>
             ) : (
               ''
             )}
