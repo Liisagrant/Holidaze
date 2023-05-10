@@ -6,7 +6,6 @@ import Login from '../Pages/Login/Login';
 import Signup from '../Pages/Signup/Signup';
 import Contact from '../Pages/Contact/Contact';
 import Profile from '../Pages/Profile/Profile';
-import AddNewAccommodation from '../Pages/Profile/CreateAccommodation/AddNewAccommodation';
 
 function Router() {
   return (
