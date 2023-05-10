@@ -21,6 +21,7 @@ const Profile = () => {
     useState(false);
   const [showUserBookings, setShowUserBookings] = useState(false);
   const [showRentOuts, setShowRentOuts] = useState(false);
+  const [otherContentDisplayed, setOtherContentDisplayed] = useState(false);
 
   useEffect(() => {
     if (userDetails.username) {
@@ -38,30 +39,36 @@ const Profile = () => {
     setShowAddAccommodationForm(true);
     setShowUserBookings(false);
     setShowRentOuts(false);
+    setOtherContentDisplayed(true);
   };
 
   const handleUserBookings = () => {
     setShowUserBookings(true);
     setShowAddAccommodationForm(false);
     setShowRentOuts(false);
+    setOtherContentDisplayed(true);
   };
 
   const handleRentOuts = () => {
     setShowRentOuts(true);
     setShowAddAccommodationForm(false);
     setShowUserBookings(false);
+    setOtherContentDisplayed(true);
   };
 
   const handleCancelAddAccommodation = () => {
     setShowAddAccommodationForm(false);
+    setOtherContentDisplayed(false);
   };
 
   const handleCancelUserBookings = () => {
     setShowUserBookings(false);
+    setOtherContentDisplayed(false);
   };
 
   const handleCancelRentOuts = () => {
     setShowRentOuts(false);
+    setOtherContentDisplayed(false);
   };
 
   return (
@@ -80,24 +87,26 @@ const Profile = () => {
         />
       </div>
       <div className="m-2">
-        {showAddAccommodationForm ? (
+        {showAddAccommodationForm && (
           <AddAccommodationForm onCancel={handleCancelAddAccommodation} />
-        ) : (
-          ''
         )}
-        {showUserBookings ? (
+        {showUserBookings && (
           <UserBookings onCancel={handleCancelUserBookings} />
-        ) : null}
-        {showRentOuts ? <RentOuts onCancel={handleCancelRentOuts} /> : null}
-        <div className="m-2">
-          <AddAccommodation userName={userName} />
-        </div>
-        <div className="m-2">
-          <Helper />
-        </div>
-        <div className="m-2">
-          <SecondHelper />
-        </div>
+        )}
+        {showRentOuts && <RentOuts onCancel={handleCancelRentOuts} />}
+        {!showAddAccommodationForm && !showUserBookings && !showRentOuts && (
+          <>
+            <div className="m-2">
+              <AddAccommodation userName={userName} />
+            </div>
+            <div className="m-2">
+              <Helper />
+            </div>
+            <div className="m-2">
+              <SecondHelper />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

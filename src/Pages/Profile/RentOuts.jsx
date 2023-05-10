@@ -1,57 +1,52 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import NoImage from '../../../public/NoImage.png';
 
 const RentOuts = () => {
+  const singleProfile = useSelector((state) => state.Profile.singleProfile);
+  console.log(singleProfile);
+  const numVenues = singleProfile ? singleProfile.venues.length : 0;
+
   return (
     <div className="relative">
       <div className="bg-lightgray p-4 mx-4 my-4 rounded-md flex flex-col">
         <p className="font-header text-lg text-darkblue font-bold">
-          Active Rental Properties
+          Your Active RentOuts
         </p>
-        <div className="bg-backgroundwhite p-2 flex flex-row my-2 rounded-md">
-          <div className="flex flex-row">
-            <img
-              className="rounded-md h-40"
-              src="../../../public/defaultTopRated.jpg"
-              alt="Image of the house you booked"
-            />
-          </div>
-          <div>
-            <p className="font-header font-bold text-md px-2">
-              Title of the house
-            </p>
-            <div class="mx-auto shadow-md w-20 my-4 border-t border-main"></div>
-            <p className="font-paragraph text-sm px-2"> Booked from:</p>
-            <p className="font-paragraph text-sm px-2"> 4 juni 2023</p>
-            <div className="flex justify-end">
-              <span className="bg-red-800 text-white p-1 m-2 rounded-md">
-                Rented out
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="bg-backgroundwhite p-1 flex flex-row my-2 rounded-md">
-          <div className="flex flex-row">
-            <img
-              className="rounded-md h-40"
-              src="../../../public/defaultTopRated.jpg"
-              alt="Image of the house you booked"
-            />
-          </div>
-          <div>
-            <p className="font-header font-bold text-md px-2">
-              Title of the house
-            </p>
-            <div class="mx-auto shadow-md w-20 my-4 border-t border-main"></div>
-            <p className="font-paragraph text-sm px-2"> Booked from:</p>
-            <p className="font-paragraph text-sm px-2"> 4 juni 2023</p>
-            <div className="flex justify-end">
-              <span className="bg-green-600 p-2 m-2 rounded-md">Active</span>
-            </div>
-          </div>
-        </div>
+        {singleProfile &&
+          singleProfile.venues &&
+          singleProfile.venues.map((venue) => (
+            <Link to={`/Accommodation/${venue.id}`}>
+              <div
+                key={venue.id}
+                className="bg-backgroundwhite p-1 flex flex-row my-2 rounded-md"
+              >
+                <div className="flex items-center h-40 w-40">
+                  <img
+                    className="rounded-md object-cover h-40"
+                    src={venue.media[0] || NoImage}
+                    alt={venue.name}
+                  />
+                </div>
+                <div className="ml-8 mt-4">
+                  <p className="font-header font-bold text-md px-2">
+                    {venue.name}
+                  </p>
+                  <div className="mx-auto shadow-md my-2 border-t border-main"></div>
+                  <p className="font-header font-sm text-xs px-2 max-h-12 max-w-md overflow-hidden">
+                    {venue.description}
+                  </p>
+                  <p className="font-paragraph text-sm px-2">
+                    {' '}
+                    {venue.bookedFrom}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
       </div>
       <div className="absolute top-0 right-0 h-10 w-10 flex items-center justify-center rounded-full bg-blue-500 text-white text-sm font-bold">
-        2
+        {numVenues}
       </div>
     </div>
   );
