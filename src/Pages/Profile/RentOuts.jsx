@@ -7,6 +7,7 @@ const RentOuts = () => {
   const singleProfile = useSelector((state) => state.Profile.singleProfile);
   console.log(singleProfile);
   const numVenues = singleProfile ? singleProfile.venues.length : 0;
+  //test for build netlify
 
   return (
     <div className="relative">
