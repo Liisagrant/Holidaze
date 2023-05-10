@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NoImage from '../../../public/NoImage.png';
+import NoRentOuts from '../../../public/NoRentOuts.svg';
 
 const RentOuts = () => {
   const singleProfile = useSelector((state) => state.Profile.singleProfile);
@@ -10,11 +11,12 @@ const RentOuts = () => {
   return (
     <div className="relative">
       <div className="bg-lightgray p-4 mx-4 my-4 rounded-md flex flex-col">
-        <p className="font-header text-lg text-darkblue font-bold">
+        <p className="font-header text-lg text-darkblue font-bold text-center">
           Your Active RentOuts
         </p>
         {singleProfile &&
-          singleProfile.venues &&
+        singleProfile.venues &&
+        singleProfile.venues.length > 0 ? (
           singleProfile.venues.map((venue) => (
             <Link to={`/Accommodation/${venue.id}`}>
               <div
@@ -43,10 +45,25 @@ const RentOuts = () => {
                 </div>
               </div>
             </Link>
-          ))}
+          ))
+        ) : (
+          <div className="flex flex-col justify-center items-center p-8">
+            <p className="font-paragraph font-md text-md">
+              You have no Accommodation that is being rentet out{' '}
+            </p>
+            <div>
+              <img
+                src={NoRentOuts}
+                alt="no rentouts. Man standign next to an empty shelf"
+              />
+            </div>
+          </div>
+        )}
       </div>
       <div className="absolute top-0 right-0 h-10 w-10 flex items-center justify-center rounded-full bg-blue-500 text-white text-sm font-bold">
-        {numVenues}
+        {singleProfile && singleProfile.venues
+          ? singleProfile.venues.length
+          : 0}
       </div>
     </div>
   );
