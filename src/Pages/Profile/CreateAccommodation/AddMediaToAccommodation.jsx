@@ -1,10 +1,4 @@
-import { useState } from 'react';
-
-const AddMediaToAccommodation = ({ formik }) => {
-  const [mediaArray, setMediaArray] = useState([]);
-
-  const { values, handleChange, handleBlur } = formik;
-
+const AddMediaToAccommodation = ({ formik, mediaArray, setMediaArray }) => {
   function pushToMediaArray() {
     const mediaValue = document.getElementById('media').value;
     const urlRegex = /(ftp|http|https):\/\/[^ "]+$/;
@@ -17,10 +11,10 @@ const AddMediaToAccommodation = ({ formik }) => {
     }
   }
 
-  const deleteMedia = (mediaUrl) => {
-    const updatedMediaArray = mediaArray.filter((media) => media !== mediaUrl);
-    setMediaArray(updatedMediaArray);
-  };
+  function deleteMedia(media) {
+    const newMediaArray = mediaArray.filter((item) => item !== media);
+    setMediaArray(newMediaArray);
+  }
 
   return (
     <div className="flex flex-col items-start">
@@ -56,9 +50,8 @@ const AddMediaToAccommodation = ({ formik }) => {
           type="text"
           name="media"
           id="media"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.media}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           placeholder="Add valid Image url here"
           className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
         />

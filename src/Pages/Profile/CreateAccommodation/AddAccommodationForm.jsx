@@ -1,35 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createVenue } from '../../store/modules/VenuesSlice';
+import { createVenue } from '../../../store/modules/VenuesSlice';
+import { getUserDetails } from '../../../utils/Auth';
 import AddMediaToAccommodation from './AddMediaToAccommodation';
 import AddMetaToAccommodations from './AddMetaToAccommodations';
 import AddInfoAccommodation from './AddInfoAccommodation';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(8, 'Must be 8 chars or more')
-    .max(60, 'Can not be longer than 50 chars')
-    .required('Required'),
-  description: Yup.string()
-    .min(20, 'Must be 20 chars or more')
-    .max(2000, 'Can not be longer than 2000 chars')
-    .required('Required'),
-  media: Yup.string()
-    .url('Invalid URL')
-    .matches(/\.(gif|jpe?g|png)$/i, 'Invalid image URL'),
-  price: Yup.number().required('Required'),
-  maxGuests: Yup.number().required('Required'),
-  country: Yup.string()
-    .min(1, 'Must be 1 chars or more')
-    .max(60, 'Can not be longer than 60 chars')
-    .required('Required'),
-  city: Yup.string()
-    .min(1, 'Must be 1 chars or more')
-    .max(60, 'Can not be longer than 60 chars')
-    .required('Required'),
-});
 
 const AddAccommodationForm = () => {
   const dispatch = useDispatch();
@@ -40,6 +17,31 @@ const AddAccommodationForm = () => {
     breakfast: false,
     pets: false,
   });
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(8, 'Must be 8 chars or more')
+      .max(60, 'Can not be longer than 50 chars')
+      .required('Required'),
+    description: Yup.string()
+      .min(20, 'Must be 20 chars or more')
+      .max(2000, 'Can not be longer than 2000 chars')
+      .required('Required'),
+    media: Yup.string()
+      .url('Invalid URL')
+      .matches(/\.(gif|jpe?g|png)$/i, 'Invalid image URL'),
+    price: Yup.number().required('Required'),
+    maxGuests: Yup.number().required('Required'),
+    country: Yup.string()
+      .min(1, 'Must be 1 chars or more')
+      .max(60, 'Can not be longer than 60 chars')
+      .required('Required'),
+    city: Yup.string()
+      .min(1, 'Must be 1 chars or more')
+      .max(60, 'Can not be longer than 60 chars')
+      .required('Required'),
+  });
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -95,14 +97,18 @@ const AddAccommodationForm = () => {
   });
 
   return (
-    <div className="flex max-w-4xl mt-40 mx-8 md:mx-auto bg-lightgray rounded-md justify-center">
-      <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div className="flex max-w-7xl mx-8 md:mx-auto bg-lightgray rounded-md justify-center">
+      <div className="flex flex-1 flex-col justify-center py-8 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
-          <div className="mt-2">
+          <div className="mt-4">
             <div>
               <form onSubmit={formik.handleSubmit} className="space-y-6">
                 <AddInfoAccommodation formik={formik} />
-                <AddMediaToAccommodation formik={formik} />
+                <AddMediaToAccommodation
+                  formik={formik}
+                  mediaArray={mediaArray}
+                  setMediaArray={setMediaArray}
+                />
                 <AddMetaToAccommodations
                   amenities={amenities}
                   setAmenities={setAmenities}
