@@ -9,7 +9,7 @@ const ImageGrid = () => {
             className="block w-full h-full object-cover rounded-md"
             href="#"
             title="Link"
-            src="./herobanner-image.jpg"
+            src="./spain.jpg"
           />
           <div className="absolute top-0 left-0 p-4">
             <span className="text-white text-xl font-semibold font-header bg-main bg-opacity-50 p-2 rounded-md">
@@ -24,7 +24,7 @@ const ImageGrid = () => {
                 className="block w-full h-full object-cover rounded-md"
                 href="#"
                 title="Link"
-                src="./herobanner-image.jpg"
+                src="./norway.jpg"
               />
               <div className="absolute top-0 left-0 p-4">
                 <span className="text-white text-xl font-semibold font-header bg-main bg-opacity-50 p-2 rounded-md">
@@ -37,7 +37,7 @@ const ImageGrid = () => {
                 className="block w-full h-full rounded-md object-cover"
                 href="#"
                 title="Link"
-                src="./herobanner-image.jpg"
+                src="./england.jpg"
               />
               <div className="absolute top-0 left-0 p-4">
                 <span className="text-white text-xl font-semibold font-header bg-main bg-opacity-50 p-2 rounded-md">
@@ -52,7 +52,7 @@ const ImageGrid = () => {
             className="block w-full h-full rounded-md object-cover"
             href="#"
             title="Link"
-            src="./herobanner-image.jpg"
+            src="./danmark.jpg"
           />
           <div className="absolute top-0 left-0 p-4">
             <span className="text-white text-xl font-semibold font-header bg-main bg-opacity-50 p-2 rounded-md">
@@ -65,7 +65,7 @@ const ImageGrid = () => {
             className="block w-full h-full rounded-md object-cover"
             href="#"
             title="Link"
-            src="./herobanner-image.jpg"
+            src="./iceland.jpg"
           />
           <div className="absolute top-0 left-0 p-4">
             <span className="text-white text-xl font-semibold font-header bg-main bg-opacity-50 p-2 rounded-md">
@@ -78,7 +78,7 @@ const ImageGrid = () => {
             className="block w-full h-full rounded-md object-cover"
             href="#"
             title="Link"
-            src="./herobanner-image.jpg"
+            src="./italy.jpg"
           />
           <div className="absolute top-0 left-0 p-4">
             <span className="text-white text-xl font-semibold bg-main font-header bg-opacity-50 p-2 rounded-md">
