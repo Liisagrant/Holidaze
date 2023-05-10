@@ -1,7 +1,9 @@
 const AddMetaToAccommodations = ({ formik }) => {
   return (
     <>
-      <h3>What kind of facilities does your place have?</h3>
+      <h3 className="font-paragraph text-center">
+        What kind of facilities does your place have?
+      </h3>
       <div className="flex justify-center space-x-4">
         {[
           { id: 'wifi', icon: '/WifiHigh.svg', label: 'WiFi' },

@@ -1,6 +1,9 @@
-import React from 'react';
+import { getUserDetails } from '../../../utils/Auth';
+import { useState } from 'react';
 
 const AddInfoAccommodation = ({ formik }) => {
+  const userDetails = getUserDetails();
+  const [userName, setUserName] = useState(userDetails.username);
   return (
     <>
       <div className="flex flex-col items-center">
@@ -16,10 +19,13 @@ const AddInfoAccommodation = ({ formik }) => {
             fill="#265399"
           />
         </svg>
-        <h2 className="mt-2 text-xl font-md font-header leading-9 tracking-tight text-gray-900">
+        <h1 className="mt-4 text-3xl font-bold font-header leading-tight tracking-tight text-gray-900">
+          Good day! {userName} 👋
+        </h1>
+        <h2 className="mt-4 text-2xl font-semibold font-header leading-relaxed tracking-tight text-gray-800">
           List your rental property today and start receiving inquiries!
         </h2>
-        <p className="mt-2 text-sm leading-6 font-paragraph text-gray-500">
+        <p className="mt-4 text-sm leading-7 font-paragraph text-gray-600">
           Let us simplify the process for you with some easy steps!
         </p>
       </div>
