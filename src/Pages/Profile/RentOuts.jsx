@@ -10,7 +10,7 @@ const RentOuts = () => {
 
   return (
     <div className="relative">
-      <div className="bg-lightgray p-4 mx-4 my-4 rounded-md flex flex-col">
+      <div className="bg-lightgray p-4 mx-4 rounded-md flex flex-col">
         <p className="font-header text-lg text-darkblue font-bold text-center">
           Your Active RentOuts
         </p>
@@ -38,10 +38,20 @@ const RentOuts = () => {
                   <p className="font-header font-sm text-xs px-2 max-h-12 max-w-md overflow-hidden">
                     {venue.description}
                   </p>
-                  <p className="font-paragraph text-sm px-2">
-                    {' '}
-                    {venue.bookedFrom}
-                  </p>
+                  <div className="flex flex-row">
+                    <button
+                      type="submit"
+                      className="flex w-32 md:mx-auto font-header justify-center rounded-md bg-green-500 hover:bg-green-600 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                    >
+                      Update
+                    </button>
+                    <button
+                      type="submit"
+                      className="flex w-32 md:mx-auto font-header justify-center rounded-md bg-red-500 hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
             </Link>
