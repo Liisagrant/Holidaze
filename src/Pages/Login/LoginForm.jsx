@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { logInUser } from '../../store/modules/ProfileSlice';
 import * as Yup from 'yup';
 import LoginImage from '../../../public/LoginImage.jpg';
 
@@ -26,34 +27,10 @@ export default function LoginForm() {
         email: values.email,
         password: values.password,
       };
-      console.log(userData);
-      fetch('https://nf-api.onrender.com/api/v1/holidaze/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(response.statusText);
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          localStorage.setItem('userName', data.name);
-          localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('avatar', data.avatar);
-          localStorage.setItem('email', data.email);
-          localStorage.setItem('venueManager', data.venueManager);
-          window.location.href = '/';
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+      logInUser(userData);
     },
   });
+
   return (
     <>
       <div className="flex max-w-4xl mx-8  md:mx-auto bg-lightgray rounded-md">

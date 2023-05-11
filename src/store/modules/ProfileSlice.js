@@ -17,6 +17,34 @@ export default ProfileSlice.reducer;
 
 const accessToken = localStorage.getItem('accessToken');
 
+export const logInUser = (userData) => {
+  fetch('https://nf-api.onrender.com/api/v1/holidaze/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      localStorage.setItem('userName', data.name);
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('avatar', data.avatar);
+      localStorage.setItem('email', data.email);
+      localStorage.setItem('venueManager', data.venueManager);
+      window.location.href = '/';
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+};
+
 export const fetchSingleProfile = (name, profileData) => async (dispatch) => {
   try {
     const response = await fetch(
