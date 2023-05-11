@@ -17,7 +17,7 @@ const AddMediaToAccommodation = ({ formik, mediaArray, setMediaArray }) => {
   }
 
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start my-8">
       <label
         htmlFor="Images"
         className="block font-paragraph text-sm font-medium leading-6 text-gray-900"

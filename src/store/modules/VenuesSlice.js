@@ -16,6 +16,11 @@ const venuesSlice = createSlice({
     addNewVenue: (state, action) => {
       state.venues.push(action.payload);
     },
+    removeVenue: (state, action) => {
+      state.venues = state.venues.filter(
+        (venue) => venue.id !== action.payload
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchVenues.fulfilled, (state, action) => {
@@ -99,15 +104,39 @@ export const createVenue = (venueData) => async (dispatch) => {
         body: JSON.stringify(venueData),
       }
     );
+
     const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Something went wrong');
+    }
+
     console.log(data);
     dispatch(addNewVenue(data));
-    // window.location.href = '/';
+
+    return data;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+};
+
+export const deleteVenue = (id) => async (dispatch) => {
+  try {
+    await fetch(`https://nf-api.onrender.com/api/v1/holidaze/venues/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    dispatch(removeVenue(id));
+    console.log('venue is deleted');
   } catch (e) {
     console.log(e);
   }
 };
 
-export const { setSearch, addNewVenue } = venuesSlice.actions;
+export const { setSearch, addNewVenue, removeVenue } = venuesSlice.actions;
 
 export default venuesSlice.reducer;

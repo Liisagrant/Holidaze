@@ -1,9 +1,4 @@
-import { getUserDetails } from '../../../utils/Auth';
-import { useState } from 'react';
-
 const AddInfoAccommodation = ({ formik }) => {
-  const userDetails = getUserDetails();
-  const [userName, setUserName] = useState(userDetails.username);
   return (
     <>
       <div className="flex flex-col items-center">
@@ -19,17 +14,14 @@ const AddInfoAccommodation = ({ formik }) => {
             fill="#265399"
           />
         </svg>
-        <h1 className="mt-4 text-3xl font-bold font-header leading-tight tracking-tight text-gray-900">
-          Good day! {userName} 👋
-        </h1>
         <h2 className="mt-4 text-2xl font-semibold font-header leading-relaxed tracking-tight text-gray-800">
           List your rental property today and start receiving inquiries!
         </h2>
-        <p className="mt-4 text-sm leading-7 font-paragraph text-gray-600">
+        <p className="my-4 text-sm leading-7 font-paragraph text-gray-600">
           Let us simplify the process for you with some easy steps!
         </p>
       </div>
-      <div>
+      <div className="my-4">
         <label
           htmlFor="name"
           className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
@@ -54,7 +46,7 @@ const AddInfoAccommodation = ({ formik }) => {
           ) : null}
         </div>
       </div>
-      <div>
+      <div className="my-4">
         <label
           htmlFor="description"
           className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
@@ -82,108 +74,177 @@ const AddInfoAccommodation = ({ formik }) => {
           ) : null}
         </div>
       </div>
-      <div>
-        <label
-          htmlFor="name"
-          className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
-        >
-          Country
-        </label>
-        <div className="mt-2">
-          <input
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.country}
-            id="country"
-            name="country"
-            type="text"
-            autoComplete="country"
-            placeholder="Where is your place?"
-            required
-            className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          />
-          {formik.touched.country && formik.errors.country ? (
-            <div className="text-red-600 text-sm">{formik.errors.country}</div>
-          ) : null}
-        </div>
-      </div>
-      <div>
-        <label
-          htmlFor="name"
-          className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
-        >
-          City
-        </label>
-        <div className="mt-2">
-          <input
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.city}
-            id="city"
-            name="city"
-            type="text"
-            autoComplete="city"
-            placeholder="Where is your place?"
-            required
-            className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          />
-          {formik.touched.city && formik.errors.city ? (
-            <div className="text-red-600 text-sm">{formik.errors.city}</div>
-          ) : null}
-        </div>
-      </div>
-      <div>
-        <label
-          htmlFor="maxGuests"
-          className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
-        >
-          Price
-        </label>
-        <div className="mt-2">
-          <input
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.price}
-            id="price"
-            name="price"
-            type="number"
-            min="1"
-            placeholder="please enter how much Your place coast per night"
-            required
-            className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          />
-          {formik.touched.maxGuests && formik.errors.maxGuests ? (
-            <div className="text-red-600 text-sm">
-              {formik.errors.maxGuests}
+      <div className="flex flex-row w-full justify-between my-8">
+        <div className="flex flex-col">
+          <div className="mr-2">
+            <label
+              htmlFor="name"
+              className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
+            >
+              Continent
+            </label>
+            <div className="mt-2 mr-2">
+              <input
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.continent}
+                id="continent"
+                name="continent"
+                type="text"
+                autoComplete="continent"
+                placeholder="What continent?"
+                required
+                className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+              {formik.touched.continent && formik.errors.continent ? (
+                <div className="text-red-600 text-sm">
+                  {formik.errors.continent}
+                </div>
+              ) : null}
             </div>
-          ) : null}
+          </div>
+          <div className="mr-2 mt-2">
+            <label
+              htmlFor="name"
+              className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
+            >
+              Address
+            </label>
+            <div className="mt-2 mr-2">
+              <input
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.address}
+                id="address"
+                name="address"
+                type="text"
+                autoComplete="address"
+                placeholder="What is your address?"
+                required
+                className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+              {formik.touched.address && formik.errors.address ? (
+                <div className="text-red-600 text-sm">
+                  {formik.errors.address}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div>
+            <div className="ml-2">
+              <label
+                htmlFor="name"
+                className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
+              >
+                Country
+              </label>
+              <div className="mt-2">
+                <input
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.country}
+                  id="country"
+                  name="country"
+                  type="text"
+                  autoComplete="country"
+                  placeholder="In what country?"
+                  required
+                  className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+                {formik.touched.country && formik.errors.country ? (
+                  <div className="text-red-600 text-sm">
+                    {formik.errors.country}
+                  </div>
+                ) : null}
+              </div>
+            </div>
+            <div>
+              <div className="ml-2 mt-2">
+                <label
+                  htmlFor="name"
+                  className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
+                >
+                  City
+                </label>
+                <div className="mt-2">
+                  <input
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.city}
+                    id="city"
+                    name="city"
+                    type="text"
+                    autoComplete="city"
+                    placeholder="In what city?"
+                    required
+                    className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                  {formik.touched.city && formik.errors.city ? (
+                    <div className="text-red-600 text-sm">
+                      {formik.errors.city}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div>
-        <label
-          htmlFor="maxGuests"
-          className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
-        >
-          Maximum number of guests
-        </label>
-        <div className="mt-2">
-          <input
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.maxGuests}
-            id="maxGuests"
-            name="maxGuests"
-            type="number"
-            min="1"
-            required
-            className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          />
-          {formik.touched.maxGuests && formik.errors.maxGuests ? (
-            <div className="text-red-600 text-sm">
-              {formik.errors.maxGuests}
-            </div>
-          ) : null}
+      <div className="flex flex-row my-4">
+        <div className=" mr-2">
+          <label
+            htmlFor="maxGuests"
+            className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
+          >
+            Price
+          </label>
+          <div className="mt-2 mr-2">
+            <input
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.price}
+              id="price"
+              name="price"
+              type="number"
+              min="1"
+              placeholder="please enter how much Your place coast per night"
+              required
+              className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+            {formik.touched.maxGuests && formik.errors.maxGuests ? (
+              <div className="text-red-600 text-sm">
+                {formik.errors.maxGuests}
+              </div>
+            ) : null}
+          </div>
+        </div>
+        <div className=" ml-2">
+          <label
+            htmlFor="maxGuests"
+            className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
+          >
+            Maximum number of guests
+          </label>
+          <div className="mt-2">
+            <input
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.maxGuests}
+              id="maxGuests"
+              name="maxGuests"
+              type="number"
+              min="1"
+              required
+              className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+            {formik.touched.maxGuests && formik.errors.maxGuests ? (
+              <div className="text-red-600 text-sm">
+                {formik.errors.maxGuests}
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </>
