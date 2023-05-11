@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { signUpUser } from '../../store/modules/ProfileSlice';
 import * as Yup from 'yup';
 import SignupImage from '../../../public/SignUpImage.jpg';
 
@@ -42,27 +43,7 @@ export default function SignupForm() {
         venueManager: values.venueManager,
         password: values.password,
       };
-      console.log(userData);
-      fetch('https://nf-api.onrender.com/api/v1/holidaze/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          window.location.href = '/Login';
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+      signUpUser(userData);
     },
   });
 
