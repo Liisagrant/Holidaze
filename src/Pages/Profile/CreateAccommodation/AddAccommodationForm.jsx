@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createVenue } from '../../../store/modules/VenuesSlice';
 import { getUserDetails } from '../../../utils/Auth';
+import { addVenueToProfile } from '../../../store/modules/ProfileSlice';
+import secondHelper from '../../../../public/secondHelper.svg';
 import AddMediaToAccommodation from './AddMediaToAccommodation';
 import AddMetaToAccommodations from './AddMetaToAccommodations';
 import AddInfoAccommodation from './AddInfoAccommodation';
@@ -11,6 +13,8 @@ import * as Yup from 'yup';
 const AddAccommodationForm = () => {
   const dispatch = useDispatch();
   const [mediaArray, setMediaArray] = useState([]);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const [amenities, setAmenities] = useState({
     wifi: false,
     parking: false,
@@ -25,7 +29,7 @@ const AddAccommodationForm = () => {
       .required('Required'),
     description: Yup.string()
       .min(20, 'Must be 20 chars or more')
-      .max(2000, 'Can not be longer than 2000 chars')
+      .max(1000, 'Can not be longer than 1000 chars')
       .required('Required'),
     media: Yup.string()
       .url('Invalid URL')
@@ -36,7 +40,15 @@ const AddAccommodationForm = () => {
       .min(1, 'Must be 1 chars or more')
       .max(60, 'Can not be longer than 60 chars')
       .required('Required'),
+    continent: Yup.string()
+      .min(1, 'Must be 1 chars or more')
+      .max(60, 'Can not be longer than 60 chars')
+      .required('Required'),
     city: Yup.string()
+      .min(1, 'Must be 1 chars or more')
+      .max(60, 'Can not be longer than 60 chars')
+      .required('Required'),
+    address: Yup.string()
       .min(1, 'Must be 1 chars or more')
       .max(60, 'Can not be longer than 60 chars')
       .required('Required'),
@@ -92,42 +104,67 @@ const AddAccommodationForm = () => {
       };
       console.log(venueData.media);
       console.log(venueData);
-      dispatch(createVenue(venueData));
+
+      dispatch(createVenue(venueData))
+        .then((newVenue) => {
+          setFormSubmitted(true);
+          window.scrollTo(0, 0);
+          dispatch(addVenueToProfile(newVenue));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   });
 
   return (
     <div className="flex max-w-7xl mx-8 md:mx-auto bg-lightgray rounded-md justify-center">
-      <div className="flex flex-1 flex-col justify-center py-8 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm lg:w-96">
-          <div className="mt-4">
-            <div>
-              <form onSubmit={formik.handleSubmit} className="space-y-6">
-                <AddInfoAccommodation formik={formik} />
-                <AddMediaToAccommodation
-                  formik={formik}
-                  mediaArray={mediaArray}
-                  setMediaArray={setMediaArray}
-                />
-                <AddMetaToAccommodations
-                  amenities={amenities}
-                  setAmenities={setAmenities}
-                  formik={formik}
-                />
+      {formSubmitted ? (
+        <div class="p-12 flex flex-col justify-center items-center">
+          <p className="font-header text-3xl text-main">
+            Your accommodation has been successfully added!
+          </p>
+          <p className="font-paragraph text-md text-gray-600">
+            added and is now available for rent. To view your listing, please
+            navigate to the 'RentOuts' section under the profile menu. We hope
+            it will be rented out soon!
+          </p>
+          <div className="max-w-md">
+            <img src={secondHelper} alt="image of a happy man" />
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col justify-center py-8 sm:px-6 lg:flex-none">
+          <div className="mx-auto w-full max-w-sm lg:w-96">
+            <div className="mt-4">
+              <div>
+                <form onSubmit={formik.handleSubmit} className="w-full">
+                  <AddInfoAccommodation formik={formik} />
+                  <AddMediaToAccommodation
+                    formik={formik}
+                    mediaArray={mediaArray}
+                    setMediaArray={setMediaArray}
+                  />
+                  <AddMetaToAccommodations
+                    amenities={amenities}
+                    setAmenities={setAmenities}
+                    formik={formik}
+                  />
 
-                <div className="flex justify-center">
-                  <button
-                    type="submit"
-                    className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
-                  >
-                    Add Accommodation
-                  </button>
-                </div>
-              </form>
+                  <div className="flex justify-center my-8">
+                    <button
+                      type="submit"
+                      className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
+                    >
+                      Add Accommodation
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

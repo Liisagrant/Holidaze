@@ -59,11 +59,11 @@ const ProfileMenu = ({
     <div>
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-darkblue bg-opacity-60 flex justify-center items-center z-50">
-          <div className="bg-backgroundwhite rounded-md p-4">
-            <p className="text-black font-header font-bold mb-4">
-              Update Avatar
+          <div className="bg-backgroundwhite rounded-md p-16">
+            <p className="text-main text-xl mx-4 font-header font-bold mb-4">
+              Update your Avatar
             </p>
-            <div className="m-4">
+            <div className="m-4 mb-8 w-96">
               <label
                 htmlFor="avatar"
                 className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
