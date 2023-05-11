@@ -17,6 +17,29 @@ export default ProfileSlice.reducer;
 
 const accessToken = localStorage.getItem('accessToken');
 
+export const signUpUser = (userData) => {
+  fetch('https://nf-api.onrender.com/api/v1/holidaze/auth/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      window.location.href = '/login';
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+};
+
 export const logInUser = (userData) => {
   fetch('https://nf-api.onrender.com/api/v1/holidaze/auth/login', {
     method: 'POST',
