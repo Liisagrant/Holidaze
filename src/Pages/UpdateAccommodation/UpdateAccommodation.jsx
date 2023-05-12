@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
-import { fetchSingleVenue } from '../../store/modules/venuesSlice';
+import { fetchSingleVenue } from '../../store/modules/VenuesSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
