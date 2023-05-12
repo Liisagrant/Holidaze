@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
-import { updateVenue } from '../../store/modules/venuesSlice';
+import { updateVenue } from '../../store/modules/VenuesSlice';
 
 //test
 //test
