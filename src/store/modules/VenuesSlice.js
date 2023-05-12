@@ -8,6 +8,7 @@ const venuesSlice = createSlice({
     lowPricedHouses: [],
     topRatedHouses: [],
     search: '',
+    createVenue: null,
   },
   reducers: {
     setSearch: (state, action) => {
@@ -20,6 +21,9 @@ const venuesSlice = createSlice({
       state.venues = state.venues.filter(
         (venue) => venue.id !== action.payload
       );
+    },
+    updateingVenue: (state, action) => {
+      state.createVenue = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -137,6 +141,29 @@ export const deleteVenue = (id) => async (dispatch) => {
   }
 };
 
-export const { setSearch, addNewVenue, removeVenue } = venuesSlice.actions;
+export const updateVenue = (id, venueData) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(venueData),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    dispatch(updateingVenue(data));
+    window.location.href = '/profile';
+  } catch (e) {
+    dispatch(setError(true, e.message));
+  }
+};
+
+export const { setSearch, addNewVenue, removeVenue, updateingVenue } =
+  venuesSlice.actions;
 
 export default venuesSlice.reducer;
