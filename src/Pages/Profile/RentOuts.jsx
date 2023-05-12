@@ -58,11 +58,7 @@ const RentOuts = () => {
                       </Link>
                     </div>
                     <div>
-                      <Link
-                        to={{
-                          pathname: `/UpdateAccommodation/${venue.id}`,
-                        }}
-                      >
+                      <Link to={`/UpdateAccommodation/${venue.id}`}>
                         <button
                           type="submit"
                           className="flex w-32 md:mx-auto font-header justify-center rounded-md bg-green-500 hover:bg-green-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"

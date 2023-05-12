@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { fetchSingleVenue } from '../../store/modules/venuesSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { updateVenue } from '../../store/modules/venuesSlice';
-import AddAccommodationForm from '../Profile/CreateAccommodation/AddAccommodationForm';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -16,9 +16,11 @@ const validationSchema = Yup.object().shape({
     .min(20, 'Must be 20 chars or more')
     .max(1000, 'Can not be longer than 1000 chars')
     .required('Required'),
-  media: Yup.string()
-    .url('Invalid URL')
-    .matches(/\.(gif|jpe?g|png)$/i, 'Invalid image URL'),
+  media: Yup.array().of(
+    Yup.string()
+      .url('Invalid URL')
+      .matches(/\.(gif|jpe?g|png)$/i, 'Invalid image URL')
+  ),
   price: Yup.number().required('Required'),
   maxGuests: Yup.number().required('Required'),
   country: Yup.string()
@@ -55,7 +57,7 @@ const UpdateAccommodation = () => {
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchSingleVenue(id)).then(() => setLoading(false));
+      dispatch(fetchSingleVenue(id));
     }
   }, [dispatch, id]);
 
@@ -88,14 +90,45 @@ const UpdateAccommodation = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
-      dispatch(updateVenue(id, values));
+      const venueData = {
+        name: values.name,
+        description: values.description,
+        media: mediaArray,
+        price: values.price,
+        maxGuests: values.maxGuests,
+        rating: 5,
+        meta: {
+          wifi: values.wifi,
+          parking: values.parking,
+          breakfast: values.breakfast,
+          pets: values.pets,
+        },
+        location: {
+          address: values.address,
+          city: values.city,
+          zip: values.zip,
+          country: values.country,
+          continent: values.continent,
+          lat: 0,
+          lng: 0,
+        },
+      };
+      console.log(venueData);
+      console.log('form is submitted');
+      dispatch(updateVenue(id, venueData));
     },
   });
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  useEffect(() => {
+    setLoading(true);
+    if (id) {
+      dispatch(fetchSingleVenue(id))
+        .then(() => setLoading(false))
+        .catch((error) => {
+          // Handle error
+        });
+    }
+  }, [dispatch, id]);
 
   function pushToMediaArray() {
     const mediaValue = document.getElementById('media').value;
@@ -158,7 +191,6 @@ const UpdateAccommodation = () => {
               type="text"
               autoComplete="name"
               placeholder="What will you call your rental?"
-              required
               className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
             {formik.touched.name && formik.errors.name ? (
@@ -184,7 +216,6 @@ const UpdateAccommodation = () => {
               type="text"
               autoComplete="description"
               rows="4"
-              required
               className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
             {formik.touched.description && formik.errors.description ? (
@@ -213,7 +244,6 @@ const UpdateAccommodation = () => {
                   type="text"
                   autoComplete="continent"
                   placeholder="What continent?"
-                  required
                   className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {formik.touched.continent && formik.errors.continent ? (
@@ -240,7 +270,6 @@ const UpdateAccommodation = () => {
                   type="text"
                   autoComplete="address"
                   placeholder="What is your address?"
-                  required
                   className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {formik.touched.address && formik.errors.address ? (
@@ -270,7 +299,6 @@ const UpdateAccommodation = () => {
                     type="text"
                     autoComplete="country"
                     placeholder="In what country?"
-                    required
                     className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   {formik.touched.country && formik.errors.country ? (
@@ -298,7 +326,6 @@ const UpdateAccommodation = () => {
                       type="text"
                       autoComplete="city"
                       placeholder="In what city?"
-                      required
                       className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     {formik.touched.city && formik.errors.city ? (
@@ -330,7 +357,6 @@ const UpdateAccommodation = () => {
                 type="number"
                 min="1"
                 placeholder="please enter how much Your place coast per night"
-                required
                 className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               {formik.touched.maxGuests && formik.errors.maxGuests ? (
@@ -356,7 +382,6 @@ const UpdateAccommodation = () => {
                 name="maxGuests"
                 type="number"
                 min="1"
-                required
                 className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               {formik.touched.maxGuests && formik.errors.maxGuests ? (
@@ -452,24 +477,26 @@ const UpdateAccommodation = () => {
         </div>
         <div className="flex flex-row justify-center">
           <div className="flex justify-center my-8 mx-4">
-            <button
-              type="submit"
-              className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
-            >
-              Cancel
-            </button>
+            {/* <Link to="/Profile">
+              <button
+                type="button"
+                className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
+              >
+                Cancel
+              </button>
+            </Link> */}
           </div>
-
           <div className="flex justify-center my-8 mx-4">
             <button
               type="submit"
+              onClick={formik.handleSubmit}
               className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
             >
               Update Accommodation
             </button>
           </div>
         </div>
-      </form>{' '}
+      </form>
     </div>
   );
 };

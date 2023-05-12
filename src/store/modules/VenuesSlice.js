@@ -8,6 +8,7 @@ const venuesSlice = createSlice({
     lowPricedHouses: [],
     topRatedHouses: [],
     search: '',
+    createVenue: null,
   },
   reducers: {
     setSearch: (state, action) => {
@@ -21,7 +22,7 @@ const venuesSlice = createSlice({
         (venue) => venue.id !== action.payload
       );
     },
-    updatingVenue: (state, action) => {
+    updateingVenue: (state, action) => {
       state.createVenue = action.payload;
     },
   },
@@ -155,14 +156,14 @@ export const updateVenue = (id, venueData) => async (dispatch) => {
     );
     const data = await response.json();
     console.log(data);
-    dispatch(updatingVenue(data));
-    // window.location.href = '/';
-    console.log('venue is updated');
+    dispatch(updateingVenue(data));
+    window.location.href = '/profile';
   } catch (e) {
-    console.log('error:(');
+    dispatch(setError(true, e.message));
   }
 };
 
-export const { setSearch, addNewVenue, removeVenue } = venuesSlice.actions;
+export const { setSearch, addNewVenue, removeVenue, updateingVenue } =
+  venuesSlice.actions;
 
 export default venuesSlice.reducer;
