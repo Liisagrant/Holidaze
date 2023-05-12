@@ -21,6 +21,9 @@ const venuesSlice = createSlice({
         (venue) => venue.id !== action.payload
       );
     },
+    updatingVenue: (state, action) => {
+      state.createVenue = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchVenues.fulfilled, (state, action) => {
@@ -134,6 +137,29 @@ export const deleteVenue = (id) => async (dispatch) => {
     console.log('venue is deleted');
   } catch (e) {
     console.log(e);
+  }
+};
+
+export const updateVenue = (id, venueData) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(venueData),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    dispatch(updatingVenue(data));
+    // window.location.href = '/';
+    console.log('venue is updated');
+  } catch (e) {
+    console.log('error:(');
   }
 };
 
