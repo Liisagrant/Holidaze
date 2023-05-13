@@ -12,35 +12,29 @@ import { updateVenue } from '../../store/modules/VenuesSlice';
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(8, 'Must be 8 chars or more')
-    .max(60, 'Can not be longer than 50 chars')
-    .required('Required'),
+    .max(60, 'Can not be longer than 50 chars'),
   description: Yup.string()
     .min(20, 'Must be 20 chars or more')
-    .max(1000, 'Can not be longer than 1000 chars')
-    .required('Required'),
+    .max(1000, 'Can not be longer than 1000 chars'),
   media: Yup.array().of(
     Yup.string()
       .url('Invalid URL')
       .matches(/\.(gif|jpe?g|png)$/i, 'Invalid image URL')
   ),
-  price: Yup.number().required('Required'),
-  maxGuests: Yup.number().required('Required'),
+  price: Yup.number(),
+  maxGuests: Yup.number(),
   country: Yup.string()
     .min(1, 'Must be 1 chars or more')
-    .max(60, 'Can not be longer than 60 chars')
-    .required('Required'),
+    .max(60, 'Can not be longer than 60 chars'),
   continent: Yup.string()
     .min(1, 'Must be 1 chars or more')
-    .max(60, 'Can not be longer than 60 chars')
-    .required('Required'),
+    .max(60, 'Can not be longer than 60 chars'),
   city: Yup.string()
     .min(1, 'Must be 1 chars or more')
-    .max(60, 'Can not be longer than 60 chars')
-    .required('Required'),
+    .max(60, 'Can not be longer than 60 chars'),
   address: Yup.string()
     .min(1, 'Must be 1 chars or more')
-    .max(60, 'Can not be longer than 60 chars')
-    .required('Required'),
+    .max(60, 'Can not be longer than 60 chars'),
 });
 
 const UpdateAccommodation = () => {
@@ -76,20 +70,21 @@ const UpdateAccommodation = () => {
       maxGuests: singleVenue?.maxGuests || 1,
       rating: 5,
       meta: {
-        wifi: false,
-        parking: false,
-        breakfast: false,
-        pets: false,
+        wifi: singleVenue?.meta?.wifi || false,
+        parking: singleVenue?.meta?.parking || false,
+        breakfast: singleVenue?.meta?.breakfast || false,
+        pets: singleVenue?.meta?.pets || false,
       },
       location: {
-        address: singleVenue?.location.address || '',
-        city: singleVenue?.location.city || '',
-        country: singleVenue?.location.country || '',
-        continent: singleVenue?.location.continent || '',
+        address: singleVenue?.address || '',
+        city: singleVenue?.city || '',
+        country: singleVenue?.country || '',
+        continent: singleVenue?.continent || '',
         lat: 0,
         lng: 0,
       },
     },
+    enableReinitialize: true,
     validationSchema,
     onSubmit: (values) => {
       const venueData = {
@@ -100,17 +95,17 @@ const UpdateAccommodation = () => {
         maxGuests: values.maxGuests,
         rating: 5,
         meta: {
-          wifi: values.wifi,
-          parking: values.parking,
-          breakfast: values.breakfast,
-          pets: values.pets,
+          wifi: values.meta.wifi,
+          parking: values.meta.parking,
+          breakfast: values.meta.breakfast,
+          pets: values.meta.pets,
         },
         location: {
-          address: values.address,
-          city: values.city,
-          zip: values.zip,
-          country: values.country,
-          continent: values.continent,
+          address: values.location.address,
+          city: values.location.city,
+          zip: values.location.zip,
+          country: values.location.country,
+          continent: values.location.continent,
           lat: 0,
           lng: 0,
         },
@@ -120,6 +115,12 @@ const UpdateAccommodation = () => {
       dispatch(updateVenue(id, venueData));
     },
   });
+
+  useEffect(() => {
+    if (singleVenue) {
+      setMediaArray(singleVenue.media);
+    }
+  }, [singleVenue]);
 
   useEffect(() => {
     setLoading(true);
@@ -240,7 +241,7 @@ const UpdateAccommodation = () => {
                 <input
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.location.continent}
+                  value={formik.values.continent}
                   id="continent"
                   name="continent"
                   type="text"
@@ -266,7 +267,7 @@ const UpdateAccommodation = () => {
                 <input
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.location.address}
+                  value={formik.values.address}
                   id="address"
                   name="address"
                   type="text"
@@ -295,7 +296,7 @@ const UpdateAccommodation = () => {
                   <input
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.location.country}
+                    value={formik.values.country}
                     id="country"
                     name="country"
                     type="text"
@@ -322,7 +323,7 @@ const UpdateAccommodation = () => {
                     <input
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.location.city}
+                      value={formik.values.city}
                       id="city"
                       name="city"
                       type="text"
