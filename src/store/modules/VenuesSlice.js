@@ -157,7 +157,6 @@ export const updateVenue = (id, venueData) => async (dispatch) => {
     const data = await response.json();
     console.log(data);
     dispatch(updateingVenue(data));
-    window.location.href = '/profile';
   } catch (e) {
     dispatch(setError(true, e.message));
   }
