@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NoAvatar from '../../public/NoAvatar.jpg';
 
 const ProfileAvatar = ({ avatar }) => {
   return (
@@ -15,7 +16,7 @@ const ProfileAvatar = ({ avatar }) => {
           <span className="sr-only">Open user menu</span>
           <img
             className="h-8 w-8 rounded-full"
-            src={avatar}
+            src={avatar ? avatar : NoAvatar}
             alt="user avatar"
           />
         </button>

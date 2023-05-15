@@ -135,7 +135,7 @@ const ProfileMenu = ({
             <button
               type="submit"
               onClick={() => setIsModalOpen(true)}
-              className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-second px-2 py-1.5 text-sm hover:bg-hovercolor font-semibold leading-6 text-black shadow-sm my-4"
+              className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-second px-2 py-1.5 text-sm hover:bg-hovercolor font-semibold leading-6 text-black hover:text-white hover:border-2 shadow-sm my-4"
             >
               Update Avatar
             </button>
@@ -145,7 +145,7 @@ const ProfileMenu = ({
                   <button
                     onClick={onAddAccommodationClick}
                     type="submit"
-                    className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                    className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white hover:border-2 shadow-sm my-4"
                   >
                     Add accommodation
                   </button>
@@ -154,7 +154,7 @@ const ProfileMenu = ({
                   <button
                     onClick={onRentOutsClick}
                     type="submit"
-                    className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                    className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white hover:border-2 shadow-sm my-4"
                   >
                     See Rent Outs
                   </button>
@@ -165,7 +165,7 @@ const ProfileMenu = ({
               <button
                 onClick={onUserBookingsClick}
                 type="submit"
-                className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white hover:border-2 shadow-sm my-4"
               >
                 See Your Bookings
               </button>
