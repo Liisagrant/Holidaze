@@ -93,6 +93,14 @@ function AccommodationCard() {
               )}
             </div>
             <div className="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
+            <div className="my-4">
+              <p>This location is at:</p>
+              <p className="font-paragraph text-sm ">{location.continent}</p>
+              <p className="font-paragraph text-sm ">{location.country}</p>
+              <p className="font-paragraph text-sm ">{location.city}</p>
+              <p className="font-paragraph text-sm ">{location.address}</p>
+            </div>
+            <div className="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
             <p className="text-gray-700 my-6 max-w-md">{description}</p>
           </div>
         </div>
