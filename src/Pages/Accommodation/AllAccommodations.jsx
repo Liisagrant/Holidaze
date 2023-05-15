@@ -52,7 +52,7 @@ const AllAccommodations = () => {
               />
             </div>
             <div className="md:ml-8 w-full">
-              <h2 className="ml-2 md:ml-none my-6 text-2xl font-header font-bold tracking-tight text-darkblue">
+              <h2 className="ml-2 md:ml-none my-6 max-w-md text-2xl font-header font-bold tracking-tight text-darkblue overflow-hidden">
                 {venue.name}
               </h2>
               <div className="flex items-center mb-2">
