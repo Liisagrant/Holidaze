@@ -268,7 +268,7 @@ const UpdateAccommodation = () => {
                   <input
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.location.continent}
+                    value={formik.values.continent}
                     id="continent"
                     name="continent"
                     type="text"
@@ -294,7 +294,7 @@ const UpdateAccommodation = () => {
                   <input
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.location.address}
+                    value={formik.values.address}
                     id="address"
                     name="address"
                     type="text"
@@ -323,7 +323,7 @@ const UpdateAccommodation = () => {
                     <input
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.location.country}
+                      value={formik.values.country}
                       id="country"
                       name="country"
                       type="text"
@@ -350,7 +350,7 @@ const UpdateAccommodation = () => {
                       <input
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.location.city}
+                        value={formik.values.city}
                         id="city"
                         name="city"
                         type="text"
