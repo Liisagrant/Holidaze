@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
       return /^[A-Z0-9._%+-]+@noroff\.no$/i.test(value);
     }),
   password: Yup.string()
-    // .min(8, 'Must be at least 8 characters')
+    .min(8, 'Must be at least 8 characters')
     .required('Required'),
   passwordConfirm: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
@@ -221,35 +221,26 @@ export default function SignupForm() {
                     <div>
                       <input
                         checked={formik.values.venueManager}
-                        onChange={(event) => {
-                          formik.setFieldValue(
-                            'venueManager',
-                            event.target.value === 'true'
-                          );
+                        onChange={() => {
+                          formik.setFieldValue('venueManager', true);
                         }}
                         type="radio"
                         id="yes"
                         name="venueManager"
-                        value={true}
                       />
-
                       <label htmlFor="yes" className="ml-1">
                         Yes
                       </label>
                     </div>
                     <div>
                       <input
-                        checked={formik.values.venueManager}
-                        onChange={(event) => {
-                          formik.setFieldValue(
-                            'venueManager',
-                            event.target.value === 'false'
-                          );
+                        checked={!formik.values.venueManager}
+                        onChange={() => {
+                          formik.setFieldValue('venueManager', false);
                         }}
                         type="radio"
                         id="no"
                         name="venueManager"
-                        value={false}
                       />
                       <label htmlFor="no" className="ml-1">
                         No
