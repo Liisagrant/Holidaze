@@ -66,7 +66,7 @@ export const logInUser = (userData) => {
       localStorage.setItem('avatar', data.avatar);
       localStorage.setItem('email', data.email);
       localStorage.setItem('venueManager', data.venueManager);
-      window.location.href = '/';
+      window.location = '/';
     })
     .catch((error) => {
       console.error('Error:', error);

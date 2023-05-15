@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleVenue } from '../../store/modules/VenuesSlice';
+import { Link } from 'react-router-dom';
 import Amenities from '../Accommodation/Amenites';
 import NoData from '../../../public/NoData.jpg';
 import NoImage from '../../../public/NoImage.png';
@@ -11,6 +12,7 @@ function AccommodationCard() {
   const singleAccommodation = useSelector((state) => state.Venues.singleVenue);
   let { id } = useParams();
   const [activeImage, setActiveImage] = useState(0);
+  const accessToken = localStorage.getItem('accessToken');
 
   const handleImageError = (e) => {
     e.target.src = NoData;
@@ -73,6 +75,7 @@ function AccommodationCard() {
               <span className="font-medium text-gray-600 mr-2">Price:</span>
               <span className="font-semibold text-gray-800">{price} kr</span>
             </div>
+
             <div className="flex items-center mb-2">
               <span className="font-medium text-gray-600 mr-2">
                 Max Guests:
@@ -93,15 +96,61 @@ function AccommodationCard() {
               )}
             </div>
             <div className="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
-            <div className="my-4">
-              <p>This location is at:</p>
-              <p className="font-paragraph text-sm ">{location.continent}</p>
-              <p className="font-paragraph text-sm ">{location.country}</p>
-              <p className="font-paragraph text-sm ">{location.city}</p>
-              <p className="font-paragraph text-sm ">{location.address}</p>
+            <div className="my-4 flex flex-col max-w-xs">
+              {location && (
+                <>
+                  <p className="font-medium text-gray-600 mr-2">
+                    This location is at:
+                  </p>
+                  <div className="flex flex-row justify-between">
+                    <div>
+                      <p className="font-paragraph text-sm m-2">
+                        Continent: {location.continent}
+                      </p>
+                      <p className="font-paragraph text-sm m-2">
+                        Country: {location.country}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-paragraph text-sm m-2">
+                        City: {location.city}
+                      </p>
+                      <p className="font-paragraph text-sm m-2">
+                        Address: {location.address}
+                      </p>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
+
             <div className="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
             <p className="text-gray-700 my-6 max-w-md">{description}</p>
+            <div>
+              {accessToken ? (
+                <div className="max-w-sm">
+                  <Link to={`/BookAccommodation/${id}`}>
+                    <button className="bg-main w-full  hover:bg-hovercolor text-white font-bold py-2 px-4 rounded">
+                      Book
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex flex-col my-4 max-w-sm">
+                  <span className=" text-gray-700 text-md mb-4">
+                    You are not Logged In.If you want to book this
+                    accommodation, please log in first.
+                  </span>
+                  <Link to="/Login">
+                    <div className="flex justify-end">
+                      <button className="w-full bg-main hover:bg-hovercolor text-white font-bold py-2 px-4 rounded">
+                        Login
+                      </button>
+                    </div>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
