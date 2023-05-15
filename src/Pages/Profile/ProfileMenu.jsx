@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NoAvatar from '../../../public/NoAvatar.jpg';
 import { updateLocalStorage } from '../../utils/Auth';
 import { getUserDetails } from '../../utils/Auth';
@@ -23,6 +23,12 @@ const ProfileMenu = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userDetails, setUserDetails] = useState(getUserDetails());
+  const [venueManager, setVenueManager] = useState(false);
+
+  useEffect(() => {
+    const storedVenueManager = localStorage.getItem('venueManager');
+    setVenueManager(storedVenueManager === 'true');
+  }, []);
 
   const formik = useFormik({
     initialValues: {
