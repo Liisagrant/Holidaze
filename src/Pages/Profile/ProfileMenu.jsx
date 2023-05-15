@@ -11,6 +11,8 @@ const validationSchema = Yup.object().shape({
     .matches(/\.(gif|jpe?g|png)$/i, 'Invalid image URL'),
 });
 
+const venueManager = localStorage.getItem('venueManager');
+
 const ProfileMenu = ({
   avatar,
   userEmail,
@@ -131,31 +133,35 @@ const ProfileMenu = ({
             >
               Update Avatar
             </button>
-            <div className="flex justify-end">
-              <button
-                onClick={onAddAccommodationClick}
-                type="submit"
-                className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
-              >
-                Add accommodation
-              </button>
-            </div>
+            {venueManager ? (
+              <>
+                <div className="flex justify-end">
+                  <button
+                    onClick={onAddAccommodationClick}
+                    type="submit"
+                    className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                  >
+                    Add accommodation
+                  </button>
+                </div>
+                <div className="flex justify-end">
+                  <button
+                    onClick={onRentOutsClick}
+                    type="submit"
+                    className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                  >
+                    See Rent Outs
+                  </button>
+                </div>
+              </>
+            ) : null}
             <div className="flex justify-end">
               <button
                 onClick={onUserBookingsClick}
                 type="submit"
                 className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
               >
-                see you Bookings
-              </button>
-            </div>
-            <div className="flex justify-end">
-              <button
-                onClick={onRentOutsClick}
-                type="submit"
-                className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
-              >
-                see you RentOuts
+                See Your Bookings
               </button>
             </div>
           </div>
