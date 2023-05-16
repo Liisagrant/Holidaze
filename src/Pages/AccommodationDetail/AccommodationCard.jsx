@@ -7,6 +7,7 @@ import Amenities from '../Accommodation/Amenites';
 import NoData from '../../../public/NoData.jpg';
 import NoImage from '../../../public/NoImage.png';
 import BreadCrumbs from '../../Global/BreadCrumbs';
+import RatingStar from '../../Global/RatingStar';
 
 function AccommodationCard() {
   const dispatch = useDispatch();
@@ -80,6 +81,7 @@ function AccommodationCard() {
             </div>
             <div className="p-4 flex-1">
               <h1 className="font-bold text-2xl text-gray-800 mb-4">{name}</h1>
+
               <div className="flex items-center mb-2">
                 <span className="font-medium text-gray-600 mr-2">Price:</span>
                 <span className="font-semibold text-gray-800">{price} kr</span>
@@ -92,6 +94,7 @@ function AccommodationCard() {
                 <span className="font-semibold text-gray-800">{maxGuests}</span>
               </div>
               <div className="mt-4">
+                <RatingStar venue={singleAccommodation} />
                 <span className="font-semibold text-xs md:text-sm text-gray-800 mr-2">
                   This accommodation offers the following amenities:
                 </span>

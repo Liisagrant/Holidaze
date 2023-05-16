@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchVenues, fetchSingleVenue } from '../../store/modules/VenuesSlice';
 import NoSearch from '../../../public/NoSearch.svg';
 import NoImage from '../../../public/NoImage.png';
+import RatingStar from '../../Global/RatingStar';
 
 const AllAccommodations = () => {
   const dispatch = useDispatch();
@@ -52,9 +53,12 @@ const AllAccommodations = () => {
               />
             </div>
             <div className="md:ml-8 w-full">
-              <h2 className="ml-2 md:ml-none my-6 max-w-md text-2xl font-header font-bold tracking-tight text-darkblue overflow-hidden">
+              <h2 className="ml-2 md:ml-none my-4 max-w-md text-2xl font-header font-bold tracking-tight text-darkblue overflow-hidden">
                 {venue.name}
               </h2>
+              <div className="px-2">
+                <RatingStar venue={venue} />
+              </div>
               <div className="flex items-center mb-2">
                 <span className=" ml-2 md:ml-none font-medium text-gray-600 mr-2">
                   Price:
