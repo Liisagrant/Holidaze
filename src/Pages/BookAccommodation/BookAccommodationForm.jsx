@@ -6,7 +6,7 @@ import { bookVenue } from '../../store/modules/VenuesSlice';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import BookImage from '../../../public/BookImage.webp';
-import secondHelper from '../../../public/secondHelper.svg';
+import success from '../../../public/success.svg';
 import { useDispatch } from 'react-redux';
 
 const validationSchema = Yup.object().shape({
@@ -102,7 +102,7 @@ const BookAccommodationForm = () => {
             </Link>
           </p>
           <div className="max-w-md">
-            <img alt="image of a happy man" src={secondHelper} />
+            <img alt="image of a happy man" src={success} />
           </div>
         </div>
       ) : (
