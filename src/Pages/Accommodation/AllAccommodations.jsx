@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { fetchVenues, fetchSingleVenue } from '../../store/modules/VenuesSlice';
 import NoSearch from '../../../public/NoSearch.svg';
 import NoImage from '../../../public/NoImage.png';
 import RatingStar from '../../Global/RatingStar';
+import { setLoadingState } from '../../store/modules/loaderSlice';
+import SpinnerComponent from '../Global/SpinnerComponent';
 
 const AllAccommodations = () => {
   const dispatch = useDispatch();
@@ -20,9 +23,19 @@ const AllAccommodations = () => {
   };
 
   useEffect(() => {
+    dispatch(setLoadingState(true));
     dispatch(fetchVenues());
     dispatch(fetchSingleVenue('venueId'));
+    dispatch(setLoadingState(false));
   }, [dispatch]);
+
+  if (loading) {
+    return (
+      <div>
+        <SpinnerComponent />
+      </div>
+    );
+  }
 
   return (
     <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl ">
@@ -64,7 +77,7 @@ const AllAccommodations = () => {
                   Price:
                 </span>
                 <span className=" ml-2 md:ml-none font-semibold text-darkblue">
-                  {venue.price} kr
+                  {venue.price} $
                 </span>
               </div>
               <div className="flex items-center mb-2">
