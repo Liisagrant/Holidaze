@@ -9,7 +9,7 @@ import NoImage from '../../../public/NoImage.png';
 import BreadCrumbs from '../../Global/BreadCrumbs';
 import RatingStar from '../../Global/RatingStar';
 import { setLoadingState } from '../../store/modules/loaderSlice';
-import SpinnerComponent from '../Global/SpinnerComponent';
+import SpinnerComponent from '../../Global/SpinnerComponent';
 
 function AccommodationCard() {
   const dispatch = useDispatch();
