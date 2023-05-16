@@ -185,14 +185,15 @@ export default function Header() {
         </div>
         <nav
           className={`lg:hidden ${
-            isMobileMenuOpen ? 'flex' : 'hidden'
-          } justify-center`}
+            isMobileMenuOpen ? 'flex justify-center' : 'hidden'
+          }`}
           aria-label="Global"
         >
-          <ul className="space-y-1 my-4 px-2 pt-2 pb-3 flex flex-col items-center">
+          <ul className="space-y-1 my-4 px-2 pt-2 pb-3 flex flex-col justify-center items-center">
             <li>
               <NavLink
                 to="/"
+                onClick={toggleMobileMenu}
                 className={({ isActive }) => generateNavLinkClass(isActive)}
               >
                 Home
@@ -201,6 +202,7 @@ export default function Header() {
             <li>
               <NavLink
                 to="/Accommodations"
+                onClick={toggleMobileMenu}
                 className={({ isActive }) => generateNavLinkClass(isActive)}
               >
                 Accomodations
@@ -209,6 +211,7 @@ export default function Header() {
             <li>
               <NavLink
                 to="/Contact"
+                onClick={toggleMobileMenu}
                 className={({ isActive }) => generateNavLinkClass(isActive)}
               >
                 Contact
@@ -219,6 +222,7 @@ export default function Header() {
                 <li>
                   <NavLink
                     to="/Profile"
+                    onClick={toggleMobileMenu}
                     className={({ isActive }) => generateNavLinkClass(isActive)}
                   >
                     Profile
@@ -236,6 +240,7 @@ export default function Header() {
                 <li>
                   <NavLink
                     to="/Login"
+                    onClick={toggleMobileMenu}
                     className={({ isActive }) => generateNavLinkClass(isActive)}
                   >
                     Login
@@ -244,6 +249,7 @@ export default function Header() {
                 <li>
                   <NavLink
                     to="/Signup"
+                    onClick={toggleMobileMenu}
                     className={({ isActive }) => generateNavLinkClass(isActive)}
                   >
                     SignUp
