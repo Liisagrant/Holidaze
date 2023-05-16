@@ -8,6 +8,8 @@ import NoData from '../../../public/NoData.jpg';
 import NoImage from '../../../public/NoImage.png';
 import BreadCrumbs from '../../Global/BreadCrumbs';
 import RatingStar from '../../Global/RatingStar';
+import { setLoadingState } from '../../store/modules/loaderSlice';
+import SpinnerComponent from '../../Global/SpinnerComponent';
 
 function AccommodationCard() {
   const dispatch = useDispatch();
@@ -22,7 +24,10 @@ function AccommodationCard() {
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchSingleVenue(id));
+      dispatch(setLoadingState(true));
+      dispatch(fetchSingleVenue(id)).finally(() => {
+        dispatch(setLoadingState(false));
+      });
     }
   }, [dispatch, id]);
 
@@ -84,7 +89,7 @@ function AccommodationCard() {
 
               <div className="flex items-center mb-2">
                 <span className="font-medium text-gray-600 mr-2">Price:</span>
-                <span className="font-semibold text-gray-800">{price} kr</span>
+                <span className="font-semibold text-gray-800">{price} $</span>
               </div>
 
               <div className="flex items-center mb-2">
