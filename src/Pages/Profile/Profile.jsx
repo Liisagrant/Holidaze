@@ -9,6 +9,7 @@ import Helper from './Helper';
 import SecondHelper from './SecondHelper';
 import UserBookings from './UserBookings';
 import RentOuts from './RentOuts';
+import BreadCrumbs from '../../Global/BreadCrumbs';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,11 @@ const Profile = () => {
   const [showUserBookings, setShowUserBookings] = useState(false);
   const [showRentOuts, setShowRentOuts] = useState(false);
   const [otherContentDisplayed, setOtherContentDisplayed] = useState(false);
+
+  const breadcrumb = [
+    { name: 'Home', path: '/' },
+    { name: 'Profile', path: '/Profile' },
+  ];
 
   useEffect(() => {
     if (userDetails.username) {
@@ -72,41 +78,44 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex justify-center flex-col lg:flex-row mt-40 max-w-7xl mx-auto">
-      <div className="m-2">
-        <ProfileMenu
-          avatar={userAvatar}
-          userEmail={userEmail}
-          userName={userName}
-          onAddAccommodationClick={handleAddAccommodationClick}
-          onCancelAddAccommodation={handleCancelAddAccommodation}
-          onUserBookingsClick={handleUserBookings}
-          onCancelUserBookings={handleCancelUserBookings}
-          onRentOutsClick={handleRentOuts}
-          onCancelRentOuts={handleCancelRentOuts}
-        />
-      </div>
-      <div className="m-2">
-        {showAddAccommodationForm && (
-          <AddAccommodationForm onCancel={handleCancelAddAccommodation} />
-        )}
-        {showUserBookings && (
-          <UserBookings onCancel={handleCancelUserBookings} />
-        )}
-        {showRentOuts && <RentOuts onCancel={handleCancelRentOuts} />}
-        {!showAddAccommodationForm && !showUserBookings && !showRentOuts && (
-          <>
-            <div className="m-2">
-              <AddAccommodation userName={userName} />
-            </div>
-            <div className="m-2">
-              <Helper />
-            </div>
-            <div className="m-2">
-              <SecondHelper />
-            </div>
-          </>
-        )}
+    <div className="mt-40 max-w-7xl mx-auto">
+      <BreadCrumbs breadcrumb={breadcrumb} />
+      <div className="flex justify-center flex-col lg:flex-row">
+        <div className="m-2">
+          <ProfileMenu
+            avatar={userAvatar}
+            userEmail={userEmail}
+            userName={userName}
+            onAddAccommodationClick={handleAddAccommodationClick}
+            onCancelAddAccommodation={handleCancelAddAccommodation}
+            onUserBookingsClick={handleUserBookings}
+            onCancelUserBookings={handleCancelUserBookings}
+            onRentOutsClick={handleRentOuts}
+            onCancelRentOuts={handleCancelRentOuts}
+          />
+        </div>
+        <div className="m-2">
+          {showAddAccommodationForm && (
+            <AddAccommodationForm onCancel={handleCancelAddAccommodation} />
+          )}
+          {showUserBookings && (
+            <UserBookings onCancel={handleCancelUserBookings} />
+          )}
+          {showRentOuts && <RentOuts onCancel={handleCancelRentOuts} />}
+          {!showAddAccommodationForm && !showUserBookings && !showRentOuts && (
+            <>
+              <div className="m-2">
+                <AddAccommodation userName={userName} />
+              </div>
+              <div className="m-2">
+                <Helper />
+              </div>
+              <div className="m-2">
+                <SecondHelper />
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
