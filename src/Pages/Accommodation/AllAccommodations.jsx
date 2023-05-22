@@ -7,14 +7,11 @@ import NoSearch from '../../../public/NoSearch.svg';
 import NoImage from '../../../public/NoImage.png';
 import RatingStar from '../../Global/RatingStar';
 import { setLoadingState } from '../../store/modules/loaderSlice';
-import SpinnerComponent from '../../Global/SpinnerComponent';
 
 const AllAccommodations = () => {
   const dispatch = useDispatch();
   const venues = useSelector((state) => state.Venues.venues);
   const searchQuery = useSelector((state) => state.Venues.search);
-  const isLoading = useSelector((state) => state.loader.isLoading);
-
   const filteredVenues = venues.filter((venue) =>
     venue.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -24,23 +21,19 @@ const AllAccommodations = () => {
   };
 
   useEffect(() => {
-    dispatch(setLoadingState(true));
-    dispatch(fetchVenues());
-    dispatch(fetchSingleVenue('venueId'));
-    dispatch(setLoadingState(false));
-  }, [dispatch]);
+    const fetchData = async () => {
+      dispatch(setLoadingState(true));
+      await dispatch(fetchVenues());
+      await dispatch(fetchSingleVenue('venueId'));
+      dispatch(setLoadingState(false));
+    };
 
-  if (isLoading) {
-    return (
-      <div>
-        <SpinnerComponent />
-      </div>
-    );
-  }
+    fetchData();
+  }, [dispatch]);
 
   return (
     <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl ">
-      {filteredVenues.length === 0 && (
+      {venues.length > 0 && filteredVenues.length === 0 && (
         <div className="mx-8 md:mx-auto flex flex-col justify-center">
           <p className="font-header text-4xl lg:text-5xl text-bold text-main text-shadow-md">
             No accommodations match your search
