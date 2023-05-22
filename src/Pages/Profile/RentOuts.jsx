@@ -26,29 +26,29 @@ const RentOuts = () => {
             localVenues.map((venue) => (
               <div
                 key={venue.id}
-                className="bg-backgroundwhite p-1 flex flex-row my-2 rounded-md"
+                className="bg-backgroundwhite p-1 flex flex-col md:flex-row my-2 rounded-md"
               >
-                <div className="flex items-center h-40 w-40">
+                <div className="flex items-center justify-center h-30 w-full lg:h-full">
                   <img
-                    className="rounded-md object-cover h-40"
+                    className="rounded-md object-cover"
                     src={venue.media[0] || NoImage}
                     alt={venue.name}
                   />
                 </div>
-                <div className="ml-8 mt-4">
-                  <p className="font-header font-bold text-md px-2">
+                <div className="mx-1 md:ml-2 mt-4">
+                  <p className="font-header font-bold text-md px-2 max-w-ms">
                     {venue.name}
                   </p>
                   <div className="mx-auto shadow-md my-2 border-t border-main"></div>
-                  <p className="font-header font-sm text-xs px-2 max-h-12 max-w-md overflow-hidden">
+                  <p className="font-header font-sm text-xs px-2 max-h-12 max-w-sm overflow-hidden">
                     {venue.description}
                   </p>
-                  <div className="flex flex-row justify-around">
+                  <div className="flex flex-col sm:flex-row items-center sm:justify-around">
                     <div>
                       <Link to={`/Accommodation/${venue.id}`}>
                         <button
                           type="submit"
-                          className="flex w-32 md:mx-auto font-header justify-center rounded-md bg-main hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm my-4"
+                          className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-main hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm my-4"
                         >
                           View
                         </button>
@@ -58,7 +58,7 @@ const RentOuts = () => {
                       <Link to={`/UpdateAccommodation/${venue.id}`}>
                         <button
                           type="submit"
-                          className="flex w-32 md:mx-auto font-header justify-center rounded-md bg-green-500 hover:bg-green-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                          className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-green-500 hover:bg-green-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
                         >
                           Update
                         </button>
@@ -67,7 +67,7 @@ const RentOuts = () => {
                     <div>
                       <button
                         type="submit"
-                        className="flex w-32 md:mx-auto font-header justify-center rounded-md bg-red-500 hover:bg-red-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                        className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-red-500 hover:bg-red-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
                         onClick={() => {
                           dispatch(deleteVenue(venue.id))
                             .then(() => {
