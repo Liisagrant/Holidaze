@@ -121,7 +121,7 @@ const AddAccommodationForm = () => {
   });
 
   return (
-    <div className="flex max-w-7xl mx-8 md:mx-auto bg-lightgray rounded-md justify-center">
+    <div className="flex max-w-7xl mx-4 px-2 lg:px-24 md:mx-auto bg-lightgray rounded-md justify-center">
       {formSubmitted ? (
         <div class="p-12 flex flex-col justify-center items-center">
           <p className="font-header text-3xl text-main">
