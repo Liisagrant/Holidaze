@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { setError } from './errorSlice';
 
 const venuesSlice = createSlice({
   name: 'Venues',
