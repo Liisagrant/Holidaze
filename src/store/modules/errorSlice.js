@@ -4,7 +4,7 @@ const errorSlice = createSlice({
   name: 'error',
   initialState: {
     isError: false,
-    errorMessage: 'Sorry there was an error',
+    errorMessage: 'Sorry we have an error, but we are working on it',
   },
   reducers: {
     SET_ERROR: (state, action) => {

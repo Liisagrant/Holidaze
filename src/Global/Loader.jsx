@@ -1,7 +1,7 @@
 const Loader = () => {
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center">
-      <div className="bg-main rounded-lg p-5 h-40 flex flex-col items-center justify-center">
+      <div className="bg-main rounded-lg p-12 h-40 flex flex-col items-center justify-center">
         <svg
           className="animate-spin h-10 w-10 text-white text-center"
           xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ const Loader = () => {
           ></path>
         </svg>
         <p className="mt-3 text-lg font-medium text-center text-white">
-          Loading...
+          Loading
         </p>
       </div>
     </div>
