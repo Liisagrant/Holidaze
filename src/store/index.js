@@ -2,13 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import VenuesSlice from './modules/VenuesSlice';
 import ProfileSlice from './modules/ProfileSlice';
 import loaderSlice from './modules/loaderSlice';
-import errorSlice from './modules/errorSlice';
+import ErrorSlice from './modules/ErrorSlice';
 
 const reducer = {
   Venues: VenuesSlice,
   Profile: ProfileSlice,
   loader: loaderSlice,
-  error: errorSlice,
+  error: ErrorSlice,
 };
 
 const store = configureStore({

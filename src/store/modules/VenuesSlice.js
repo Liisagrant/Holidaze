@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { setError } from './errorSlice';
 
 const venuesSlice = createSlice({
   name: 'Venues',
@@ -78,7 +79,7 @@ export const fetchVenues = createAsyncThunk('venues/fetchVenues', async () => {
     console.log(data);
     return data;
   } catch (e) {
-    console.log(e);
+    dispatch(setError(true));
   }
 });
 
@@ -93,7 +94,7 @@ export const fetchSingleVenue = createAsyncThunk(
       console.log(data);
       return data;
     } catch (e) {
-      console.log(e);
+      dispatch(setError(true));
     }
   }
 );
@@ -161,7 +162,7 @@ export const updateVenue = (id, venueData) => async (dispatch) => {
     console.log(data);
     dispatch(UPDATE_VENUE(data));
   } catch (e) {
-    // dispatch(setError(true, e.message));
+    dispatch(setError(true));
     console.log('error');
   }
 };
@@ -184,7 +185,7 @@ export const bookVenue = (venueData) => async (dispatch) => {
     console.log('yees this place has been booked for you');
     dispatch(BOOK_VENUE(data));
   } catch (e) {
-    dispatch(setError(true, e.message));
+    dispatch(setError(true));
   }
 };
 

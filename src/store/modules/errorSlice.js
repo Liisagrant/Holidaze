@@ -4,14 +4,10 @@ const errorSlice = createSlice({
   name: 'error',
   initialState: {
     isError: false,
-    errorMessage: 'Sorry there was an error',
   },
   reducers: {
     SET_ERROR: (state, action) => {
       state.isError = action.payload;
-    },
-    SET_ERROR_MESSAGE: (state, action) => {
-      state.errorMessage = action.payload || state.errorMessage;
     },
   },
 });
@@ -19,10 +15,6 @@ const errorSlice = createSlice({
 const { actions, reducer } = errorSlice;
 export default reducer;
 
-const { SET_ERROR } = actions;
-const { SET_ERROR_MESSAGE } = actions;
-
-export const setError = (hasError, errorMessage) => (dispatch) => {
+export const setError = (hasError) => (dispatch) => {
   dispatch(SET_ERROR(hasError));
-  dispatch(SET_ERROR_MESSAGE(errorMessage));
 };
