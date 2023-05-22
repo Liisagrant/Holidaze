@@ -17,6 +17,7 @@ function AccommodationCard() {
   let { id } = useParams();
   const [activeImage, setActiveImage] = useState(0);
   const accessToken = localStorage.getItem('accessToken');
+  const loading = useSelector((state) => state.loader.isLoading);
 
   const handleImageError = (e) => {
     e.target.src = NoData;

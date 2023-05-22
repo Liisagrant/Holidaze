@@ -4,7 +4,7 @@ const Herobanner = () => {
   return (
     <div className="relative">
       <img
-        src="../herobanner1.webp"
+        src="../herobanner.webp"
         alt="Background image"
         className="w-full h-96 md:h-[700px] object-cover"
       />

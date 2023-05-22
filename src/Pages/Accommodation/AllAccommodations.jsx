@@ -13,6 +13,7 @@ const AllAccommodations = () => {
   const dispatch = useDispatch();
   const venues = useSelector((state) => state.Venues.venues);
   const searchQuery = useSelector((state) => state.Venues.search);
+  const isLoading = useSelector((state) => state.loader.isLoading);
 
   const filteredVenues = venues.filter((venue) =>
     venue.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -29,7 +30,7 @@ const AllAccommodations = () => {
     dispatch(setLoadingState(false));
   }, [dispatch]);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div>
         <SpinnerComponent />
