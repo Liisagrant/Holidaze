@@ -9,7 +9,6 @@ import NoImage from '../../../public/NoImage.png';
 import BreadCrumbs from '../../Global/BreadCrumbs';
 import RatingStar from '../../Global/RatingStar';
 import { setLoadingState } from '../../store/modules/loaderSlice';
-import SpinnerComponent from '../../Global/SpinnerComponent';
 
 function AccommodationCard() {
   const dispatch = useDispatch();
@@ -17,7 +16,6 @@ function AccommodationCard() {
   let { id } = useParams();
   const [activeImage, setActiveImage] = useState(0);
   const accessToken = localStorage.getItem('accessToken');
-  const loading = useSelector((state) => state.loader.isLoading);
 
   const handleImageError = (e) => {
     e.target.src = NoData;

@@ -10,7 +10,7 @@ const ProfileSlice = createSlice({
     SET_SINGLE_PROFILE: (state, action) => {
       state.singleProfile = action.payload;
     },
-    addVenueToProfile: (state, action) => {
+    ADD_VENUE_TO_PROFILE: (state, action) => {
       if (state.singleProfile) {
         state.singleProfile.venues.push(action.payload);
       }
@@ -18,7 +18,8 @@ const ProfileSlice = createSlice({
   },
 });
 
-export const { SET_SINGLE_PROFILE, addVenueToProfile } = ProfileSlice.actions;
+export const { SET_SINGLE_PROFILE, ADD_VENUE_TO_PROFILE } =
+  ProfileSlice.actions;
 export default ProfileSlice.reducer;
 
 const accessToken = localStorage.getItem('accessToken');

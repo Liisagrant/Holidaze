@@ -11,21 +11,21 @@ const venuesSlice = createSlice({
     createVenue: null,
   },
   reducers: {
-    setSearch: (state, action) => {
+    SET_SEARCH: (state, action) => {
       state.search = action.payload;
     },
-    addNewVenue: (state, action) => {
+    ADD_NEW_VENUE: (state, action) => {
       state.venues.push(action.payload);
     },
-    removeVenue: (state, action) => {
+    REMOVE_VENUE: (state, action) => {
       state.venues = state.venues.filter(
         (venue) => venue.id !== action.payload
       );
     },
-    updateingVenue: (state, action) => {
+    UPDATE_VENUE: (state, action) => {
       state.createVenue = action.payload;
     },
-    bookingVenue: (state, actions) => {
+    BOOK_VENUE: (state, actions) => {
       state.updateVenue = actions.payload;
     },
   },
@@ -119,7 +119,7 @@ export const createVenue = (venueData) => async (dispatch) => {
     }
 
     console.log(data);
-    dispatch(addNewVenue(data));
+    dispatch(ADD_NEW_VENUE(data));
 
     return data;
   } catch (e) {
@@ -137,7 +137,7 @@ export const deleteVenue = (id) => async (dispatch) => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    dispatch(removeVenue(id));
+    dispatch(REMOVE_VENUE(id));
     console.log('venue is deleted');
   } catch (e) {
     console.log(e);
@@ -159,9 +159,10 @@ export const updateVenue = (id, venueData) => async (dispatch) => {
     );
     const data = await response.json();
     console.log(data);
-    dispatch(updateingVenue(data));
+    dispatch(UPDATE_VENUE(data));
   } catch (e) {
-    dispatch(setError(true, e.message));
+    // dispatch(setError(true, e.message));
+    console.log('error');
   }
 };
 
@@ -181,18 +182,18 @@ export const bookVenue = (venueData) => async (dispatch) => {
     const data = await response.json();
     console.log(data);
     console.log('yees this place has been booked for you');
-    dispatch(bookingVenue(data));
+    dispatch(BOOK_VENUE(data));
   } catch (e) {
     dispatch(setError(true, e.message));
   }
 };
 
 export const {
-  setSearch,
-  addNewVenue,
-  removeVenue,
-  updateingVenue,
-  bookingVenue,
+  SET_SEARCH,
+  ADD_NEW_VENUE,
+  REMOVE_VENUE,
+  UPDATE_VENUE,
+  BOOK_VENUE,
 } = venuesSlice.actions;
 
 export default venuesSlice.reducer;

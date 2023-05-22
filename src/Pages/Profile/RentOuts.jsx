@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteVenue, removeVenue } from '../../store/modules/VenuesSlice';
+import { deleteVenue, REMOVE_VENUE } from '../../store/modules/VenuesSlice';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NoImage from '../../../public/NoImage.png';
