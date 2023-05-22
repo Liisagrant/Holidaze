@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import secondHelper from '../../../public/secondHelper.svg';
 import * as Yup from 'yup';
 import { updateVenue } from '../../store/modules/VenuesSlice';
+import { setLoadingState } from '../../store/modules/loaderSlice';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,26 +28,21 @@ const validationSchema = Yup.object().shape({
   country: Yup.string()
     .min(1, 'Must be 1 chars or more')
     .max(60, 'Can not be longer than 60 chars'),
-  // .required('Required')
   continent: Yup.string()
     .min(1, 'Must be 1 chars or more')
     .max(60, 'Can not be longer than 60 chars'),
-  // .required('Required')
   city: Yup.string()
     .min(1, 'Must be 1 chars or more')
     .max(60, 'Can not be longer than 60 chars'),
-  // .required('Required')
   address: Yup.string()
     .min(1, 'Must be 1 chars or more')
     .max(60, 'Can not be longer than 60 chars'),
-  // .required('Required')
 });
 
 const UpdateAccommodation = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
   const singleVenue = useSelector((state) => state.Venues.singleVenue);
-  // const [loading, setLoading] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const [amenities, setAmenities] = useState({
@@ -117,9 +113,22 @@ const UpdateAccommodation = () => {
       };
       console.log(venueData);
       console.log('form is submitted');
-      dispatch(updateVenue(id, venueData));
-      window.scrollTo(0, 0);
-      setFormSubmitted(true);
+      dispatch(setLoadingState(true));
+
+      dispatch(updateVenue(id, venueData))
+        .then(() => {
+          window.scrollTo(0, 0);
+          setFormSubmitted(true);
+
+          // Set loading state back to false
+          dispatch(setLoadingState(false));
+        })
+        .catch((error) => {
+          console.log(error);
+
+          // If an error occurs, set loading state back to false
+          dispatch(setLoadingState(false));
+        });
     },
   });
 
@@ -130,13 +139,8 @@ const UpdateAccommodation = () => {
   }, [singleVenue]);
 
   useEffect(() => {
-    // setLoading(true);
     if (id) {
-      dispatch(fetchSingleVenue(id))
-        // .then(() => setLoading(false))
-        .catch((error) => {
-          // Handle error
-        });
+      dispatch(fetchSingleVenue(id)).catch((error) => {});
     }
   }, [dispatch, id]);
 

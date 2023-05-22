@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createVenue } from '../../../store/modules/VenuesSlice';
 import { getUserDetails } from '../../../utils/Auth';
-import { addVenueToProfile } from '../../../store/modules/ProfileSlice';
+import { ADD_VENUE_TO_PROFILE } from '../../../store/modules/ProfileSlice';
 import secondHelper from '../../../../public/secondHelper.svg';
 import AddMediaToAccommodation from './AddMediaToAccommodation';
 import AddMetaToAccommodations from './AddMetaToAccommodations';
 import AddInfoAccommodation from './AddInfoAccommodation';
+import { setLoadingState } from '../../../store/modules/loaderSlice';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -104,15 +105,17 @@ const AddAccommodationForm = () => {
       };
       console.log(venueData.media);
       console.log(venueData);
-
+      dispatch(setLoadingState(true));
       dispatch(createVenue(venueData))
         .then((newVenue) => {
           setFormSubmitted(true);
+          dispatch(setLoadingState(false));
           window.scrollTo(0, 0);
-          dispatch(addVenueToProfile(newVenue));
+          dispatch(ADD_VENUE_TO_PROFILE(newVenue));
         })
         .catch((error) => {
           console.log(error);
+          dispatch(setLoadingState(false));
         });
     },
   });

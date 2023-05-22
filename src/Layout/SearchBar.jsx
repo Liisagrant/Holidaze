@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearch } from '../store/modules/VenuesSlice';
+import { SET_SEARCH } from '../store/modules/VenuesSlice';
 import { useNavigate } from 'react-router-dom';
 
 export function SearchBar() {
@@ -8,12 +8,12 @@ export function SearchBar() {
   const searchQuery = useSelector((state) => state.Venues.search);
 
   const handleSearchChange = (e) => {
-    dispatch(setSearch(e.target.value));
+    dispatch(SET_SEARCH(e.target.value));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setSearch(e.target.elements.search.value));
+    dispatch(SET_SEARCH(e.target.elements.search.value));
     navigate('/Accommodations');
   };
 
