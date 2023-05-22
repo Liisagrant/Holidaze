@@ -8,6 +8,8 @@ import * as Yup from 'yup';
 import BookImage from '../../../public/BookImage.webp';
 import success from '../../../public/success.svg';
 import { useDispatch } from 'react-redux';
+import { setLoadingState } from '../../store/modules/loaderSlice';
+import SpinnerComponent from '../../Global/SpinnerComponent';
 
 const validationSchema = Yup.object().shape({
   dateFrom: Yup.date().required('Required'),
@@ -37,6 +39,7 @@ const BookAccommodationForm = () => {
   const dispatch = useDispatch();
   const singleAccommodation = useSelector((state) => state.Venues.singleVenue);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const isLoading = useSelector((state) => state.loader.isLoading);
 
   const { id } = useParams();
 
@@ -55,11 +58,17 @@ const BookAccommodationForm = () => {
         guests: values.guests,
         venueId: values.venueId,
       };
-      dispatch(bookVenue(bookingData));
+      dispatch(setLoadingState(true));
+      await dispatch(bookVenue(bookingData));
+      dispatch(setLoadingState(false));
       setFormSubmitted(true);
       window.scrollTo(0, 0);
     },
   });
+
+  useEffect(() => {
+    dispatch(fetchSingleVenue(id));
+  }, [dispatch, id]);
 
   const totalPrice = calculatePrice(
     formik.values.dateFrom,
@@ -246,7 +255,8 @@ const BookAccommodationForm = () => {
                       disabled={!formik.isValid}
                       className="flex w-full font-header justify-center rounded-md bg-main px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                      Book
+                      Book this Accommoadion
+                      {isLoading ? <SpinnerComponent /> : null}
                     </button>
                   </div>
                 </form>

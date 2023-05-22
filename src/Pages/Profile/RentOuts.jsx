@@ -8,12 +8,9 @@ import NoRentOuts from '../../../public/NoRentOuts.svg';
 const RentOuts = () => {
   const dispatch = useDispatch();
   const singleProfile = useSelector((state) => state.Profile.singleProfile);
-  console.log(singleProfile);
-  const numVenues = singleProfile ? singleProfile.venues.length : 0;
   const [localVenues, setLocalVenues] = useState(
     singleProfile ? singleProfile.venues : []
   );
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div>

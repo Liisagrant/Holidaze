@@ -10,6 +10,7 @@ import SecondHelper from './SecondHelper';
 import UserBookings from './UserBookings';
 import RentOuts from './RentOuts';
 import BreadCrumbs from '../../Global/BreadCrumbs';
+import SpinnerComponent from '../../Global/SpinnerComponent';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Profile = () => {
     useState(false);
   const [showUserBookings, setShowUserBookings] = useState(false);
   const [showRentOuts, setShowRentOuts] = useState(false);
-  const [otherContentDisplayed, setOtherContentDisplayed] = useState(false);
+  const isLoading = useSelector((state) => state.loader.isLoading);
 
   const breadcrumb = [
     { name: 'Home', path: '/' },
@@ -94,6 +95,7 @@ const Profile = () => {
             onCancelRentOuts={handleCancelRentOuts}
           />
         </div>
+        {isLoading ? <SpinnerComponent /> : null}
         <div className="m-2">
           {showAddAccommodationForm && (
             <AddAccommodationForm onCancel={handleCancelAddAccommodation} />
