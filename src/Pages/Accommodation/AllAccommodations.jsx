@@ -7,9 +7,11 @@ import NoSearch from '../../../public/NoSearch.svg';
 import NoImage from '../../../public/NoImage.png';
 import RatingStar from '../../Global/RatingStar';
 import { setLoadingState } from '../../store/modules/loaderSlice';
+import { setError } from '../../store/modules/errorSlice';
 
 const AllAccommodations = () => {
   const dispatch = useDispatch();
+  const { isError, errorMessage } = useSelector((state) => state.error);
   const venues = useSelector((state) => state.Venues.venues);
   const searchQuery = useSelector((state) => state.Venues.search);
   const filteredVenues = venues.filter((venue) =>
@@ -22,10 +24,16 @@ const AllAccommodations = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch(setLoadingState(true));
-      await dispatch(fetchVenues());
-      await dispatch(fetchSingleVenue('venueId'));
-      dispatch(setLoadingState(false));
+      try {
+        dispatch(setLoadingState(true));
+        await dispatch(fetchVenues());
+        await dispatch(fetchSingleVenue('venueId'));
+        dispatch(setLoadingState(false));
+      } catch (error) {
+        dispatch(
+          setError(true, 'Error fetching data. Please try again later.')
+        );
+      }
     };
 
     fetchData();
