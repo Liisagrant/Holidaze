@@ -71,7 +71,7 @@ const CalendarComponent = ({ bookings, formik }) => {
       minDate={new Date()}
       inline
       excludeDates={excludedDates}
-      dayClassName={getDayClassName} // add this line
+      dayClassName={getDayClassName}
     />
   );
 };
