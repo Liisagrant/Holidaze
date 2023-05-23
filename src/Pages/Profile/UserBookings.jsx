@@ -5,7 +5,7 @@ import NoRentOuts from '../../../public/NoRentOuts.svg';
 const UserBookings = () => {
   const singleProfile = useSelector((state) => state.Profile.singleProfile);
   console.log(singleProfile);
-  const numVenues = singleProfile ? singleProfile.venues.length : 0;
+  const numVenues = singleProfile ? singleProfile.bookings.length : 0;
 
   return (
     <div className="relative">
