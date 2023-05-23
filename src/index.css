@@ -5,5 +5,12 @@
 @tailwind utilities;
 
 .excluded {
+  cursor: not-allowed;
+  background-color: rgb(114, 20, 20);
+  border-radius: 5px;
+}
+
+.excluded:hover {
+  cursor: not-allowed;
   background-color: rgb(114, 20, 20);
 }
