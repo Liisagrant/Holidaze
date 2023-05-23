@@ -86,35 +86,35 @@ const BookAccommodationForm = () => {
   console.log(singleAccommodation.bookings);
 
   return (
-    <div className="flex max-w-4xl mx-8 md:mx-auto bg-lightgray rounded-md">
+    <div className="flex max-w-4xl mx-4 lg:mx-auto bg-lightgray rounded-md">
       {formSubmitted ? (
         <div className="p-12 flex flex-col justify-center items-center">
-          <p className="font-header text-3xl text-main">
+          <p className="font-header text-xl text-main">
             Your Booking was successfully made.
           </p>
-          <p className="font-paragraph text-md text-gray-600 mt-6">
-            You can see the accommodation{' '}
+          <p className="font-paragraph text-sm text-gray-600 mt-6">
+            View Details{' '}
             <Link
               to={`/Accommodation/${singleAccommodation.id}`}
-              className="font-bold text-xl text-main underline mx-1"
+              className="font-bold text-md text-main underline mx-1"
             >
-              Accommodation!{' '}
+              Here!{' '}
             </Link>{' '}
           </p>
-          <p className="font-paragraph text-md text-gray-600 mt-6">
+          <p className="font-paragraph text-sm text-gray-600 mt-6">
             Or return to
             <Link
               to={`/Profile`}
-              className="font-bold text-xl text-main underline mx-1"
+              className="font-bold text-md text-main underline mx-1"
             >
               Profile!{' '}
             </Link>
           </p>
-          <p className="font-paragraph text-md text-gray-600 mt-6">
-            or return to homepage
+          <p className="font-paragraph text-sm text-gray-600 mt-6">
+            or homepage
             <Link
               to={`/`}
-              className="font-bold text-xl text-main underline mx-1"
+              className="font-bold text-md text-main underline mx-1"
             >
               Home!{' '}
             </Link>
@@ -124,7 +124,7 @@ const BookAccommodationForm = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="flex flex-1 flex-col px-2 py-12 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div className="flex flex-col items-center">
               <svg
@@ -139,11 +139,11 @@ const BookAccommodationForm = () => {
                   fill="#265399"
                 />
               </svg>
-              <h2 className="mt-4 text-2xl font-bold font-header leading-9 tracking-tight text-gray-900">
+              <h2 className="mt-4 text-xl text-center md:text-2xl font-bold font-header leading-9 tracking-tight text-gray-900">
                 Book this Accommodation
               </h2>
               <p className="mt-2 text-sm leading-6 font-paragraph text-gray-500">
-                Just fill out this form{' '}
+                Please complete the inputs{' '}
               </p>
             </div>
 
@@ -162,125 +162,129 @@ const BookAccommodationForm = () => {
                       bookings={singleAccommodation.bookings || []}
                     />
                   </div>
-                  <div className="flex flex-row justify-between">
-                    <div>
-                      <label
-                        htmlFor="dateFrom"
-                        className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
-                      >
-                        Date From
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          onChange={formik.handleChange}
-                          value={
-                            formik.values.dateFrom
-                              ? dateToYMD(formik.values.dateFrom)
-                              : ''
-                          }
-                          id="dateFrom"
-                          name="dateFrom"
-                          required
-                          className="block w-40 rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                        {formik.touched.dateFrom && formik.errors.dateFrom ? (
-                          <div className="text-red-600 text-sm">
-                            {formik.errors.dateFrom}
-                          </div>
-                        ) : null}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="dateTo"
-                        className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
-                      >
-                        Date To
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          onChange={formik.handleChange}
-                          value={
-                            formik.values.dateTo
-                              ? dateToYMD(formik.values.dateTo)
-                              : ''
-                          }
-                          id="dateTo"
-                          id="dateTo"
-                          name="dateTo"
-                          required
-                          className="block w-40 rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                        {formik.touched.dateTo && formik.errors.dateTo ? (
-                          <div className="text-red-600 text-sm">
-                            {formik.errors.dateTo}
-                          </div>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="guests"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
-                    >
-                      Number of Guests
-                    </label>
-                    <p className="text-sm font-paragraph font-medium leading-6 text-gray-700">
-                      This accommodation only allows{' '}
-                      <span className="text-red-700">
-                        {singleAccommodation.maxGuests} guests
-                      </span>
-                      .
-                    </p>
-
-                    <div className="mt-2">
-                      <input
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.guests}
-                        id="guests"
-                        name="guests"
-                        type="number"
-                        min="1"
-                        required
-                        className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                      {formik.touched.guests && formik.errors.guests ? (
-                        <div className="text-red-600 text-sm">
-                          {formik.errors.guests}
+                  <p className="text-sm font-paragraph font-md sm:max-w-xs leading-6 text-gray-700">
+                    Please note that dates in red indicate that they are already
+                    booked.
+                  </p>
+                  <div className="flex flex-col items-center sm:block">
+                    <div className="flex flex-col sm:flex-row sm:justify-between">
+                      <div className="mb-4 sm:mr-4">
+                        <label
+                          htmlFor="dateFrom"
+                          className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                        >
+                          Date From
+                        </label>
+                        <div className="mt-2">
+                          <input
+                            onChange={formik.handleChange}
+                            value={
+                              formik.values.dateFrom
+                                ? dateToYMD(formik.values.dateFrom)
+                                : ''
+                            }
+                            id="dateFrom"
+                            name="dateFrom"
+                            required
+                            className="block w-40 rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                          {formik.touched.dateFrom && formik.errors.dateFrom ? (
+                            <div className="text-red-600 text-sm">
+                              {formik.errors.dateFrom}
+                            </div>
+                          ) : null}
                         </div>
-                      ) : null}
+                      </div>
+
+                      <div className="mb-4">
+                        <label
+                          htmlFor="dateTo"
+                          className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                        >
+                          Date To
+                        </label>
+                        <div className="mt-2">
+                          <input
+                            onChange={formik.handleChange}
+                            value={
+                              formik.values.dateTo
+                                ? dateToYMD(formik.values.dateTo)
+                                : ''
+                            }
+                            id="dateTo"
+                            name="dateTo"
+                            required
+                            className="block w-40 rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                          {formik.touched.dateTo && formik.errors.dateTo ? (
+                            <div className="text-red-600 text-sm">
+                              {formik.errors.dateTo}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="totalPrice"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
-                    >
-                      Total Price
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        id="totalPrice"
-                        name="totalPrice"
-                        type="text"
-                        disabled
-                        value={`$${totalPrice}`}
-                        className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                    <div className="mb-4">
+                      <label
+                        htmlFor="guests"
+                        className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      >
+                        Number of Guests
+                      </label>
+                      <p className="text-sm font-paragraph font-md sm:max-w-xs leading-6 text-gray-700">
+                        This accommodation allows{' '}
+                        <span className="text-red-700">
+                          {singleAccommodation.maxGuests} guests
+                        </span>
+                        .
+                      </p>
+                      <div className="mt-2">
+                        <input
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.guests}
+                          id="guests"
+                          name="guests"
+                          type="number"
+                          min="1"
+                          required
+                          className="block w-56 sm:w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                        {formik.touched.guests && formik.errors.guests ? (
+                          <div className="text-red-600 text-sm">
+                            {formik.errors.guests}
+                          </div>
+                        ) : null}
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <button
-                      type="submit"
-                      disabled={!formik.isValid}
-                      className="flex w-full font-header justify-center rounded-md bg-main px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      Book this Accommoadion
-                      {isLoading ? <SpinnerComponent /> : null}
-                    </button>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="totalPrice"
+                        className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      >
+                        Total Price
+                      </label>
+                      <div className="mt-2">
+                        <input
+                          id="totalPrice"
+                          name="totalPrice"
+                          type="text"
+                          disabled
+                          value={`$${totalPrice}`}
+                          className="block w-56 sm:w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                        type="submit"
+                        disabled={!formik.isValid}
+                        className="flex w-56 mt-6 sm:w-full font-header justify-center rounded-md bg-main px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      >
+                        Book this Accommodation
+                        {isLoading ? <SpinnerComponent /> : null}
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -288,7 +292,7 @@ const BookAccommodationForm = () => {
           </div>
         </div>
       )}
-      <div className="relative hidden w-0 flex-1 lg:block">
+      <div className="relative hidden w-0 flex-1 md:block">
         <img
           src={BookImage}
           className="absolute inset-0 h-full w-96 object-cover rounded-tr-md rounded-br-md"
