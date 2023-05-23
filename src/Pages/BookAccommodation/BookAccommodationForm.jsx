@@ -10,6 +10,8 @@ import success from '../../../public/success.svg';
 import { useDispatch } from 'react-redux';
 import { setLoadingState } from '../../store/modules/loaderSlice';
 import SpinnerComponent from '../../Global/SpinnerComponent';
+import CalendarComponent from './CalendarComponent';
+import { format } from 'date-fns';
 
 const validationSchema = Yup.object().shape({
   dateFrom: Yup.date().required('Required'),
@@ -36,12 +38,17 @@ const calculatePrice = (dateFrom, dateTo, pricePerNight) => {
 };
 
 const BookAccommodationForm = () => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const dispatch = useDispatch();
   const singleAccommodation = useSelector((state) => state.Venues.singleVenue);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const isLoading = useSelector((state) => state.loader.isLoading);
-
   const { id } = useParams();
+
+  const dateToYMD = (date) => {
+    return format(date, 'yyyy-MM-dd');
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -75,6 +82,8 @@ const BookAccommodationForm = () => {
     formik.values.dateTo,
     singleAccommodation.price
   );
+
+  console.log(singleAccommodation.bookings);
 
   return (
     <div className="flex max-w-4xl mx-8 md:mx-auto bg-lightgray rounded-md">
@@ -145,58 +154,72 @@ const BookAccommodationForm = () => {
                   method="POST"
                   className="space-y-6"
                 >
-                  <div>
-                    <label
-                      htmlFor="dateFrom"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
-                    >
-                      Date From
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.dateFrom}
-                        id="dateFrom"
-                        name="dateFrom"
-                        type="date"
-                        required
-                        className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                      {formik.touched.dateFrom && formik.errors.dateFrom ? (
-                        <div className="text-red-600 text-sm">
-                          {formik.errors.dateFrom}
-                        </div>
-                      ) : null}
+                  <div className="flex justify-center">
+                    <CalendarComponent
+                      formik={formik}
+                      setStartDate={setStartDate}
+                      setEndDate={setEndDate}
+                      bookings={singleAccommodation.bookings || []}
+                    />
+                  </div>
+                  <div className="flex flex-row justify-between">
+                    <div>
+                      <label
+                        htmlFor="dateFrom"
+                        className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      >
+                        Date From
+                      </label>
+                      <div className="mt-2">
+                        <input
+                          onChange={formik.handleChange}
+                          value={
+                            formik.values.dateFrom
+                              ? dateToYMD(formik.values.dateFrom)
+                              : ''
+                          }
+                          id="dateFrom"
+                          name="dateFrom"
+                          required
+                          className="block w-40 rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                        {formik.touched.dateFrom && formik.errors.dateFrom ? (
+                          <div className="text-red-600 text-sm">
+                            {formik.errors.dateFrom}
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="dateTo"
+                        className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      >
+                        Date To
+                      </label>
+                      <div className="mt-2">
+                        <input
+                          onChange={formik.handleChange}
+                          value={
+                            formik.values.dateTo
+                              ? dateToYMD(formik.values.dateTo)
+                              : ''
+                          }
+                          id="dateTo"
+                          id="dateTo"
+                          name="dateTo"
+                          required
+                          className="block w-40 rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                        {formik.touched.dateTo && formik.errors.dateTo ? (
+                          <div className="text-red-600 text-sm">
+                            {formik.errors.dateTo}
+                          </div>
+                        ) : null}
+                      </div>
                     </div>
                   </div>
-
-                  <div>
-                    <label
-                      htmlFor="dateTo"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
-                    >
-                      Date To
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.dateTo}
-                        id="dateTo"
-                        name="dateTo"
-                        type="date"
-                        required
-                        className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                      {formik.touched.dateTo && formik.errors.dateTo ? (
-                        <div className="text-red-600 text-sm">
-                          {formik.errors.dateTo}
-                        </div>
-                      ) : null}
-                    </div>
-                  </div>
-
                   <div>
                     <label
                       htmlFor="guests"
