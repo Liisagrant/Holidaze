@@ -7,7 +7,6 @@ import Signup from '../Pages/Signup/Signup';
 import Contact from '../Pages/Contact/Contact';
 import Profile from '../Pages/Profile/Profile';
 import UpdateAccommodation from '../Pages/UpdateAccommodation/UpdateAccommodation';
-import BookAccommodation from '../Pages/BookAccommodation/BookAccommodation';
 
 function Router() {
   return (
@@ -16,8 +15,6 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/Accommodations" element={<Accommodations />} />
         <Route path="/Accommodation/:id" element={<AccommodationDetail />} />
-        <Route path="/BookAccommodation/:id" element={<BookAccommodation />} />
-
         <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Contact" element={<Contact />} />

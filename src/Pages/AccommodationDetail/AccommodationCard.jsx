@@ -9,6 +9,7 @@ import NoImage from '../../../public/NoImage.png';
 import BreadCrumbs from '../../Global/BreadCrumbs';
 import RatingStar from '../../Global/RatingStar';
 import { setLoadingState } from '../../store/modules/loaderSlice';
+import BookAccommodationForm from '../BookAccommodation/BookAccommodationForm';
 
 function AccommodationCard() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function AccommodationCard() {
   let { id } = useParams();
   const [activeImage, setActiveImage] = useState(0);
   const accessToken = localStorage.getItem('accessToken');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleImageError = (e) => {
     e.target.src = NoData;
@@ -42,6 +44,19 @@ function AccommodationCard() {
   return (
     <div className="max-w-7xl">
       <BreadCrumbs breadcrumb={breadcrumb} />
+      {isModalOpen && (
+        <div
+          onClick={() => setIsModalOpen(false)}
+          className="fixed top-0 left-0 bg-darkblue bg-opacity-60 w-screen h-screen flex justify-center items-center z-50 overflow-auto"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-screen overflow-auto"
+          >
+            <BookAccommodationForm setIsModalOpen={setIsModalOpen} />
+          </div>
+        </div>
+      )}
       <div className="flex items-center justify-center mt-10 mx-4">
         {singleAccommodation && (
           <div className="flex flex-col md:flex-row bg-backgroundwhite border-lightgray border-2 shadow-md rounded-md overflow-hidden">
@@ -145,11 +160,14 @@ function AccommodationCard() {
               <div>
                 {accessToken ? (
                   <div className="max-w-sm">
-                    <Link to={`/BookAccommodation/${id}`}>
-                      <button className="bg-main w-full  hover:bg-hovercolor text-white font-bold py-2 px-4 rounded">
-                        Book
-                      </button>
-                    </Link>
+                    {/* <Link to={`/BookAccommodation/${id}`}> */}
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="bg-main w-full  hover:bg-hovercolor text-white font-bold py-2 px-4 rounded"
+                    >
+                      Book
+                    </button>
+                    {/* </Link> */}
                   </div>
                 ) : (
                   <div className="flex flex-col my-4 max-w-sm">

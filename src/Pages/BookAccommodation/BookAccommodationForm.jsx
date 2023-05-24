@@ -5,19 +5,12 @@ import { fetchSingleVenue } from '../../store/modules/VenuesSlice';
 import { bookVenue } from '../../store/modules/VenuesSlice';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
-import BookImage from '../../../public/BookImage.webp';
 import success from '../../../public/success.svg';
 import { useDispatch } from 'react-redux';
 import { setLoadingState } from '../../store/modules/loaderSlice';
 import SpinnerComponent from '../../Global/SpinnerComponent';
 import CalendarComponent from './CalendarComponent';
 import { format } from 'date-fns';
-
-const validationSchema = Yup.object().shape({
-  dateFrom: Yup.date().required('Required'),
-  dateTo: Yup.date().required('Required'),
-  guests: Yup.number().min(1, 'Must be at least 1 guest').required('Required'),
-});
 
 const calculatePrice = (dateFrom, dateTo, pricePerNight) => {
   if (!dateFrom || !dateTo) {
@@ -37,7 +30,7 @@ const calculatePrice = (dateFrom, dateTo, pricePerNight) => {
   return totalPrice;
 };
 
-const BookAccommodationForm = () => {
+const BookAccommodationForm = ({ setIsModalOpen }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const dispatch = useDispatch();
@@ -45,6 +38,18 @@ const BookAccommodationForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const isLoading = useSelector((state) => state.loader.isLoading);
   const { id } = useParams();
+
+  const validationSchema = Yup.object().shape({
+    dateFrom: Yup.date().required('Required'),
+    dateTo: Yup.date().required('Required'),
+    guests: Yup.number()
+      .min(1, 'Must be at least 1 guest')
+      .max(
+        singleAccommodation.maxGuests,
+        `Max number of guests is ${singleAccommodation.maxGuests}`
+      )
+      .required('Required'),
+  });
 
   const dateToYMD = (date) => {
     return format(date, 'yyyy-MM-dd');
@@ -86,23 +91,20 @@ const BookAccommodationForm = () => {
   console.log(singleAccommodation.bookings);
 
   return (
-    <div className="flex max-w-4xl mx-4 lg:mx-auto bg-lightgray rounded-md">
+    <div className="flex max-w-4xl mx-4 mt-10 mb-40 lg:mx-auto bg-lightgray rounded-md">
       {formSubmitted ? (
-        <div className="p-12 flex flex-col justify-center items-center">
+        <div className="relative p-12 flex flex-col justify-center items-center">
+          <button
+            className="absolute m-4 top-0 right-0 text-gray-900 text-md"
+            onClick={() => setIsModalOpen(false)}
+          >
+            X
+          </button>
           <p className="font-header text-xl text-main">
             Your Booking was successfully made.
           </p>
           <p className="font-paragraph text-sm text-gray-600 mt-6">
-            View Details{' '}
-            <Link
-              to={`/Accommodation/${singleAccommodation.id}`}
-              className="font-bold text-md text-main underline mx-1"
-            >
-              Here!{' '}
-            </Link>{' '}
-          </p>
-          <p className="font-paragraph text-sm text-gray-600 mt-6">
-            Or return to
+            Return to
             <Link
               to={`/Profile`}
               className="font-bold text-md text-main underline mx-1"
@@ -124,9 +126,15 @@ const BookAccommodationForm = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-1 flex-col px-2 py-12 lg:flex-none lg:px-20 xl:px-24">
+        <div className="flex relative flex-1 flex-col px-2 py-12 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div className="flex flex-col items-center">
+              <button
+                className="absolute m-4 top-0 right-0 text-gray-900 text-md"
+                onClick={() => setIsModalOpen(false)}
+              >
+                X
+              </button>
               <svg
                 width="150"
                 height="50"
@@ -236,7 +244,6 @@ const BookAccommodationForm = () => {
                         <span className="text-red-700">
                           {singleAccommodation.maxGuests} guests
                         </span>
-                        .
                       </p>
                       <div className="mt-2">
                         <input
@@ -292,13 +299,6 @@ const BookAccommodationForm = () => {
           </div>
         </div>
       )}
-      <div className="relative hidden w-0 flex-1 md:block">
-        <img
-          src={BookImage}
-          className="absolute inset-0 h-full w-96 object-cover rounded-tr-md rounded-br-md"
-          alt="Image of a beach with lovely blue water"
-        />
-      </div>
     </div>
   );
 };
