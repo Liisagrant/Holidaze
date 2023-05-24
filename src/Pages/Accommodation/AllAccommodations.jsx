@@ -17,6 +17,12 @@ const AllAccommodations = () => {
   const filteredVenues = venues.filter((venue) =>
     venue.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const displayedVenues = filteredVenues.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   const handleImageError = (e) => {
     e.target.src = NoImage;
@@ -39,9 +45,13 @@ const AllAccommodations = () => {
     fetchData();
   }, [dispatch]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
   return (
     <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl ">
-      {venues.length > 0 && filteredVenues.length === 0 && (
+      {venues.length > 0 && displayedVenues.length === 0 && (
         <div className="mx-8 md:mx-auto flex flex-col justify-center">
           <p className="font-header text-4xl lg:text-5xl text-bold text-main text-shadow-md">
             No accommodations match your search
@@ -53,7 +63,7 @@ const AllAccommodations = () => {
           />
         </div>
       )}
-      {filteredVenues.map((venue) => (
+      {displayedVenues.map((venue) => (
         <div
           key={venue.id}
           className="bg-backgroundwhite border-lightgray border-2 shadow-md mb-4 mx-4 md:mx-auto rounded-md lg:w-[900px]"
@@ -108,6 +118,35 @@ const AllAccommodations = () => {
           </div>
         </div>
       ))}
+      <div className="max-w-3xl mx-auto felx flex-row">
+        {currentPage > 1 && (
+          <button
+            className="w-full bg-main hover:bg-hovercolor text-white font-bold py-2 px-4 rounded mx-4"
+            onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+        )}
+        {currentPage < Math.ceil(filteredVenues.length / itemsPerPage) && (
+          <button
+            className="w-full bg-main hover:bg-hovercolor text-white font-bold py-2 px-4 rounded mx-4"
+            onClick={() =>
+              setCurrentPage((old) =>
+                Math.min(
+                  old + 1,
+                  Math.ceil(filteredVenues.length / itemsPerPage)
+                )
+              )
+            }
+            disabled={
+              currentPage === Math.ceil(filteredVenues.length / itemsPerPage)
+            }
+          >
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 };
