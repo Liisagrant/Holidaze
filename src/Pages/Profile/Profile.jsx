@@ -107,17 +107,12 @@ const Profile = () => {
           {showRentOuts && <RentOuts onCancel={handleCancelRentOuts} />}
           {!showAddAccommodationForm && !showUserBookings && !showRentOuts && (
             <>
-              {userDetails.manager === true && (
-                <div className="m-2">
-                  <AddAccommodation />
-                </div>
-              )}
-
-              {userDetails.manager === true && (
-                <div className="m-2">
-                  <Helper />
-                </div>
-              )}
+              <div className="m-2">
+                <AddAccommodation />
+              </div>
+              <div className="m-2">
+                <Helper />
+              </div>
               <div className="m-2">
                 <SecondHelper />
               </div>

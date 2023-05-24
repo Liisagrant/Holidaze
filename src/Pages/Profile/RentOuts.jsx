@@ -11,9 +11,60 @@ const RentOuts = () => {
   const [localVenues, setLocalVenues] = useState(
     singleProfile ? singleProfile.venues : []
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [venueToDelete, setVenueToDelete] = useState(null);
 
   return (
     <div>
+      {isModalOpen && venueToDelete && (
+        <div
+          onClick={() => setIsModalOpen(false)}
+          className="fixed top-0 left-0 bg-darkblue bg-opacity-60 w-screen h-screen flex justify-center items-center z-50 overflow-auto"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className=" relative max-h-screen overflow-auto bg-lightgray px-12 py-16 rounded-md"
+          >
+            <button
+              className="absolute mx-4 my-2 top-0 right-0 text-gray-900 text-md"
+              onClick={() => setIsModalOpen(false)}
+            >
+              X
+            </button>
+            <p>
+              Are you sure you want to delete the "{venueToDelete.name}"
+              accommodation?
+            </p>
+            <div className="flex flex-row justify-center">
+              <button
+                type="submit"
+                className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-main hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm my-4"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-red-500 hover:bg-red-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatch(deleteVenue(venueToDelete.id))
+                    .then(() => {
+                      setLocalVenues(
+                        localVenues.filter((v) => v.id !== venueToDelete.id)
+                      );
+                      dispatch(REMOVE_VENUE(venueToDelete.id));
+                      setIsModalOpen(false);
+                    })
+                    .catch((error) => {});
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="relative">
         <div className="bg-lightgray p-4 mx-4 rounded-md flex flex-col">
           <p className="font-header text-lg text-darkblue font-bold text-center">
@@ -69,14 +120,8 @@ const RentOuts = () => {
                         type="submit"
                         className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-red-500 hover:bg-red-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
                         onClick={() => {
-                          dispatch(deleteVenue(venue.id))
-                            .then(() => {
-                              setLocalVenues(
-                                localVenues.filter((v) => v.id !== venue.id)
-                              );
-                              dispatch(removeVenue(venue.id));
-                            })
-                            .catch((error) => {});
+                          setIsModalOpen(true);
+                          setVenueToDelete(venue);
                         }}
                       >
                         Delete
