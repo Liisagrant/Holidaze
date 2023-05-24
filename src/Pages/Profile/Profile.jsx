@@ -8,6 +8,7 @@ import AddAccommodationForm from './CreateAccommodation/AddAccommodationForm';
 import Helper from './Helper';
 import SecondHelper from './SecondHelper';
 import UserBookings from './UserBookings';
+import HelperNoManger from './HelperNoManger';
 import RentOuts from './RentOuts';
 import BreadCrumbs from '../../Global/BreadCrumbs';
 import SpinnerComponent from '../../Global/SpinnerComponent';
@@ -25,6 +26,7 @@ const Profile = () => {
   const [showRentOuts, setShowRentOuts] = useState(false);
   const isLoading = useSelector((state) => state.loader.isLoading);
 
+  console.log(userDetails.manager);
   const breadcrumb = [
     { name: 'Home', path: '/' },
     { name: 'Profile', path: '/Profile' },
@@ -106,12 +108,17 @@ const Profile = () => {
           {showRentOuts && <RentOuts onCancel={handleCancelRentOuts} />}
           {!showAddAccommodationForm && !showUserBookings && !showRentOuts && (
             <>
-              <div className="m-2">
-                <AddAccommodation userName={userName} />
-              </div>
-              <div className="m-2">
-                <Helper />
-              </div>
+              {userDetails.manager === true && (
+                <div className="m-2">
+                  <AddAccommodation />
+                </div>
+              )}
+
+              {userDetails.manager === true && (
+                <div className="m-2">
+                  <Helper />
+                </div>
+              )}
               <div className="m-2">
                 <SecondHelper />
               </div>
