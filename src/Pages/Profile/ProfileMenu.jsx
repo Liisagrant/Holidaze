@@ -66,8 +66,20 @@ const ProfileMenu = ({
   return (
     <div>
       {isModalOpen && (
-        <div className="fixed top-0 left-0 w-screen h-screen bg-darkblue bg-opacity-60 flex justify-center items-center z-50">
-          <div className="bg-backgroundwhite rounded-md p-16">
+        <div
+          onClick={() => setIsModalOpen(false)}
+          className="fixed top-0 left-0 w-screen h-screen bg-darkblue bg-opacity-60 flex justify-center items-center z-50"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-backgroundwhite rounded-md p-16"
+          >
+            <button
+              className="absolute m-4 top-0 right-0 text-gray-900 text-md"
+              onClick={() => setIsModalOpen(false)}
+            >
+              X
+            </button>
             <p className="text-main text-xl mx-4 font-header font-bold mb-4">
               Update your Avatar
             </p>
