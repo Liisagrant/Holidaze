@@ -129,14 +129,6 @@ export default function Header() {
                   Accommodations
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/Contact"
-                  className={({ isActive }) => generateNavLinkClass(isActive)}
-                >
-                  Contact
-                </NavLink>
-              </li>
               {isLoggedIn() ? (
                 <>
                   <li>
@@ -206,15 +198,6 @@ export default function Header() {
                 className={({ isActive }) => generateNavLinkClass(isActive)}
               >
                 Accomodations
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Contact"
-                onClick={toggleMobileMenu}
-                className={({ isActive }) => generateNavLinkClass(isActive)}
-              >
-                Contact
               </NavLink>
             </li>
             {isLoggedIn() ? (
