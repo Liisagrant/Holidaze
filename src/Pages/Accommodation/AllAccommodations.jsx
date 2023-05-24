@@ -19,7 +19,6 @@ const AllAccommodations = () => {
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(20);
-
   const displayedVenues = filteredVenues.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -119,7 +118,7 @@ const AllAccommodations = () => {
           </div>
         </div>
       ))}
-      <div className=" max-w-5xl mx-auto flex flex-row justify-center">
+      <div className="max-w-3xl mx-auto felx flex-row">
         {currentPage > 1 && (
           <button
             className="w-full bg-main hover:bg-hovercolor text-white font-bold py-2 px-4 rounded mx-4"
