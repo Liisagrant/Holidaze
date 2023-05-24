@@ -28,27 +28,25 @@ const TopRated = () => {
           {topRatedVenues.slice(0, 3).map((venue) => (
             <div
               key={venue.id}
-              className="max-w-sm bg-white border border-gray-100 rounded-lg shadow mx-2 my-2 md:my-0"
+              className="max-w-xs bg-white border border-gray-100 rounded-lg shadow-lg overflow-hidden mx-2 my-2 md:my-0 transition-transform transform hover:scale-105"
             >
               <Link to={`/Accommodation/${venue.id}`}>
                 <img
-                  className="rounded-t-lg object-cover w-72 h-64"
+                  className="w-full h-64 object-cover"
                   src={venue.media ? venue.media : defaultTopRatedImage}
                   alt={venue.name}
                   onError={handleImageError}
                 />
               </Link>
-              <div className="flex flex-col">
-                <div className="p-2 flex flex-row justify-between">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-darkblue">
-                    {venue.name}
-                  </h5>
-                  <RatingStar venue={venue} />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2 text-darkblue">
+                  {venue.name}
                 </div>
-                <div className="flex justify-center my-4">
+                <RatingStar venue={venue} />
+                <div className="my-4">
                   <Link
                     to={`/Accommodation/${venue.id}`}
-                    className="inline-flex w-60 items-center px-3 py-2 text-sm font-medium text-center text-white bg-main rounded-lg hover:bg-hovercolor"
+                    className="inline-flex items-center justify-center px-3 py-2 bg-main text-white text-sm font-medium rounded-lg hover:bg-hovercolor w-full"
                   >
                     View
                     <svg
