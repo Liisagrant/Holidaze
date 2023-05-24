@@ -8,7 +8,6 @@ import AddAccommodationForm from './CreateAccommodation/AddAccommodationForm';
 import Helper from './Helper';
 import SecondHelper from './SecondHelper';
 import UserBookings from './UserBookings';
-import HelperNoManger from './HelperNoManger';
 import RentOuts from './RentOuts';
 import BreadCrumbs from '../../Global/BreadCrumbs';
 import SpinnerComponent from '../../Global/SpinnerComponent';
