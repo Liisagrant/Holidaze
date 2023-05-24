@@ -5,7 +5,7 @@ const Helper = () => {
     <div className="bg-lightgray p-4 mx-4 mb-4 rounded-md flex flex-col md:flex-row">
       <div>
         <p className="font-header text-lg text-darkblue font-bold">
-          Pssssst...
+          Pssssst... Are Your renting out?
         </p>
         <p className="font-paragraph text-sm max-w-xs">
           To view, update, or delete your accommodations, simply click on "See
