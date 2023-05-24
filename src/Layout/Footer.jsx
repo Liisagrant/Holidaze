@@ -41,14 +41,6 @@ const Footer = () => {
                 Signup
               </NavLink>
             </div>
-            <div className="pb-6">
-              <NavLink
-                to="Contact"
-                className="text-sm leading-6 font-header text-backgroundwhite hover:text-darkblue"
-              >
-                Contact
-              </NavLink>
-            </div>
           </nav>
           <p className="mt-10 text-center text-xs leading-5 font-header text-backgroundwhite">
             &copy; 2023 Holidaze, Inc. All rights reserved.
