@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileMenu from './ProfileMenu';
 import { getUserDetails } from '../../utils/Auth';
@@ -23,6 +23,7 @@ const Profile = () => {
     useState(false);
   const [showUserBookings, setShowUserBookings] = useState(false);
   const [showRentOuts, setShowRentOuts] = useState(false);
+  const [otherContentDisplayed, setOtherContentDisplayed] = useState(false);
   const isLoading = useSelector((state) => state.loader.isLoading);
 
   console.log(userDetails.manager);
