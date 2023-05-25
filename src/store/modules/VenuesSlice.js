@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { SET_ERROR } from './errorSlice';
 
 const venuesSlice = createSlice({
   name: 'Venues',
@@ -69,22 +70,29 @@ const venuesSlice = createSlice({
 
 const accessToken = localStorage.getItem('accessToken');
 
-export const fetchVenues = createAsyncThunk('venues/fetchVenues', async () => {
-  try {
-    const response = await fetch(
-      'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
-    );
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (e) {
-    console.log(e);
+export const fetchVenues = createAsyncThunk(
+  'venues/fetchVenues',
+  async (_, thunkAPI) => {
+    try {
+      const response = await fetch(
+        'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        thunkAPI.dispatch(SET_ERROR(true));
+        return [];
+      }
+      return data;
+    } catch (error) {
+      thunkAPI.dispatch(SET_ERROR(true));
+      return [];
+    }
   }
-});
+);
 
 export const fetchSingleVenue = createAsyncThunk(
   'venues/fetchSingleVenue',
-  async (id) => {
+  async (id, thunkAPI) => {
     try {
       const response = await fetch(
         `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}?_owner=true&_bookings=true`
@@ -93,7 +101,8 @@ export const fetchSingleVenue = createAsyncThunk(
       console.log(data);
       return data;
     } catch (e) {
-      console.log(e);
+      thunkAPI.dispatch(SET_ERROR(true));
+      throw e;
     }
   }
 );
@@ -140,7 +149,7 @@ export const deleteVenue = (id) => async (dispatch) => {
     dispatch(REMOVE_VENUE(id));
     console.log('venue is deleted');
   } catch (e) {
-    console.log(e);
+    dispatch(SET_ERROR(true));
   }
 };
 
@@ -161,8 +170,7 @@ export const updateVenue = (id, venueData) => async (dispatch) => {
     console.log(data);
     dispatch(UPDATE_VENUE(data));
   } catch (e) {
-    // dispatch(setError(true, e.message));
-    console.log('error');
+    dispatch(SET_ERROR(true));
   }
 };
 
@@ -184,7 +192,7 @@ export const bookVenue = (venueData) => async (dispatch) => {
     console.log('yees this place has been booked for you');
     dispatch(BOOK_VENUE(data));
   } catch (e) {
-    dispatch(setError(true, e.message));
+    dispatch(SET_ERROR(true));
   }
 };
 
