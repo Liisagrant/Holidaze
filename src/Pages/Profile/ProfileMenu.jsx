@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import NoAvatar from '../../../public/NoAvatar.jpg';
 import { updateLocalStorage } from '../../utils/Auth';
@@ -11,8 +12,6 @@ const validationSchema = Yup.object().shape({
     .matches(/\.(gif|jpe?g|png)$/i, 'Invalid image URL'),
 });
 
-const venueManager = localStorage.getItem('venueManager');
-
 const ProfileMenu = ({
   avatar,
   userEmail,
@@ -22,7 +21,6 @@ const ProfileMenu = ({
   onRentOutsClick,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userDetails, setUserDetails] = useState(getUserDetails());
   const [venueManager, setVenueManager] = useState(false);
 
   useEffect(() => {
