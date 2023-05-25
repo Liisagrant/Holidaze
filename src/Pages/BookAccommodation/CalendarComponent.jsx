@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -74,6 +75,11 @@ const CalendarComponent = ({ bookings, formik }) => {
       dayClassName={getDayClassName}
     />
   );
+};
+
+CalendarComponent.propTypes = {
+  bookings: PropTypes.array.isRequired,
+  formik: PropTypes.object.isRequired,
 };
 
 export default CalendarComponent;
