@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const AddInfoAccommodation = ({ formik }) => {
   return (
     <>
@@ -249,6 +251,10 @@ const AddInfoAccommodation = ({ formik }) => {
       </div>
     </>
   );
+};
+
+AddInfoAccommodation.propTypes = {
+  formik: PropTypes.object.isRequired,
 };
 
 export default AddInfoAccommodation;
