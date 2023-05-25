@@ -51,7 +51,7 @@ const UpdateAccommodation = () => {
   const breadcrumb = [
     { name: 'Home', path: '/' },
     { name: 'Profile', path: '/Profile' },
-    { name: singleVenue.name, path: `/Accommodation/${id}` },
+    { name: 'Update', path: `/Accommodation/${id}` },
   ];
 
   const [amenities, setAmenities] = useState({
