@@ -31,8 +31,6 @@ const calculatePrice = (dateFrom, dateTo, pricePerNight) => {
 };
 
 const BookAccommodationForm = ({ setIsModalOpen }) => {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
   const dispatch = useDispatch();
   const singleAccommodation = useSelector((state) => state.Venues.singleVenue);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -165,8 +163,6 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                   <div className="flex justify-center">
                     <CalendarComponent
                       formik={formik}
-                      setStartDate={setStartDate}
-                      setEndDate={setEndDate}
                       bookings={singleAccommodation.bookings || []}
                     />
                   </div>
