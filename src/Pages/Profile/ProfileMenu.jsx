@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import NoAvatar from '../../../public/NoAvatar.jpg';
 import { updateLocalStorage } from '../../utils/Auth';
-import { getUserDetails } from '../../utils/Auth';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
