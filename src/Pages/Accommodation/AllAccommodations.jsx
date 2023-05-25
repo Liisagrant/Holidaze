@@ -7,7 +7,6 @@ import NoSearch from '../../../public/NoSearch.svg';
 import NoImage from '../../../public/NoImage.png';
 import RatingStar from '../../Global/RatingStar';
 import { setLoadingState } from '../../store/modules/loaderSlice';
-import { setError } from '../../store/modules/errorSlice';
 
 const AllAccommodations = () => {
   const dispatch = useDispatch();

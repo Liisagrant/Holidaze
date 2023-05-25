@@ -9,6 +9,7 @@ const venuesSlice = createSlice({
     topRatedHouses: [],
     search: '',
     createVenue: null,
+    error: null,
   },
   reducers: {
     SET_SEARCH: (state, action) => {
@@ -161,7 +162,6 @@ export const updateVenue = (id, venueData) => async (dispatch) => {
     console.log(data);
     dispatch(UPDATE_VENUE(data));
   } catch (e) {
-    // dispatch(setError(true, e.message));
     console.log('error');
   }
 };

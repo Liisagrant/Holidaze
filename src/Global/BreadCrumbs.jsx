@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Breadcrumbs = ({ breadcrumb }) => (
-  <div className="max-w-7xl mx-auto px-12">
+  <div className="max-w-7xl mx-auto md:px-12">
     <nav aria-label="max-w-7xl mx-auto">
       <ol className="flex flex-row mb-6 ml-8">
         {breadcrumb.map((bc, index) => (
