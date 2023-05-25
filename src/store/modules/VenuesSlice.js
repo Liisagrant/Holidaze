@@ -184,7 +184,7 @@ export const bookVenue = (venueData) => async (dispatch) => {
     console.log('yees this place has been booked for you');
     dispatch(BOOK_VENUE(data));
   } catch (e) {
-    dispatch(setError(true, e.message));
+    console.log('error');
   }
 };
 
