@@ -187,4 +187,13 @@ const ProfileMenu = ({
   );
 };
 
+ProfileMenu.propTypes = {
+  avatar: PropTypes.string,
+  userEmail: PropTypes.string,
+  userName: PropTypes.string,
+  onAddAccommodationClick: PropTypes.func,
+  onUserBookingsClick: PropTypes.func,
+  onRentOutsClick: PropTypes.func,
+};
+
 export default ProfileMenu;
