@@ -75,7 +75,7 @@ export const logInUser = (userData) => {
     });
 };
 
-export const fetchSingleProfile = (name, profileData) => async (dispatch) => {
+export const fetchSingleProfile = (name) => async (dispatch) => {
   dispatch(setLoadingState(true));
   try {
     const response = await fetch(

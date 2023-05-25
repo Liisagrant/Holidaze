@@ -54,12 +54,12 @@ const UpdateAccommodation = () => {
     { name: 'Update', path: `/Accommodation/${id}` },
   ];
 
-  const [amenities, setAmenities] = useState({
-    wifi: false,
-    parking: false,
-    breakfast: false,
-    pets: false,
-  });
+  // const [amenities, setAmenities] = useState({
+  //   wifi: false,
+  //   parking: false,
+  //   breakfast: false,
+  //   pets: false,
+  // });
 
   useEffect(() => {
     if (id) {
@@ -171,7 +171,7 @@ const UpdateAccommodation = () => {
       <BreadCrumbs breadcrumb={breadcrumb} />
       <div className="max-w-xl mx-auto">
         {formSubmitted ? (
-          <div class="p-12 flex flex-col justify-center items-center">
+          <div className="p-12 flex flex-col justify-center items-center">
             <p className="font-header text-3xl text-main">
               Your accommodation has been successfully been Updated
             </p>
