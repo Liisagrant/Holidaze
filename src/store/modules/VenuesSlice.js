@@ -74,42 +74,34 @@ const accessToken = localStorage.getItem('accessToken');
 export const fetchVenues = createAsyncThunk(
   'venues/fetchVenues',
   async (_, { dispatch }) => {
-    try {
-      const response = await fetch(
-        'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
-      );
+    const response = await fetch(
+      'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
+    );
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch venues');
-      }
-
-      const data = await response.json();
-      console.log(data);
-      return data;
-    } catch (error) {
+    if (!response.ok) {
       dispatch(
         SET_ERROR({
           isError: true,
         })
       );
-      throw error;
+      throw new Error('Failed to fetch venues');
     }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
   }
 );
 
 export const fetchSingleVenue = createAsyncThunk(
   'venues/fetchSingleVenue',
   async (id) => {
-    try {
-      const response = await fetch(
-        `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}?_owner=true&_bookings=true`
-      );
-      const data = await response.json();
-      console.log(data);
-      return data;
-    } catch (error) {
-      throw error;
-    }
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}?_owner=true&_bookings=true`
+    );
+    const data = await response.json();
+    console.log(data);
+    return data;
   }
 );
 
