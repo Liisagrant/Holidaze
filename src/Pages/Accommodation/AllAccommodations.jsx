@@ -7,7 +7,6 @@ import NoSearch from '../../../public/NoSearch.svg';
 import NoImage from '../../../public/NoImage.png';
 import RatingStar from '../../Global/RatingStar';
 import { setLoadingState } from '../../store/modules/loaderSlice';
-import { SET_ERROR } from '../../store/modules/errorSlice';
 import ErrorComponent from '../../Global/ErrorComponent';
 
 const AllAccommodations = () => {
@@ -37,11 +36,7 @@ const AllAccommodations = () => {
         await dispatch(fetchSingleVenue('venueId'));
         dispatch(setLoadingState(false));
       } catch (error) {
-        dispatch(
-          SET_ERROR({
-            isError: false,
-          })
-        );
+        console.error('An error occurred: ', error);
       }
     };
 
