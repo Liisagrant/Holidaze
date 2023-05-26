@@ -76,7 +76,7 @@ export const fetchVenues = createAsyncThunk(
   async (_, { dispatch }) => {
     try {
       const response = await fetch(
-        'https://nf-api.onrender.com/api/v1/holdaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
+        'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
       );
 
       if (!response.ok) {
@@ -107,8 +107,8 @@ export const fetchSingleVenue = createAsyncThunk(
       const data = await response.json();
       console.log(data);
       return data;
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      throw error;
     }
   }
 );
