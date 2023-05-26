@@ -32,7 +32,7 @@ const RentOuts = () => {
               X
             </button>
             <p>
-              Are you sure you want to delete the "{venueToDelete.name}"
+              Are you sure you want to delete the '{venueToDelete.name}'
               accommodation?
             </p>
             <div className="flex flex-row justify-center">
@@ -56,7 +56,9 @@ const RentOuts = () => {
                       dispatch(REMOVE_VENUE(venueToDelete.id));
                       setIsModalOpen(false);
                     })
-                    .catch((error) => {});
+                    .catch((error) => {
+                      console.error(error);
+                    });
                 }}
               >
                 Delete
