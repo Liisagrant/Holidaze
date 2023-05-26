@@ -32,8 +32,8 @@ const RentOuts = () => {
               X
             </button>
             <p>
-              Are you sure you want to delete the '{venueToDelete.name}'
-              accommodation?
+              Are you sure you want to delete the &apos;{venueToDelete.name}
+              &apos; accommodation?
             </p>
             <div className="flex flex-row justify-center">
               <button
