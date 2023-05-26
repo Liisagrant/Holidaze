@@ -3,6 +3,8 @@ import { useFormik } from 'formik';
 import { logInUser } from '../../store/modules/ProfileSlice';
 import * as Yup from 'yup';
 import LoginImage from '../../../public/LoginImage.jpg';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -16,6 +18,8 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.Profile.error);
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -27,7 +31,7 @@ export default function LoginForm() {
         email: values.email,
         password: values.password,
       };
-      logInUser(userData);
+      logInUser(userData, dispatch);
     },
   });
 
@@ -87,7 +91,7 @@ export default function LoginForm() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full font-paragraph rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full font-paragraph rounded-md px-2 border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.email && formik.errors.email ? (
                         <div className="text-red-600 text-sm">
@@ -113,7 +117,7 @@ export default function LoginForm() {
                         type="password"
                         autoComplete="current-password"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.password && formik.errors.password ? (
                         <div className="text-red-600 text-sm">
@@ -129,6 +133,18 @@ export default function LoginForm() {
                     >
                       Login
                     </button>
+                  </div>
+                  <div className="flex flex-col justify-center items-center">
+                    {error && (
+                      <>
+                        <div className="text-red-700 text-md">{error}</div>
+                        <div className="text-red-600 text-sm">
+                          Oops! It appears that this user does not exist. Please
+                          double-check the spelling or consider registering if
+                          you don't have an account yet.
+                        </div>
+                      </>
+                    )}
                   </div>
                 </form>
               </div>
