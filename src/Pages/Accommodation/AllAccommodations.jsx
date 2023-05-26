@@ -7,10 +7,12 @@ import NoSearch from '../../../public/NoSearch.svg';
 import NoImage from '../../../public/NoImage.png';
 import RatingStar from '../../Global/RatingStar';
 import { setLoadingState } from '../../store/modules/loaderSlice';
+import { SET_ERROR } from '../../store/modules/errorSlice';
+import ErrorComponent from '../../Global/ErrorComponent';
 
 const AllAccommodations = () => {
   const dispatch = useDispatch();
-  const { isError, errorMessage } = useSelector((state) => state.error);
+  const isError = useSelector((state) => state.error.isError);
   const venues = useSelector((state) => state.Venues.venues);
   const searchQuery = useSelector((state) => state.Venues.search);
   const filteredVenues = venues.filter((venue) =>
@@ -36,7 +38,9 @@ const AllAccommodations = () => {
         dispatch(setLoadingState(false));
       } catch (error) {
         dispatch(
-          setError(true, 'Error fetching data. Please try again later.')
+          SET_ERROR({
+            isError: false,
+          })
         );
       }
     };
@@ -49,7 +53,7 @@ const AllAccommodations = () => {
   }, [searchQuery]);
 
   return (
-    <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl ">
+    <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl">
       {venues.length > 0 && displayedVenues.length === 0 && (
         <div className="mx-8 md:mx-auto flex flex-col justify-center">
           <p className="font-header text-4xl lg:text-5xl text-bold text-main text-shadow-md">
@@ -62,6 +66,7 @@ const AllAccommodations = () => {
           />
         </div>
       )}
+      {isError && <ErrorComponent />}
       {displayedVenues.map((venue) => (
         <div
           key={venue.id}

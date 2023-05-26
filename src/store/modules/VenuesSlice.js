@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { SET_ERROR } from './errorSlice';
 
 const venuesSlice = createSlice({
   name: 'Venues',
@@ -70,18 +71,31 @@ const venuesSlice = createSlice({
 
 const accessToken = localStorage.getItem('accessToken');
 
-export const fetchVenues = createAsyncThunk('venues/fetchVenues', async () => {
-  try {
-    const response = await fetch(
-      'https://nf-api.onrender.com/api/v1/holidaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
-    );
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (e) {
-    console.log(e);
+export const fetchVenues = createAsyncThunk(
+  'venues/fetchVenues',
+  async (_, { dispatch }) => {
+    try {
+      const response = await fetch(
+        'https://nf-api.onrender.com/api/v1/holdaze/venues?sort=created&sortOrder=desc&&_owner=true&_bookings=true'
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch venues');
+      }
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      dispatch(
+        SET_ERROR({
+          isError: true,
+        })
+      );
+      throw error;
+    }
   }
-});
+);
 
 export const fetchSingleVenue = createAsyncThunk(
   'venues/fetchSingleVenue',
