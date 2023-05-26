@@ -99,7 +99,7 @@ const AllAccommodations = () => {
                   {venue.maxGuests} people
                 </span>
               </div>
-              <div class="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
+              <div className="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
               <p className="ml-2 md:ml-none font-paragraph text-sm pt-6 pr-2 max-w-xs lg:max-w-lg max-h-20 overflow-hidden">
                 {venue.description}
               </p>
