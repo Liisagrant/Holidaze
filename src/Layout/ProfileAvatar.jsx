@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import NoAvatar from '../../public/NoAvatar.jpg';
 
 const ProfileAvatar = ({ avatar }) => {
+  const handleImageError = (e) => {
+    e.target.src = NoAvatar;
+  };
+
   return (
     <div className="flex items-center ml-4 flex-shrink-0">
       <Link to="/Profile">
@@ -18,6 +22,7 @@ const ProfileAvatar = ({ avatar }) => {
             className="h-8 w-8 rounded-full"
             src={avatar ? avatar : NoAvatar}
             alt="user avatar"
+            onError={handleImageError}
           />
         </button>
       </Link>
