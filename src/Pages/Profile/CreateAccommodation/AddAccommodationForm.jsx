@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createVenue } from '../../../store/modules/VenuesSlice';
-import { getUserDetails } from '../../../utils/Auth';
 import { ADD_VENUE_TO_PROFILE } from '../../../store/modules/ProfileSlice';
 import secondHelper from '../../../../public/secondHelper.svg';
 import AddMediaToAccommodation from './AddMediaToAccommodation';
@@ -129,8 +128,8 @@ const AddAccommodationForm = () => {
           </p>
           <p className="font-paragraph text-md text-gray-600">
             added and is now available for rent. To view your listing, please
-            navigate to the 'RentOuts' section under the profile menu. We hope
-            it will be rented out soon!
+            navigate to the &apos;RentOuts&apos; section under the profile menu.
+            We hope it will be rented out soon!
           </p>
           <div className="max-w-md">
             <img src={secondHelper} alt="image of a happy man" />
