@@ -19,10 +19,13 @@ const ProfileSlice = createSlice({
     SIGNUP_ERROR: (state, action) => {
       state.error = action.payload;
     },
+    LOGIN_ERROR: (state, action) => {
+      state.error = action.payload;
+    },
   },
 });
 
-export const { SET_SINGLE_PROFILE, ADD_VENUE_TO_PROFILE, SIGNUP_ERROR } =
+export const { SET_SINGLE_PROFILE, ADD_VENUE_TO_PROFILE, SIGNUP_ERROR, LOGIN_ERROR } =
   ProfileSlice.actions;
 export default ProfileSlice.reducer;
 
@@ -76,7 +79,7 @@ export const logInUser = (userData) => {
       window.location = '/';
     })
     .catch((error) => {
-      console.error('Error:', error);
+      dispatch(LOGIN_ERROR(error.message));
     });
 };
 

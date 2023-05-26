@@ -87,7 +87,7 @@ export default function LoginForm() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full font-paragraph rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full font-paragraph rounded-md px-2 border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.email && formik.errors.email ? (
                         <div className="text-red-600 text-sm">
@@ -113,7 +113,7 @@ export default function LoginForm() {
                         type="password"
                         autoComplete="current-password"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.password && formik.errors.password ? (
                         <div className="text-red-600 text-sm">
