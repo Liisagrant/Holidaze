@@ -7,7 +7,8 @@ const errorSlice = createSlice({
   },
   reducers: {
     SET_ERROR: (state, action) => {
-      state.isError = action.payload;
+      state.isError = action.payload.isError;
+      state.errorMessage = action.payload.errorMessage;
     },
   },
 });
