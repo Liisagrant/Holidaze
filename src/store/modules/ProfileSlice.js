@@ -25,8 +25,12 @@ const ProfileSlice = createSlice({
   },
 });
 
-export const { SET_SINGLE_PROFILE, ADD_VENUE_TO_PROFILE, SIGNUP_ERROR, LOGIN_ERROR } =
-  ProfileSlice.actions;
+export const {
+  SET_SINGLE_PROFILE,
+  ADD_VENUE_TO_PROFILE,
+  SIGNUP_ERROR,
+  LOGIN_ERROR,
+} = ProfileSlice.actions;
 export default ProfileSlice.reducer;
 
 const accessToken = localStorage.getItem('accessToken');
@@ -55,7 +59,7 @@ export const signUpUser = (userData, dispatch) => {
     });
 };
 
-export const logInUser = (userData) => {
+export const logInUser = (userData, dispatch) => {
   fetch('https://nf-api.onrender.com/api/v1/holidaze/auth/login', {
     method: 'POST',
     headers: {
