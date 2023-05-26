@@ -21,6 +21,9 @@ const ProfileMenu = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [venueManager, setVenueManager] = useState(false);
+  const handleImageError = (e) => {
+    e.target.src = NoAvatar;
+  };
 
   useEffect(() => {
     const storedVenueManager = localStorage.getItem('venueManager');
@@ -131,6 +134,7 @@ const ProfileMenu = ({
                 className="h-24 w-24 md:h-40 md:w-40 rounded-full"
                 src={avatar ? avatar : NoAvatar}
                 alt="user avatar"
+                onError={handleImageError}
               />
             </div>
           </div>
