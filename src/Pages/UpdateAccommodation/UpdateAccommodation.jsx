@@ -145,7 +145,9 @@ const UpdateAccommodation = () => {
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchSingleVenue(id)).catch((error) => {});
+      dispatch(fetchSingleVenue(id)).catch((error) => {
+        console.error(error);
+      });
     }
   }, [dispatch, id]);
 

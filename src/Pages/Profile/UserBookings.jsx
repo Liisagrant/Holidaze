@@ -18,7 +18,10 @@ const UserBookings = () => {
         singleProfile.bookings &&
         singleProfile.bookings.length > 0 ? (
           singleProfile.bookings.map((booking) => (
-            <div className="bg-backgroundwhite p-2 flex flex-col md:flex-row my-2 rounded-md">
+            <div
+              className="bg-backgroundwhite p-2 flex flex-col md:flex-row my-2 rounded-md"
+              key={booking.venue.id}
+            >
               <div className="flex items-center justify-center md:h-40 md:w-40">
                 <img
                   className="rounded-md object-cover h-60 w-full md:h-full md:w-auto"

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createVenue } from '../../../store/modules/VenuesSlice';
-import { getUserDetails } from '../../../utils/Auth';
 import { ADD_VENUE_TO_PROFILE } from '../../../store/modules/ProfileSlice';
 import secondHelper from '../../../../public/secondHelper.svg';
 import AddMediaToAccommodation from './AddMediaToAccommodation';
@@ -123,14 +122,14 @@ const AddAccommodationForm = () => {
   return (
     <div className="flex max-w-7xl mx-4 px-2 lg:px-24 md:mx-auto bg-lightgray rounded-md justify-center">
       {formSubmitted ? (
-        <div class="p-12 flex flex-col justify-center items-center">
+        <div className="p-12 flex flex-col justify-center items-center">
           <p className="font-header text-3xl text-main">
             Your accommodation has been successfully added!
           </p>
           <p className="font-paragraph text-md text-gray-600">
             added and is now available for rent. To view your listing, please
-            navigate to the 'RentOuts' section under the profile menu. We hope
-            it will be rented out soon!
+            navigate to the &apos;RentOuts&apos; section under the profile menu.
+            We hope it will be rented out soon!
           </p>
           <div className="max-w-md">
             <img src={secondHelper} alt="image of a happy man" />

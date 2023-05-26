@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const AddMetaToAccommodations = ({ formik }) => {
   return (
     <>
@@ -37,6 +38,13 @@ const AddMetaToAccommodations = ({ formik }) => {
       </div>
     </>
   );
+};
+
+AddMetaToAccommodations.propTypes = {
+  formik: PropTypes.shape({
+    values: PropTypes.object.isRequired,
+    setFieldValue: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default AddMetaToAccommodations;

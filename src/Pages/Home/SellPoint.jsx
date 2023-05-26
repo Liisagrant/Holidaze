@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Home from '../../../public/home.svg';
 
 const SellPoint = () => {

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const AddMediaToAccommodation = ({ formik, mediaArray, setMediaArray }) => {
   function pushToMediaArray() {
     const mediaValue = document.getElementById('media').value;
@@ -70,6 +72,12 @@ const AddMediaToAccommodation = ({ formik, mediaArray, setMediaArray }) => {
       ) : null}
     </div>
   );
+};
+
+AddMediaToAccommodation.propTypes = {
+  formik: PropTypes.object.isRequired,
+  mediaArray: PropTypes.array.isRequired,
+  setMediaArray: PropTypes.func.isRequired,
 };
 
 export default AddMediaToAccommodation;

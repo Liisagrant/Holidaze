@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import NoAvatar from '../../public/NoAvatar.jpg';
 
@@ -28,6 +28,10 @@ const ProfileAvatar = ({ avatar }) => {
       </Link>
     </div>
   );
+};
+
+ProfileAvatar.propTypes = {
+  avatar: PropTypes.string,
 };
 
 export default ProfileAvatar;

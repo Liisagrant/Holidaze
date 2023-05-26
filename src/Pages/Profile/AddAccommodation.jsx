@@ -7,8 +7,8 @@ const AddAccommodation = () => {
         </p>
         <p className="font-paragraph text-sm max-w-sm">
           Looking to add a new accommodation? Simply click the button in the
-          ProfileMenu, and we'll guide you through the process effortlessly. You
-          won't believe how easy it is!
+          ProfileMenu, and we&apos;ll guide you through the process
+          effortlessly. You won&apos;t believe how easy it is!
         </p>
       </div>
     </>

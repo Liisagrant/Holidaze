@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const RatingStar = ({ venue }) => {
   const rating =
     venue.rating && Number.isInteger(venue.rating) && venue.rating <= 5
@@ -30,6 +32,12 @@ const RatingStar = ({ venue }) => {
       )}
     </div>
   );
+};
+
+RatingStar.propTypes = {
+  venue: PropTypes.shape({
+    rating: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default RatingStar;

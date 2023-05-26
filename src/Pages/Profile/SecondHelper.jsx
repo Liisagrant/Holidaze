@@ -9,8 +9,8 @@ const SecondHelper = () => {
         </p>
         <p className="font-paragraph text-sm max-w-xs">
           If you need to review your accommodation details or discover local
-          attractions, simply click "see your bookings" and effortlessly access
-          all the necessary information.
+          attractions, simply click &quot;see your bookings&quot; and
+          effortlessly access all the necessary information.
         </p>
       </div>
       <div className="flex justify-end">

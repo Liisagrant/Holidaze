@@ -6,6 +6,7 @@ import { bookVenue } from '../../store/modules/VenuesSlice';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import success from '../../../public/success.svg';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setLoadingState } from '../../store/modules/loaderSlice';
 import SpinnerComponent from '../../Global/SpinnerComponent';
@@ -298,4 +299,9 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
     </div>
   );
 };
+
+BookAccommodationForm.propTypes = {
+  setIsModalOpen: PropTypes.func.isRequired,
+};
+
 export default BookAccommodationForm;
