@@ -3,6 +3,8 @@ import { useFormik } from 'formik';
 import { signUpUser } from '../../store/modules/ProfileSlice';
 import * as Yup from 'yup';
 import SignupImage from '../../../public/SignUpImage.jpg';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -25,6 +27,8 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function SignupForm() {
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.Profile.error);
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -43,7 +47,7 @@ export default function SignupForm() {
         venueManager: values.venueManager,
         password: values.password,
       };
-      signUpUser(userData);
+      signUpUser(userData, dispatch);
     },
   });
 
@@ -103,7 +107,7 @@ export default function SignupForm() {
                         type="name"
                         autoComplete="name"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.name && formik.errors.name ? (
                         <div className="text-red-600 text-sm">
@@ -129,7 +133,7 @@ export default function SignupForm() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full font-paragraph rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full font-paragraph px-2 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.email && formik.errors.email ? (
                         <div className="text-red-600 text-sm">
@@ -154,7 +158,7 @@ export default function SignupForm() {
                         name="avatar"
                         type="avatar"
                         autoComplete="avatar"
-                        className="block w-full font-paragraph rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full font-paragraph px-2 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.avatar && formik.errors.avatar ? (
                         <div className="text-red-600 text-sm">
@@ -180,7 +184,7 @@ export default function SignupForm() {
                         type="password"
                         autoComplete="current-password"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.password && formik.errors.password ? (
                         <div className="text-red-600 text-sm">
@@ -206,7 +210,7 @@ export default function SignupForm() {
                         type="password"
                         autoComplete="current-password"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.passwordConfirm &&
                       formik.errors.passwordConfirm ? (
@@ -254,6 +258,18 @@ export default function SignupForm() {
                     >
                       Signup
                     </button>
+                  </div>
+                  <div className="flex flex-col justify-center items-center">
+                    {error && (
+                      <>
+                        <div className="text-red-700 text-md">{error}</div>
+                        <div className="text-red-600 text-sm">
+                          Apologies, but it seems that this username is already
+                          in use. Please choose a different name and email
+                          address.
+                        </div>
+                      </>
+                    )}
                   </div>
                 </form>
               </div>
