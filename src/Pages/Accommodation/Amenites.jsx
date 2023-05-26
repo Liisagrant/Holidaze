@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Amenities = ({ wifi, parking, pets, breakfast }) => {
   return (
     <div className="flex flex-row">
@@ -35,6 +37,13 @@ const Amenities = ({ wifi, parking, pets, breakfast }) => {
       )}
     </div>
   );
+};
+
+Amenities.propTypes = {
+  wifi: PropTypes.bool.isRequired,
+  parking: PropTypes.bool.isRequired,
+  pets: PropTypes.bool.isRequired,
+  breakfast: PropTypes.bool.isRequired,
 };
 
 export default Amenities;
