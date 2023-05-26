@@ -140,8 +140,7 @@ export default function LoginForm() {
                         <div className="text-red-700 text-md">{error}</div>
                         <div className="text-red-600 text-sm">
                           Oops! It appears that this user does not exist. Please
-                          double-check the spelling or consider registering if
-                          you don't have an account yet.
+                          double-check the spelling or create an account.
                         </div>
                       </>
                     )}
