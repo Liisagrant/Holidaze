@@ -117,7 +117,7 @@ const AllAccommodations = () => {
           </div>
         </div>
       ))}
-      <div className="max-w-3xl mx-auto felx flex-row">
+      <div className="max-w-3xl mx-auto flex flex-row">
         {currentPage > 1 && (
           <button
             className="w-full bg-main hover:bg-hovercolor text-white font-bold py-2 px-4 rounded mx-4"
