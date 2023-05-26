@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ImageGrid = () => {
   return (
     <div className="container mx-auto max-w-7xl ">
