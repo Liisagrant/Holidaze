@@ -54,13 +54,6 @@ const UpdateAccommodation = () => {
     { name: 'Update', path: `/Accommodation/${id}` },
   ];
 
-  // const [amenities, setAmenities] = useState({
-  //   wifi: false,
-  //   parking: false,
-  //   breakfast: false,
-  //   pets: false,
-  // });
-
   useEffect(() => {
     if (id) {
       dispatch(fetchSingleVenue(id));

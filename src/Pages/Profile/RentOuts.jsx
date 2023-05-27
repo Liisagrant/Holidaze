@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
 import { deleteVenue, REMOVE_VENUE } from '../../store/modules/VenuesSlice';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NoImage from '../../../public/NoImage.png';
 import NoRentOuts from '../../../public/NoRentOuts.svg';
@@ -11,14 +11,19 @@ const RentOuts = () => {
   const [localVenues, setLocalVenues] = useState(
     singleProfile ? singleProfile.venues : []
   );
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    setLocalVenues(singleProfile ? singleProfile.venues : []);
+  }, [singleProfile]);
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [venueToDelete, setVenueToDelete] = useState(null);
 
   return (
     <div>
-      {isModalOpen && venueToDelete && (
+      {isDeleteModalOpen && venueToDelete && (
         <div
-          onClick={() => setIsModalOpen(false)}
+          onClick={() => setIsDeleteModalOpen(false)}
           className="fixed top-0 left-0 bg-darkblue bg-opacity-60 w-screen h-screen flex justify-center items-center z-50 overflow-auto"
         >
           <div
@@ -27,7 +32,7 @@ const RentOuts = () => {
           >
             <button
               className="absolute mx-4 my-2 top-0 right-0 text-gray-900 text-md"
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => setIsBookingsModalOpen(false)}
             >
               X
             </button>
@@ -118,11 +123,21 @@ const RentOuts = () => {
                       </Link>
                     </div>
                     <div>
+                      <Link to={`/SeeRentoutBookings/${venue.id}`}>
+                        <button
+                          type="submit"
+                          className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-green-500 hover:bg-green-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
+                        >
+                          Bookings
+                        </button>
+                      </Link>
+                    </div>
+                    <div>
                       <button
                         type="submit"
                         className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-red-500 hover:bg-red-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
                         onClick={() => {
-                          setIsModalOpen(true);
+                          setIsDeleteModalOpen(true);
                           setVenueToDelete(venue);
                         }}
                       >
