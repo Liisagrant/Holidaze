@@ -35,11 +35,11 @@ const SeeRentoutBookings = () => {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-5 flex justify-center">
-      <div className="my-5 flex gap-5">
-        <div className="w-full max-w-4xl md:bg-white md:drop-shadow-md md:px-5 md:py-5">
-          <h1 className="pb-5 font-heading text-4xl font-extrabold">
-            Bookings on your Venues
+    <div className="mx-auto max-w-7xl mt-40  px-5 flex justify-center">
+      <div className="my-2 flex gap-5">
+        <div className="w-full mx-2 max-w-4xl rounded-md bg-lightgray shadow-md p-2 md:p-16">
+          <h1 className="pb-5 font-heading text-xl md:text-4xl font-bold">
+            Bookings on your Accommodation
           </h1>
           {singleProfile && singleProfile.length > 0 ? (
             singleProfile.map((booking) => {
@@ -54,7 +54,7 @@ const SeeRentoutBookings = () => {
               const sortedBookings = sortBookingsByDate(bookings);
 
               return (
-                <div key={id} className="my-4">
+                <div key={id} className="my-4 mx-4">
                   <h2 className="font-heading text-1xl font-semibold">
                     {truncatedName}
                   </h2>
@@ -74,11 +74,11 @@ const SeeRentoutBookings = () => {
                       {sortedBookings.map((bookingItem) => (
                         <tr
                           key={bookingItem.id}
-                          className="my-2 border-b bg-white font-body text-sm font-light text-black"
+                          className="my-2  rounded-md border-b bg-backgroundwhite font-body text-sm font-light text-black"
                         >
                           <th className="h-24 w-24">
                             <img
-                              className="h-full w-full object-cover"
+                              className="h-full w-full object-cover rounded-md"
                               src={media[0] ? media[0] : DefaultHouse}
                               alt={truncatedName}
                             />
@@ -104,7 +104,7 @@ const SeeRentoutBookings = () => {
               </h1>
               <Link to="/Profile">
                 <button className="rounded-md bg-blue px-5 py-2 font-body text-white">
-                  Return to dashboard
+                  Return to Profile
                 </button>
               </Link>
             </div>
