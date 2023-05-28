@@ -120,13 +120,13 @@ const AddAccommodationForm = () => {
   });
 
   return (
-    <div className="flex max-w-7xl mx-4 px-2 lg:px-24 md:mx-auto bg-lightgray rounded-md justify-center">
+    <div className="mx-4 flex max-w-7xl justify-center rounded-md bg-lightgray px-2 md:mx-auto lg:px-24">
       {formSubmitted ? (
-        <div className="p-12 flex flex-col justify-center items-center">
+        <div className="flex flex-col items-center justify-center p-12">
           <p className="font-header text-3xl text-main">
             Your accommodation has been successfully added!
           </p>
-          <p className="font-paragraph text-md text-gray-600">
+          <p className="text-md font-paragraph text-gray-600">
             added and is now available for rent. To view your listing, please
             navigate to the &apos;RentOuts&apos; section under the profile menu.
             We hope it will be rented out soon!
@@ -153,10 +153,10 @@ const AddAccommodationForm = () => {
                     formik={formik}
                   />
 
-                  <div className="flex justify-center my-8">
+                  <div className="my-8 flex justify-center">
                     <button
                       type="submit"
-                      className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
+                      className="rounded-md bg-main px-4 py-2 font-semibold text-white hover:bg-hovercolor"
                     >
                       Add Accommodation
                     </button>

@@ -16,10 +16,10 @@ const AddInfoAccommodation = ({ formik }) => {
             fill="#265399"
           />
         </svg>
-        <h2 className="mt-4 text-2xl font-semibold font-header leading-relaxed tracking-tight text-gray-800">
+        <h2 className="mt-4 font-header text-2xl font-semibold leading-relaxed tracking-tight text-gray-800">
           List your rental property today and start receiving inquiries!
         </h2>
-        <p className="my-4 text-sm leading-7 font-paragraph text-gray-600">
+        <p className="my-4 font-paragraph text-sm leading-7 text-gray-600">
           Let us simplify the process for you with some easy steps!
         </p>
       </div>
@@ -41,10 +41,10 @@ const AddInfoAccommodation = ({ formik }) => {
             autoComplete="name"
             placeholder="What will you call your rental?"
             required
-            className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
           {formik.touched.name && formik.errors.name ? (
-            <div className="text-red-600 text-sm">{formik.errors.name}</div>
+            <div className="text-sm text-red-600">{formik.errors.name}</div>
           ) : null}
         </div>
       </div>
@@ -67,16 +67,16 @@ const AddInfoAccommodation = ({ formik }) => {
             autoComplete="description"
             rows="4"
             required
-            className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
           {formik.touched.description && formik.errors.description ? (
-            <div className="text-red-600 text-sm">
+            <div className="text-sm text-red-600">
               {formik.errors.description}
             </div>
           ) : null}
         </div>
       </div>
-      <div className="flex flex-row w-full justify-between my-8">
+      <div className="my-8 flex w-full flex-row justify-between">
         <div className="flex flex-col">
           <div className="mr-2">
             <label
@@ -85,7 +85,7 @@ const AddInfoAccommodation = ({ formik }) => {
             >
               Continent
             </label>
-            <div className="mt-2 mr-2">
+            <div className="mr-2 mt-2">
               <input
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -96,10 +96,10 @@ const AddInfoAccommodation = ({ formik }) => {
                 autoComplete="continent"
                 placeholder="What continent?"
                 required
-                className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               {formik.touched.continent && formik.errors.continent ? (
-                <div className="text-red-600 text-sm">
+                <div className="text-sm text-red-600">
                   {formik.errors.continent}
                 </div>
               ) : null}
@@ -112,7 +112,7 @@ const AddInfoAccommodation = ({ formik }) => {
             >
               Address
             </label>
-            <div className="mt-2 mr-2">
+            <div className="mr-2 mt-2">
               <input
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -123,10 +123,10 @@ const AddInfoAccommodation = ({ formik }) => {
                 autoComplete="address"
                 placeholder="What is your address?"
                 required
-                className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               {formik.touched.address && formik.errors.address ? (
-                <div className="text-red-600 text-sm">
+                <div className="text-sm text-red-600">
                   {formik.errors.address}
                 </div>
               ) : null}
@@ -153,10 +153,10 @@ const AddInfoAccommodation = ({ formik }) => {
                   autoComplete="country"
                   placeholder="In what country?"
                   required
-                  className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {formik.touched.country && formik.errors.country ? (
-                  <div className="text-red-600 text-sm">
+                  <div className="text-sm text-red-600">
                     {formik.errors.country}
                   </div>
                 ) : null}
@@ -181,10 +181,10 @@ const AddInfoAccommodation = ({ formik }) => {
                     autoComplete="city"
                     placeholder="In what city?"
                     required
-                    className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   {formik.touched.city && formik.errors.city ? (
-                    <div className="text-red-600 text-sm">
+                    <div className="text-sm text-red-600">
                       {formik.errors.city}
                     </div>
                   ) : null}
@@ -194,7 +194,7 @@ const AddInfoAccommodation = ({ formik }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row my-4">
+      <div className="my-4 flex flex-row">
         <div className=" mr-2">
           <label
             htmlFor="maxGuests"
@@ -202,7 +202,7 @@ const AddInfoAccommodation = ({ formik }) => {
           >
             Price
           </label>
-          <div className="mt-2 mr-2">
+          <div className="mr-2 mt-2">
             <input
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -213,10 +213,10 @@ const AddInfoAccommodation = ({ formik }) => {
               min="1"
               placeholder="please enter how much Your place coast per night"
               required
-              className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
             {formik.touched.maxGuests && formik.errors.maxGuests ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {formik.errors.maxGuests}
               </div>
             ) : null}
@@ -239,10 +239,10 @@ const AddInfoAccommodation = ({ formik }) => {
               type="number"
               min="1"
               required
-              className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
             {formik.touched.maxGuests && formik.errors.maxGuests ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {formik.errors.maxGuests}
               </div>
             ) : null}

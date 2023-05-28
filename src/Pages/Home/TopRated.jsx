@@ -24,34 +24,34 @@ const TopRated = () => {
     <div>
       <HeadingHome />
       {topRatedVenues.length >= 3 && (
-        <div className="flex flex-wrap justify-center max-w-7xl mx-auto">
+        <div className="mx-auto flex max-w-7xl flex-wrap justify-center">
           {topRatedVenues.slice(0, 3).map((venue) => (
             <div
               key={venue.id}
-              className="max-w-xs bg-white border border-gray-100 rounded-lg shadow-lg overflow-hidden mx-2 my-2 md:my-0 transition-transform transform hover:scale-105"
+              className="mx-2 my-2 max-w-xs transform overflow-hidden rounded-lg border border-gray-100 bg-white shadow-lg transition-transform hover:scale-105 md:my-0"
             >
               <Link to={`/Accommodation/${venue.id}`}>
                 <img
-                  className="w-full h-64 object-cover"
+                  className="h-64 w-full object-cover"
                   src={venue.media ? venue.media : defaultTopRatedImage}
                   alt={venue.name}
                   onError={handleImageError}
                 />
               </Link>
               <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2 text-darkblue">
+                <div className="mb-2 text-xl font-bold text-darkblue">
                   {venue.name}
                 </div>
                 <RatingStar venue={venue} />
                 <div className="my-4">
                   <Link
                     to={`/Accommodation/${venue.id}`}
-                    className="inline-flex items-center justify-center px-3 py-2 bg-main text-white text-sm font-medium rounded-lg hover:bg-hovercolor w-full"
+                    className="inline-flex w-full items-center justify-center rounded-lg bg-main px-3 py-2 text-sm font-medium text-white hover:bg-hovercolor"
                   >
                     View
                     <svg
                       aria-hidden="true"
-                      className="w-4 h-4 ml-2 -mr-1"
+                      className="-mr-1 ml-2 h-4 w-4"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
