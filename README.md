@@ -34,7 +34,7 @@ This project was developed using:
 - ⚡ Vite as the build tool
 - 🎨 Tailwind CSS for styling
 - 🖌️ Figma for designing the user interface
-- 📈 Jira for planning and managing tasks
+- 📈 Github Projects for planning and managing tasks
 - ☁️ Netlify for hosting
 
 ## Live Demo 🔗
