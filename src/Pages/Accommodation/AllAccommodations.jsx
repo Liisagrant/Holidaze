@@ -48,10 +48,10 @@ const AllAccommodations = () => {
   }, [searchQuery]);
 
   return (
-    <div className="md:ml-4 lg:mr-8 xl:mr-2 flex flex-col max-w-7xl">
+    <div className="flex max-w-7xl flex-col md:ml-4 lg:mr-8 xl:mr-2">
       {venues.length > 0 && displayedVenues.length === 0 && (
-        <div className="mx-8 md:mx-auto flex flex-col justify-center">
-          <p className="font-header text-4xl lg:text-5xl text-bold text-main text-shadow-md">
+        <div className="mx-8 flex flex-col justify-center md:mx-auto">
+          <p className="text-bold font-header text-4xl text-main text-shadow-md lg:text-5xl">
             No accommodations match your search
           </p>
           <img
@@ -65,49 +65,49 @@ const AllAccommodations = () => {
       {displayedVenues.map((venue) => (
         <div
           key={venue.id}
-          className="bg-backgroundwhite border-lightgray border-2 shadow-md mb-4 mx-4 md:mx-auto rounded-md lg:w-[900px]"
+          className="mx-4 mb-4 rounded-md border-2 border-lightgray bg-backgroundwhite shadow-md md:mx-auto lg:w-[900px]"
         >
           <div className="flex flex-col md:flex-row lg:mx-4">
             <div>
               <img
-                className="h-80 w-full md:w-80 lg:w-96 object-cover sm:rounded-t-md md:rounded-l-md md:rounded-tr-none "
+                className="h-80 w-full object-cover sm:rounded-t-md md:w-80 md:rounded-l-md md:rounded-tr-none lg:w-96 "
                 src={venue.media.length > 0 ? venue.media[0] : NoImage}
                 alt={venue.name}
                 onError={handleImageError}
               />
             </div>
-            <div className="md:ml-8 w-full flex flex-col items-center md:items-start">
-              <h2 className="ml-2 md:ml-none my-4 max-w-md text-2xl font-header font-bold tracking-tight text-darkblue overflow-hidden">
+            <div className="flex w-full flex-col items-center md:ml-8 md:items-start">
+              <h2 className="md:ml-none my-4 ml-2 max-w-md overflow-hidden font-header text-2xl font-bold tracking-tight text-darkblue">
                 {venue.name}
               </h2>
               <div className="px-2">
                 <RatingStar venue={venue} />
               </div>
-              <div className="flex items-center mb-2">
-                <span className=" ml-2 md:ml-none font-medium text-gray-600 mr-2">
+              <div className="mb-2 flex items-center">
+                <span className=" md:ml-none ml-2 mr-2 font-medium text-gray-600">
                   Price:
                 </span>
-                <span className=" ml-2 md:ml-none font-semibold text-darkblue">
+                <span className=" md:ml-none ml-2 font-semibold text-darkblue">
                   {venue.price} $
                 </span>
               </div>
-              <div className="flex items-center mb-2">
-                <span className=" ml-2 md:ml-none font-medium text-gray-600 mr-2">
+              <div className="mb-2 flex items-center">
+                <span className=" md:ml-none ml-2 mr-2 font-medium text-gray-600">
                   Max Guests:
                 </span>
-                <span className=" ml-2 md:ml-none font-semibold text-darkblue">
+                <span className=" md:ml-none ml-2 font-semibold text-darkblue">
                   {venue.maxGuests} people
                 </span>
               </div>
-              <div className="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
-              <p className="ml-2 md:ml-none font-paragraph text-sm pt-6 pr-2 max-w-xs lg:max-w-lg max-h-10 overflow-hidden">
+              <div className="mx-auto mt-4 w-60 border-t border-main shadow-md md:mx-0 md:w-96"></div>
+              <p className="md:ml-none ml-2 max-h-10 max-w-xs overflow-hidden pr-2 pt-6 font-paragraph text-sm lg:max-w-lg">
                 {venue.description}
               </p>
               <div className="flex lg:justify-end">
                 <Link to={`/Accommodation/${venue.id}`}>
                   <button
                     type="button"
-                    className="my-6 w-60 mx-8 rounded-md bg-main px-3 py-2 text-sm font-semibold font-header text-backgroundwhite shadow hover:bg-hovercolor"
+                    className="mx-8 my-6 w-60 rounded-md bg-main px-3 py-2 font-header text-sm font-semibold text-backgroundwhite shadow hover:bg-hovercolor"
                   >
                     View more!
                   </button>
@@ -117,10 +117,10 @@ const AllAccommodations = () => {
           </div>
         </div>
       ))}
-      <div className="max-w-3xl mx-auto flex flex-row">
+      <div className="mx-auto flex max-w-3xl flex-row">
         {currentPage > 1 && (
           <button
-            className="w-full bg-main hover:bg-hovercolor text-white font-bold py-2 px-4 rounded mx-4"
+            className="mx-4 w-full rounded bg-main px-4 py-2 font-bold text-white hover:bg-hovercolor"
             onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}
             disabled={currentPage === 1}
           >
@@ -129,7 +129,7 @@ const AllAccommodations = () => {
         )}
         {currentPage < Math.ceil(filteredVenues.length / itemsPerPage) && (
           <button
-            className="w-full bg-main hover:bg-hovercolor text-white font-bold py-2 px-4 rounded mx-4"
+            className="mx-4 w-full rounded bg-main px-4 py-2 font-bold text-white hover:bg-hovercolor"
             onClick={() =>
               setCurrentPage((old) =>
                 Math.min(

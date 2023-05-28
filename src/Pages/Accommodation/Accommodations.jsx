@@ -8,7 +8,7 @@ function Accommodations() {
   ];
   return (
     <div>
-      <div className="mt-40 max-w-7xl mx-auto">
+      <div className="mx-auto mt-40 max-w-7xl">
         <BreadCrumbs breadcrumb={breadcrumb} />
         <AllAccommodations />
       </div>

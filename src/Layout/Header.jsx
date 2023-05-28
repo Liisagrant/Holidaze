@@ -29,8 +29,8 @@ export default function Header() {
     }`;
 
   return (
-    <header className="bg-main fixed top-0 left-0 right-0 z-20">
-      <div className="max-w-screen-lg mx-auto">
+    <header className="fixed left-0 right-0 top-0 z-20 bg-main">
+      <div className="mx-auto max-w-screen-lg">
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-backgroundwhite lg:px-8">
           <div className="relative flex h-16 justify-between">
             <div className="relative z-10 flex px-2 lg:px-0">
@@ -181,7 +181,7 @@ export default function Header() {
           }`}
           aria-label="Global"
         >
-          <ul className="space-y-1 my-4 px-2 pt-2 pb-3 flex flex-col justify-center items-center">
+          <ul className="my-4 flex flex-col items-center justify-center space-y-1 px-2 pb-3 pt-2">
             <li>
               <NavLink
                 to="/"
