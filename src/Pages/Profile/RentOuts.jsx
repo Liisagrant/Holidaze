@@ -32,7 +32,7 @@ const RentOuts = () => {
           >
             <button
               className="absolute mx-4 my-2 top-0 right-0 text-gray-900 text-md"
-              onClick={() => setIsBookingsModalOpen(false)}
+              onClick={() => setIsDeleteModalOpen(false)}
             >
               X
             </button>
@@ -44,7 +44,7 @@ const RentOuts = () => {
               <button
                 type="submit"
                 className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-main hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm my-4"
-                onClick={() => setIsModalOpen(false)}
+                onClick={() => setIsDeleteModalOpen(false)}
               >
                 Cancel
               </button>

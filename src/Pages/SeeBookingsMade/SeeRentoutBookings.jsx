@@ -6,6 +6,7 @@ import formatDate from '../../Global/formatDate';
 import { fetchBookingOwner } from '../../store/modules/ProfileSlice';
 import SpinnerComponent from '../../Global/SpinnerComponent';
 import BreadCrumbs from '../../Global/BreadCrumbs';
+import NoImage from '../../../public/NoImage.png';
 
 const SeeRentoutBookings = () => {
   const dispatch = useDispatch();
@@ -96,7 +97,7 @@ const SeeRentoutBookings = () => {
                               <th className="h-24 w-24">
                                 <img
                                   className="h-full w-full object-cover rounded-md"
-                                  src={media[0] ? media[0] : DefaultHouse}
+                                  src={media[0] ? media[0] : NoImage}
                                   alt={truncatedName}
                                 />
                               </th>
