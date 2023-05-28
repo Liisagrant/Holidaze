@@ -77,6 +77,16 @@ const RentOuts = () => {
           <p className="font-header text-lg text-darkblue font-bold text-center">
             Your Active RentOuts
           </p>
+          <div className="flex justify-end">
+            <Link to={`/SeeRentoutBookings`}>
+              <button
+                type="submit"
+                className="flex md:mx-2 font-header justify-center rounded-md bg-main hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm my-4"
+              >
+                See Bookings on your rentouts
+              </button>
+            </Link>
+          </div>
           {singleProfile &&
           singleProfile.venues &&
           localVenues &&
@@ -88,7 +98,7 @@ const RentOuts = () => {
               >
                 <div className="flex items-center justify-center h-30 w-full lg:h-full">
                   <img
-                    className="rounded-md object-cover"
+                    className="rounded-md object-cover h-40 w-full"
                     src={venue.media[0] || NoImage}
                     alt={venue.name}
                   />
@@ -98,7 +108,7 @@ const RentOuts = () => {
                     {venue.name}
                   </p>
                   <div className="mx-auto shadow-md my-2 border-t border-main"></div>
-                  <p className="font-header font-sm text-xs px-2 max-h-12 max-w-sm overflow-hidden">
+                  <p className="font-header font-sm text-xs px-2 max-h-12 max-w-lg overflow-hidden">
                     {venue.description}
                   </p>
                   <div className="flex flex-col sm:flex-row items-center sm:justify-around">
@@ -119,16 +129,6 @@ const RentOuts = () => {
                           className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-green-500 hover:bg-green-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
                         >
                           Update
-                        </button>
-                      </Link>
-                    </div>
-                    <div>
-                      <Link to={`/SeeRentoutBookings/${venue.id}`}>
-                        <button
-                          type="submit"
-                          className="flex w-32 md:mx-2 font-header justify-center rounded-md bg-green-500 hover:bg-green-700 px-2 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm my-4"
-                        >
-                          Bookings
                         </button>
                       </Link>
                     </div>

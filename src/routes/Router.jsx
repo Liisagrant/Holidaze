@@ -22,10 +22,7 @@ function Router() {
           path="/UpdateAccommodation/:id"
           element={<UpdateAccommodation />}
         />
-        <Route
-          path="/SeeRentoutBookings/:id"
-          element={<SeeRentoutBookings />}
-        />
+        <Route path="/SeeRentoutBookings" element={<SeeRentoutBookings />} />
       </Routes>
     </>
   );

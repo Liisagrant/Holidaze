@@ -1,16 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getUserDetails } from '../../utils/Auth';
 import formatDate from '../../Global/formatDate';
 import { fetchBookingOwner } from '../../store/modules/ProfileSlice';
-import Breadcrumbs from '../../Global/BreadCrumbs';
 import SpinnerComponent from '../../Global/SpinnerComponent';
 
 const SeeRentoutBookings = () => {
   const dispatch = useDispatch();
-  let { id } = useParams();
+  // let { id } = useParams();
   const singleProfile = useSelector((state) => state.Profile.singleProfile);
   const userDetails = getUserDetails();
   const [loading, setLoading] = useState(true);
@@ -42,15 +41,8 @@ const SeeRentoutBookings = () => {
       .sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom));
   };
 
-  const breadcrumb = [
-    { name: 'Home', path: '/' },
-    { name: 'Profile', path: '/Profile' },
-    { name: 'Bookings on a Rentout', path: `/SeeRentoutBookings` },
-  ];
-
   return (
     <div className="max-w-7xl mt-40">
-      <Breadcrumbs breadcrumb={breadcrumb} />
       <div className="my-2 flex gap-5 justify-center ">
         <div className="w-full mx-4 max-w-4xl rounded-md bg-lightgray shadow-md sm:p-2 py-4 md:p-16">
           <h1 className="pb-5 px-4 font-heading text-xl md:text-4xl font-bold">
