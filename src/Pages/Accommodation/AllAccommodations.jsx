@@ -67,16 +67,16 @@ const AllAccommodations = () => {
           key={venue.id}
           className="bg-backgroundwhite border-lightgray border-2 shadow-md mb-4 mx-4 md:mx-auto rounded-md lg:w-[900px]"
         >
-          <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col md:flex-row lg:mx-4">
             <div>
               <img
-                className="h-80 w-full lg:w-96 object-cover sm:rounded-t-md md:rounded-l-md md:rounded-tr-none "
+                className="h-80 w-full md:w-80 lg:w-96 object-cover sm:rounded-t-md md:rounded-l-md md:rounded-tr-none "
                 src={venue.media.length > 0 ? venue.media[0] : NoImage}
                 alt={venue.name}
                 onError={handleImageError}
               />
             </div>
-            <div className="md:ml-8 w-full">
+            <div className="md:ml-8 w-full flex flex-col items-center md:items-start">
               <h2 className="ml-2 md:ml-none my-4 max-w-md text-2xl font-header font-bold tracking-tight text-darkblue overflow-hidden">
                 {venue.name}
               </h2>
@@ -100,7 +100,7 @@ const AllAccommodations = () => {
                 </span>
               </div>
               <div className="mx-auto shadow-md w-60 md:w-96 md:mx-0 mt-4 border-t border-main"></div>
-              <p className="ml-2 md:ml-none font-paragraph text-sm pt-6 pr-2 max-w-xs lg:max-w-lg max-h-20 overflow-hidden">
+              <p className="ml-2 md:ml-none font-paragraph text-sm pt-6 pr-2 max-w-xs lg:max-w-lg max-h-10 overflow-hidden">
                 {venue.description}
               </p>
               <div className="flex lg:justify-end">

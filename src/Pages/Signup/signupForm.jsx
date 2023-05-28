@@ -75,7 +75,7 @@ export default function SignupForm() {
               <p className="mt-2 text-sm leading-6 font-paragraph text-gray-500">
                 Already have an account?{' '}
                 <Link
-                  href="/Login"
+                  to="/Login"
                   className="font-semibold font-paragraph text-main hover:text-darkblue"
                 >
                   Click here to Login

@@ -503,7 +503,10 @@ const UpdateAccommodation = () => {
                     key={id}
                     className="flex flex-col items-center space-y-2"
                   >
-                    <label htmlFor={id}>
+                    <label
+                      htmlFor={id}
+                      className="flex flex-col items-center justify-center"
+                    >
                       <div className="bg-lightblue rounded-full p-2 m-2">
                         <img src={icon} alt={label} className="h-4 w-4" />
                       </div>
