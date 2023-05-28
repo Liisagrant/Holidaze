@@ -69,9 +69,10 @@ export default function Header() {
             {isLoggedIn() && <ProfileAvatar avatar={userAvatar} />}
             <div className="relative z-10 flex items-center lg:hidden">
               <button
+                aria-label="Open mobile menu"
                 onClick={toggleMobileMenu}
                 type="button"
-                className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 "
+                className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 focus:outline-black"
               >
                 {isMobileMenuOpen ? (
                   <svg
