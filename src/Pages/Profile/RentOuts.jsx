@@ -59,7 +59,7 @@ const RentOuts = () => {
                         localVenues.filter((v) => v.id !== venueToDelete.id)
                       );
                       dispatch(REMOVE_VENUE(venueToDelete.id));
-                      setIsModalOpen(false);
+                      setIsDeleteModalOpen(false);
                     })
                     .catch((error) => {
                       console.error(error);
