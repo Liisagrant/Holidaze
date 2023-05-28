@@ -48,11 +48,11 @@ const SeeRentoutBookings = () => {
   };
 
   return (
-    <div className="max-w-7xl mt-40">
+    <div className="mt-40 max-w-7xl">
       <BreadCrumbs breadcrumb={breadcrumb} />
-      <div className="my-2 flex gap-5 justify-center ">
-        <div className="w-full mx-4 max-w-4xl rounded-md bg-lightgray shadow-md sm:p-2 py-4 md:p-16">
-          <h1 className="pb-5 px-4 font-heading text-xl md:text-4xl font-bold">
+      <div className="my-2 flex justify-center gap-5 ">
+        <div className="mx-4 w-full max-w-4xl rounded-md bg-lightgray py-4 shadow-md sm:p-2 md:p-16">
+          <h1 className="font-heading px-4 pb-5 text-xl font-bold md:text-4xl">
             Bookings on your Accommodation
           </h1>
           {loading ? (
@@ -72,11 +72,11 @@ const SeeRentoutBookings = () => {
                   const sortedBookings = sortBookingsByDate(bookings);
 
                   return (
-                    <div key={id} className="my-4 mx-4">
+                    <div key={id} className="mx-4 my-4">
                       <h2 className="font-heading text-1xl font-semibold">
                         {truncatedName}
                       </h2>
-                      <table className="w-full text-center text-sm text-black my-4">
+                      <table className="my-4 w-full text-center text-sm text-black">
                         <thead className="bg-lightgrey text-xs uppercase text-black">
                           <tr>
                             <th scope="col" className="py-3 md:px-6"></th>
@@ -92,11 +92,11 @@ const SeeRentoutBookings = () => {
                           {sortedBookings.map((bookingItem) => (
                             <tr
                               key={bookingItem.id}
-                              className="my-2  rounded-md border-b bg-backgroundwhite font-body text-sm font-light text-black"
+                              className="font-body  my-2 rounded-md border-b bg-backgroundwhite text-sm font-light text-black"
                             >
                               <th className="h-24 w-24">
                                 <img
-                                  className="h-full w-full object-cover rounded-md"
+                                  className="h-full w-full rounded-md object-cover"
                                   src={media[0] ? media[0] : NoImage}
                                   alt={truncatedName}
                                 />
@@ -124,11 +124,11 @@ const SeeRentoutBookings = () => {
                 })
               ) : (
                 <div className="flex h-full w-full flex-col items-center justify-center bg-white p-8 drop-shadow-md">
-                  <h1 className="font-paragraph font-md w-full py-10 text-center font-heading text-xl font-bold">
+                  <h1 className="font-md font-heading w-full py-10 text-center font-paragraph text-xl font-bold">
                     Sorry, you have no bookings right now{' '}
                   </h1>
                   <Link to="/Profile">
-                    <button className="rounded-md bg-blue px-5 py-2 font-body text-white">
+                    <button className="bg-blue font-body rounded-md px-5 py-2 text-white">
                       Return to Profile
                     </button>
                   </Link>

@@ -19,7 +19,7 @@ const AddMediaToAccommodation = ({ formik, mediaArray, setMediaArray }) => {
   }
 
   return (
-    <div className="flex flex-col items-start my-8">
+    <div className="my-8 flex flex-col items-start">
       <label
         htmlFor="Images"
         className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
@@ -27,18 +27,18 @@ const AddMediaToAccommodation = ({ formik, mediaArray, setMediaArray }) => {
         Images
       </label>
       {mediaArray && (
-        <div className="flex gap-4 flex-wrap mt-4">
+        <div className="mt-4 flex flex-wrap gap-4">
           {mediaArray.map((media) => (
-            <div key={media} className="w-24 h-24 rounded-md relative">
+            <div key={media} className="relative h-24 w-24 rounded-md">
               <img
                 src={media}
                 alt="Images of the Accommodation"
-                className="block leading-6 rounded-md w-full h-full"
+                className="block h-full w-full rounded-md leading-6"
               />
               <button
                 type="button"
                 onClick={() => deleteMedia(media)}
-                className="absolute bottom-0 right-0 z-10 bg-red-700 rounded-md p-1 text-white text-xs"
+                className="absolute bottom-0 right-0 z-10 rounded-md bg-red-700 p-1 text-xs text-white"
               >
                 Remove
               </button>
@@ -55,13 +55,13 @@ const AddMediaToAccommodation = ({ formik, mediaArray, setMediaArray }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           placeholder="Add valid Image url here"
-          className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+          className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
         />
         <div className="flex justify-end">
           <button
             type="button"
             onClick={pushToMediaArray}
-            className="px-4 py-2 rounded bg-main hover:bg-hovercolor text-white mt-4 font-semibold place-self-end"
+            className="mt-4 place-self-end rounded bg-main px-4 py-2 font-semibold text-white hover:bg-hovercolor"
           >
             Add
           </button>

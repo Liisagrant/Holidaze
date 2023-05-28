@@ -81,9 +81,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="mt-40 max-w-7xl mx-auto">
+    <div className="mx-auto mt-40 max-w-7xl">
       <BreadCrumbs breadcrumb={breadcrumb} />
-      <div className="flex justify-center flex-col lg:flex-row">
+      <div className="flex flex-col justify-center lg:flex-row">
         <div className="m-2">
           <ProfileMenu
             avatar={userAvatar}

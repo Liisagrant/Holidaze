@@ -2,12 +2,12 @@ import secondHelper from '../../../public/secondHelper.svg';
 
 const SecondHelper = () => {
   return (
-    <div className="bg-lightgray p-4 mx-4 mb-4 rounded-md flex flex-col md:flex-row">
+    <div className="mx-4 mb-4 flex flex-col rounded-md bg-lightgray p-4 md:flex-row">
       <div>
-        <p className="font-header text-lg text-darkblue font-bold">
+        <p className="font-header text-lg font-bold text-darkblue">
           Are you looking forward to your upcoming stay?
         </p>
-        <p className="font-paragraph text-sm max-w-xs">
+        <p className="max-w-xs font-paragraph text-sm">
           If you need to review your accommodation details or discover local
           attractions, simply click &quot;see your bookings&quot; and
           effortlessly access all the necessary information.

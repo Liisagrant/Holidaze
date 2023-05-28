@@ -68,25 +68,25 @@ const ProfileMenu = ({
       {isModalOpen && (
         <div
           onClick={() => setIsModalOpen(false)}
-          className="fixed top-0 left-0 w-screen h-screen bg-darkblue bg-opacity-60 flex justify-center items-center z-50"
+          className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-darkblue bg-opacity-60"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative bg-backgroundwhite rounded-md p-16"
+            className="relative rounded-md bg-backgroundwhite p-16"
           >
             <button
-              className="absolute m-4 top-0 right-0 text-gray-900 text-md"
+              className="text-md absolute right-0 top-0 m-4 text-gray-900"
               onClick={() => setIsModalOpen(false)}
             >
               X
             </button>
-            <p className="text-main text-xl mx-4 font-header font-bold mb-4">
+            <p className="mx-4 mb-4 font-header text-xl font-bold text-main">
               Update your Avatar
             </p>
             <div className="m-4 mb-8 w-96">
               <label
                 htmlFor="avatar"
-                className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
               >
                 Avatar
               </label>
@@ -99,10 +99,10 @@ const ProfileMenu = ({
                   name="avatar"
                   type="avatar"
                   autoComplete="avatar"
-                  className="block w-full font-paragraph rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 font-paragraph shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {formik.touched.avatar && formik.errors.avatar ? (
-                  <div className="text-red-600 text-sm">
+                  <div className="text-sm text-red-600">
                     {formik.errors.avatar}
                   </div>
                 ) : null}
@@ -111,14 +111,14 @@ const ProfileMenu = ({
             <div className="flex justify-center">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="mr-4 px-4 py-2 text-white font-semibold rounded-md bg-gray-400 hover:bg-gray-500"
+                className="mr-4 rounded-md bg-gray-400 px-4 py-2 font-semibold text-white hover:bg-gray-500"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 onClick={formik.handleSubmit}
-                className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
+                className="rounded-md bg-main px-4 py-2 font-semibold text-white hover:bg-hovercolor"
               >
                 Update
               </button>
@@ -126,12 +126,12 @@ const ProfileMenu = ({
           </div>
         </div>
       )}
-      <div className="bg-main rounded-md p-4 md:p-8 mx-4">
+      <div className="mx-4 rounded-md bg-main p-4 md:p-8">
         <div className="flex flex-col md:flex-row md:justify-center lg:flex-col">
           <div className="flex items-center justify-center">
-            <div className="bg-backgroundwhite p-2 rounded-full">
+            <div className="rounded-full bg-backgroundwhite p-2">
               <img
-                className="h-24 w-24 md:h-40 md:w-40 rounded-full"
+                className="h-24 w-24 rounded-full md:h-40 md:w-40"
                 src={avatar ? avatar : NoAvatar}
                 alt="user avatar"
                 onError={handleImageError}
@@ -139,16 +139,16 @@ const ProfileMenu = ({
             </div>
           </div>
           <div className="px-4">
-            <p className="text-backgroundwhite font-header font-bold text-2xl px-2 text-center my-2">
+            <p className="my-2 px-2 text-center font-header text-2xl font-bold text-backgroundwhite">
               {userName}
             </p>
-            <p className="text-backgroundwhite text-sm px-2 text-center my-2">
+            <p className="my-2 px-2 text-center text-sm text-backgroundwhite">
               {userEmail}
             </p>
             <button
               type="submit"
               onClick={() => setIsModalOpen(true)}
-              className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-second px-2 py-1.5 text-sm hover:bg-hovercolor font-semibold leading-6 text-black hover:text-white hover:border-2 shadow-sm my-4"
+              className="my-4 flex w-full justify-center rounded-md bg-second px-2 py-1.5 font-header text-sm font-semibold leading-6 text-black shadow-sm hover:border-2 hover:bg-hovercolor hover:text-white md:mx-auto md:w-60"
             >
               Update Avatar
             </button>
@@ -158,7 +158,7 @@ const ProfileMenu = ({
                   <button
                     onClick={onAddAccommodationClick}
                     type="submit"
-                    className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white hover:border-2 shadow-sm my-4"
+                    className="my-4 flex w-full justify-center rounded-md bg-backgroundwhite px-2 py-1.5 font-header text-sm font-semibold leading-6 text-black shadow-sm hover:border-2 hover:bg-hovercolor hover:text-white md:mx-auto md:w-60"
                   >
                     Add accommodation
                   </button>
@@ -167,7 +167,7 @@ const ProfileMenu = ({
                   <button
                     onClick={onRentOutsClick}
                     type="submit"
-                    className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white hover:border-2 shadow-sm my-4"
+                    className="my-4 flex w-full justify-center rounded-md bg-backgroundwhite px-2 py-1.5 font-header text-sm font-semibold leading-6 text-black shadow-sm hover:border-2 hover:bg-hovercolor hover:text-white md:mx-auto md:w-60"
                   >
                     See Rent Outs
                   </button>
@@ -178,7 +178,7 @@ const ProfileMenu = ({
               <button
                 onClick={onUserBookingsClick}
                 type="submit"
-                className="flex w-full md:w-60 md:mx-auto font-header justify-center rounded-md bg-backgroundwhite hover:bg-hovercolor px-2 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white hover:border-2 shadow-sm my-4"
+                className="my-4 flex w-full justify-center rounded-md bg-backgroundwhite px-2 py-1.5 font-header text-sm font-semibold leading-6 text-black shadow-sm hover:border-2 hover:bg-hovercolor hover:text-white md:mx-auto md:w-60"
               >
                 See Your Bookings
               </button>

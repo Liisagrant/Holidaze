@@ -53,7 +53,7 @@ export default function SignupForm() {
 
   return (
     <>
-      <div className="flex max-w-4xl mx-8 md:mx-auto bg-lightgray rounded-md">
+      <div className="mx-8 flex max-w-4xl rounded-md bg-lightgray md:mx-auto">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div className="flex flex-col items-center">
@@ -69,14 +69,14 @@ export default function SignupForm() {
                   fill="#265399"
                 />
               </svg>
-              <h2 className="mt-4 text-2xl font-bold font-header leading-9 tracking-tight text-gray-900">
+              <h2 className="mt-4 font-header text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Make and account Today!
               </h2>
-              <p className="mt-2 text-sm leading-6 font-paragraph text-gray-500">
+              <p className="mt-2 font-paragraph text-sm leading-6 text-gray-500">
                 Already have an account?{' '}
                 <Link
                   to="/Login"
-                  className="font-semibold font-paragraph text-main hover:text-darkblue"
+                  className="font-paragraph font-semibold text-main hover:text-darkblue"
                 >
                   Click here to Login
                 </Link>
@@ -110,7 +110,7 @@ export default function SignupForm() {
                         className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.name && formik.errors.name ? (
-                        <div className="text-red-600 text-sm">
+                        <div className="text-sm text-red-600">
                           {formik.errors.name}
                         </div>
                       ) : null}
@@ -119,7 +119,7 @@ export default function SignupForm() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                     >
                       Email address
                     </label>
@@ -133,10 +133,10 @@ export default function SignupForm() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full font-paragraph px-2 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-2 py-1.5 font-paragraph shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.email && formik.errors.email ? (
-                        <div className="text-red-600 text-sm">
+                        <div className="text-sm text-red-600">
                           {formik.errors.email}
                         </div>
                       ) : null}
@@ -145,7 +145,7 @@ export default function SignupForm() {
                   <div>
                     <label
                       htmlFor="avatar"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                     >
                       Avatar
                     </label>
@@ -158,10 +158,10 @@ export default function SignupForm() {
                         name="avatar"
                         type="avatar"
                         autoComplete="avatar"
-                        className="block w-full font-paragraph px-2 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-2 py-1.5 font-paragraph shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.avatar && formik.errors.avatar ? (
-                        <div className="text-red-600 text-sm">
+                        <div className="text-sm text-red-600">
                           {formik.errors.avatar}
                         </div>
                       ) : null}
@@ -170,7 +170,7 @@ export default function SignupForm() {
                   <div>
                     <label
                       htmlFor="password"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                     >
                       Password
                     </label>
@@ -187,7 +187,7 @@ export default function SignupForm() {
                         className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.password && formik.errors.password ? (
-                        <div className="text-red-600 text-sm">
+                        <div className="text-sm text-red-600">
                           {formik.errors.password}
                         </div>
                       ) : null}
@@ -196,7 +196,7 @@ export default function SignupForm() {
                   <div>
                     <label
                       htmlFor="passwordconfirm"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                     >
                       Comfirm Password
                     </label>
@@ -210,17 +210,17 @@ export default function SignupForm() {
                         type="password"
                         autoComplete="current-password"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.passwordConfirm &&
                       formik.errors.passwordConfirm ? (
-                        <div className="text-red-600 text-sm">
+                        <div className="text-sm text-red-600">
                           {formik.errors.passwordConfirm}
                         </div>
                       ) : null}
                     </div>
                   </div>
-                  <fieldset className="flex flex-col md:flex-row gap-4 md:gap-12">
+                  <fieldset className="flex flex-col gap-4 md:flex-row md:gap-12">
                     <p>Do you want to rent out an accommodation??</p>
                     <div>
                       <input
@@ -254,16 +254,16 @@ export default function SignupForm() {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full font-header justify-center rounded-md bg-main px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center rounded-md bg-main px-3 py-1.5 font-header text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Signup
                     </button>
                   </div>
-                  <div className="flex flex-col justify-center items-center">
+                  <div className="flex flex-col items-center justify-center">
                     {error && (
                       <>
-                        <div className="text-red-700 text-md">{error}</div>
-                        <div className="text-red-600 text-sm">
+                        <div className="text-md text-red-700">{error}</div>
+                        <div className="text-sm text-red-600">
                           Apologies, but it seems that this username is already
                           in use. Please choose a different name and email
                           address.
@@ -278,7 +278,7 @@ export default function SignupForm() {
         </div>
         <div className="relative hidden w-0 flex-1 lg:block">
           <img
-            className="absolute inset-0 h-full w-96 object-cover rounded-tr-md rounded-br-md"
+            className="absolute inset-0 h-full w-96 rounded-br-md rounded-tr-md object-cover"
             src={SignupImage}
             alt="Image of a beach with lovely blue water"
           />
