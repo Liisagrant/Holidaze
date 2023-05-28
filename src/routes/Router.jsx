@@ -6,6 +6,7 @@ import Login from '../Pages/Login/Login';
 import Signup from '../Pages/Signup/Signup';
 import Profile from '../Pages/Profile/Profile';
 import UpdateAccommodation from '../Pages/UpdateAccommodation/UpdateAccommodation';
+import SeeRentoutBookings from '../Pages/SeeBookingsMade/SeeRentoutBookings';
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
           path="/UpdateAccommodation/:id"
           element={<UpdateAccommodation />}
         />
+        <Route path="/SeeRentoutBookings" element={<SeeRentoutBookings />} />
       </Routes>
     </>
   );
