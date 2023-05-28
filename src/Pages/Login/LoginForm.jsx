@@ -59,7 +59,7 @@ export default function LoginForm() {
               <p className="mt-2 text-sm leading-6 font-paragraph text-gray-500">
                 You dont have an account??{' '}
                 <Link
-                  href="/Signup"
+                  to="/Signup"
                   className="font-semibold font-paragraph text-main hover:text-darkblue"
                 >
                   Click here to Signup
