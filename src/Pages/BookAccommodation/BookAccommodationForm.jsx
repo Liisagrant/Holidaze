@@ -90,11 +90,11 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
   console.log(singleAccommodation.bookings);
 
   return (
-    <div className="flex max-w-4xl mx-4 mt-10 mb-40 lg:mx-auto bg-lightgray rounded-md">
+    <div className="mx-4 mb-40 mt-10 flex max-w-4xl rounded-md bg-lightgray lg:mx-auto">
       {formSubmitted ? (
-        <div className="relative p-12 flex flex-col justify-center items-center">
+        <div className="relative flex flex-col items-center justify-center p-12">
           <button
-            className="absolute m-4 top-0 right-0 text-gray-900 text-md"
+            className="text-md absolute right-0 top-0 m-4 text-gray-900"
             onClick={() => setIsModalOpen(false)}
           >
             X
@@ -102,20 +102,20 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
           <p className="font-header text-xl text-main">
             Your Booking was successfully made.
           </p>
-          <p className="font-paragraph text-sm text-gray-600 mt-6">
+          <p className="mt-6 font-paragraph text-sm text-gray-600">
             Return to
             <Link
               to={`/Profile`}
-              className="font-bold text-md text-main underline mx-1"
+              className="text-md mx-1 font-bold text-main underline"
             >
               Profile!{' '}
             </Link>
           </p>
-          <p className="font-paragraph text-sm text-gray-600 mt-6">
+          <p className="mt-6 font-paragraph text-sm text-gray-600">
             or homepage
             <Link
               to={`/`}
-              className="font-bold text-md text-main underline mx-1"
+              className="text-md mx-1 font-bold text-main underline"
             >
               Home!{' '}
             </Link>
@@ -125,11 +125,11 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
           </div>
         </div>
       ) : (
-        <div className="flex relative flex-1 flex-col px-2 py-12 lg:flex-none lg:px-20 xl:px-24">
+        <div className="relative flex flex-1 flex-col px-2 py-12 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div className="flex flex-col items-center">
               <button
-                className="absolute m-4 top-0 right-0 text-gray-900 text-md"
+                className="text-md absolute right-0 top-0 m-4 text-gray-900"
                 onClick={() => setIsModalOpen(false)}
               >
                 X
@@ -146,10 +146,10 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                   fill="#265399"
                 />
               </svg>
-              <h2 className="mt-4 text-xl text-center md:text-2xl font-bold font-header leading-9 tracking-tight text-gray-900">
+              <h2 className="mt-4 text-center font-header text-xl font-bold leading-9 tracking-tight text-gray-900 md:text-2xl">
                 Book this Accommodation
               </h2>
-              <p className="mt-2 text-sm leading-6 font-paragraph text-gray-500">
+              <p className="mt-2 font-paragraph text-sm leading-6 text-gray-500">
                 Please complete the inputs{' '}
               </p>
             </div>
@@ -167,7 +167,7 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                       bookings={singleAccommodation.bookings || []}
                     />
                   </div>
-                  <p className="text-sm font-paragraph font-md sm:max-w-xs leading-6 text-gray-700">
+                  <p className="font-md font-paragraph text-sm leading-6 text-gray-700 sm:max-w-xs">
                     Please note that dates in red indicate that they are already
                     booked.
                   </p>
@@ -176,7 +176,7 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                       <div className="mb-4 sm:mr-4">
                         <label
                           htmlFor="dateFrom"
-                          className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                          className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                         >
                           Date From
                         </label>
@@ -194,7 +194,7 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                             className="block w-40 rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
                           {formik.touched.dateFrom && formik.errors.dateFrom ? (
-                            <div className="text-red-600 text-sm">
+                            <div className="text-sm text-red-600">
                               {formik.errors.dateFrom}
                             </div>
                           ) : null}
@@ -204,7 +204,7 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                       <div className="mb-4">
                         <label
                           htmlFor="dateTo"
-                          className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                          className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                         >
                           Date To
                         </label>
@@ -219,10 +219,10 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                             id="dateTo"
                             name="dateTo"
                             required
-                            className="block w-40 rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            className="block w-40 rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
                           {formik.touched.dateTo && formik.errors.dateTo ? (
-                            <div className="text-red-600 text-sm">
+                            <div className="text-sm text-red-600">
                               {formik.errors.dateTo}
                             </div>
                           ) : null}
@@ -232,11 +232,11 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                     <div className="mb-4">
                       <label
                         htmlFor="guests"
-                        className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                        className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                       >
                         Number of Guests
                       </label>
-                      <p className="text-sm font-paragraph font-md sm:max-w-xs leading-6 text-gray-700">
+                      <p className="font-md font-paragraph text-sm leading-6 text-gray-700 sm:max-w-xs">
                         This accommodation allows{' '}
                         <span className="text-red-700">
                           {singleAccommodation.maxGuests} guests
@@ -252,10 +252,10 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                           type="number"
                           min="1"
                           required
-                          className="block w-56 sm:w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-56 rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-full sm:text-sm sm:leading-6"
                         />
                         {formik.touched.guests && formik.errors.guests ? (
-                          <div className="text-red-600 text-sm">
+                          <div className="text-sm text-red-600">
                             {formik.errors.guests}
                           </div>
                         ) : null}
@@ -264,7 +264,7 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                     <div className="mb-4">
                       <label
                         htmlFor="totalPrice"
-                        className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                        className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                       >
                         Total Price
                       </label>
@@ -275,7 +275,7 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                           type="text"
                           disabled
                           value={`$${totalPrice}`}
-                          className="block w-56 sm:w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-56 rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-full sm:text-sm sm:leading-6"
                         />
                       </div>
                     </div>
@@ -283,7 +283,7 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
                       <button
                         type="submit"
                         disabled={!formik.isValid}
-                        className="flex w-56 mt-6 sm:w-full font-header justify-center rounded-md bg-main px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="mt-6 flex w-56 justify-center rounded-md bg-main px-3 py-1.5 font-header text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:w-full"
                       >
                         Book this Accommodation
                         {isLoading ? <SpinnerComponent /> : null}

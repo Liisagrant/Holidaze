@@ -2,7 +2,7 @@ import AccommodationCard from './AccommodationCard';
 
 function AccommodationDetail() {
   return (
-    <div className="mt-40 max-w-7xl mx-auto">
+    <div className="mx-auto mt-40 max-w-7xl">
       <AccommodationCard />
     </div>
   );

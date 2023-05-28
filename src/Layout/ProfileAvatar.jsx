@@ -8,7 +8,7 @@ const ProfileAvatar = ({ avatar }) => {
   };
 
   return (
-    <div className="flex items-center ml-4 flex-shrink-0">
+    <div className="ml-4 flex flex-shrink-0 items-center">
       <Link to="/Profile">
         <button
           type="button"

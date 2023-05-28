@@ -162,19 +162,19 @@ const UpdateAccommodation = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto mt-40">
+    <div className="mx-auto mt-40 max-w-7xl">
       <BreadCrumbs breadcrumb={breadcrumb} />
-      <div className="max-w-xl mx-auto">
+      <div className="mx-auto max-w-xl">
         {formSubmitted ? (
-          <div className="p-12 flex flex-col justify-center items-center">
+          <div className="flex flex-col items-center justify-center p-12">
             <p className="font-header text-3xl text-main">
               Your accommodation has been successfully been Updated
             </p>
-            <p className="font-paragraph text-md text-gray-600 mt-8">
+            <p className="text-md mt-8 font-paragraph text-gray-600">
               You can see your updated Accommodation{' '}
               <Link
                 to={`/Accommodation/${singleVenue.id}`}
-                className="font-bold text-xl text-main underline"
+                className="text-xl font-bold text-main underline"
               >
                 HERE!{' '}
               </Link>
@@ -187,7 +187,7 @@ const UpdateAccommodation = () => {
         ) : (
           <form
             onSubmit={formik.handleSubmit}
-            className="w-full bg-lightgray py-8 px-6"
+            className="w-full bg-lightgray px-6 py-8"
           >
             <div className="flex flex-col items-center">
               <svg
@@ -202,10 +202,10 @@ const UpdateAccommodation = () => {
                   fill="#265399"
                 />
               </svg>
-              <h2 className="mt-4 text-2xl font-semibold font-header leading-relaxed tracking-tight text-gray-800">
+              <h2 className="mt-4 font-header text-2xl font-semibold leading-relaxed tracking-tight text-gray-800">
                 Want to update this Accommodation?
               </h2>
-              <p className="my-4 text-sm leading-7 font-paragraph text-gray-600">
+              <p className="my-4 font-paragraph text-sm leading-7 text-gray-600">
                 It is super easy. Just edit the feilds you would like to change
               </p>
             </div>
@@ -226,10 +226,10 @@ const UpdateAccommodation = () => {
                   type="text"
                   autoComplete="name"
                   placeholder="What will you call your rental?"
-                  className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {formik.touched.name && formik.errors.name ? (
-                  <div className="text-red-600 text-sm">
+                  <div className="text-sm text-red-600">
                     {formik.errors.name}
                   </div>
                 ) : null}
@@ -253,16 +253,16 @@ const UpdateAccommodation = () => {
                   type="text"
                   autoComplete="description"
                   rows="4"
-                  className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {formik.touched.description && formik.errors.description ? (
-                  <div className="text-red-600 text-sm">
+                  <div className="text-sm text-red-600">
                     {formik.errors.description}
                   </div>
                 ) : null}
               </div>
             </div>
-            <div className="flex flex-row w-full justify-between my-8">
+            <div className="my-8 flex w-full flex-row justify-between">
               <div className="flex flex-col">
                 <div className="mr-2">
                   <label
@@ -271,7 +271,7 @@ const UpdateAccommodation = () => {
                   >
                     Continent
                   </label>
-                  <div className="mt-2 mr-2">
+                  <div className="mr-2 mt-2">
                     <input
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
@@ -281,11 +281,11 @@ const UpdateAccommodation = () => {
                       type="text"
                       autoComplete="continent"
                       placeholder="What continent?"
-                      className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     {formik.touched.location?.continent &&
                     formik.errors.location?.continent ? (
-                      <div className="text-red-600 text-sm">
+                      <div className="text-sm text-red-600">
                         {formik.errors.location.continent}
                       </div>
                     ) : null}
@@ -298,7 +298,7 @@ const UpdateAccommodation = () => {
                   >
                     Address
                   </label>
-                  <div className="mt-2 mr-2">
+                  <div className="mr-2 mt-2">
                     <input
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
@@ -308,11 +308,11 @@ const UpdateAccommodation = () => {
                       type="text"
                       autoComplete="address"
                       placeholder="What is your address?"
-                      className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     {formik.touched.location?.address &&
                     formik.errors.location?.address ? (
-                      <div className="text-red-600 text-sm">
+                      <div className="text-sm text-red-600">
                         {formik.errors.location.address}
                       </div>
                     ) : null}
@@ -338,11 +338,11 @@ const UpdateAccommodation = () => {
                         type="text"
                         autoComplete="country"
                         placeholder="In what country?"
-                        className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.location?.country &&
                       formik.errors.location?.country ? (
-                        <div className="text-red-600 text-sm">
+                        <div className="text-sm text-red-600">
                           {formik.errors.location.country}
                         </div>
                       ) : null}
@@ -366,11 +366,11 @@ const UpdateAccommodation = () => {
                           type="text"
                           autoComplete="city"
                           placeholder="In what city?"
-                          className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                         {formik.touched.location?.city &&
                         formik.errors.location?.city ? (
-                          <div className="text-red-600 text-sm">
+                          <div className="text-sm text-red-600">
                             {formik.errors.location.city}
                           </div>
                         ) : null}
@@ -380,7 +380,7 @@ const UpdateAccommodation = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-row my-4">
+            <div className="my-4 flex flex-row">
               <div className=" mr-2">
                 <label
                   htmlFor="price"
@@ -388,7 +388,7 @@ const UpdateAccommodation = () => {
                 >
                   Price
                 </label>
-                <div className="mt-2 mr-2">
+                <div className="mr-2 mt-2">
                   <input
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -397,10 +397,10 @@ const UpdateAccommodation = () => {
                     name="price"
                     type="number"
                     placeholder="please enter how much Your place coast per night"
-                    className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   {formik.touched.price && formik.errors.price ? (
-                    <div className="text-red-600 text-sm">
+                    <div className="text-sm text-red-600">
                       {formik.errors.price}
                     </div>
                   ) : null}
@@ -422,17 +422,17 @@ const UpdateAccommodation = () => {
                     name="maxGuests"
                     type="number"
                     min="1"
-                    className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   {formik.touched.maxGuests && formik.errors.maxGuests ? (
-                    <div className="text-red-600 text-sm">
+                    <div className="text-sm text-red-600">
                       {formik.errors.maxGuests}
                     </div>
                   ) : null}
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-start my-8">
+            <div className="my-8 flex flex-col items-start">
               <label
                 htmlFor="Images"
                 className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
@@ -440,18 +440,18 @@ const UpdateAccommodation = () => {
                 Images
               </label>
               {mediaArray && (
-                <div className="flex gap-4 flex-wrap mt-4">
+                <div className="mt-4 flex flex-wrap gap-4">
                   {mediaArray.map((media) => (
-                    <div key={media} className="w-24 h-24 rounded-md relative">
+                    <div key={media} className="relative h-24 w-24 rounded-md">
                       <img
                         src={media}
                         alt="Images of the Accommodation"
-                        className="block leading-6 rounded-md w-full h-full"
+                        className="block h-full w-full rounded-md leading-6"
                       />
                       <button
                         type="button"
                         onClick={() => deleteMedia(media)}
-                        className="absolute bottom-0 right-0 z-10 bg-red-700 rounded-md p-1 text-white text-xs"
+                        className="absolute bottom-0 right-0 z-10 rounded-md bg-red-700 p-1 text-xs text-white"
                       >
                         Remove
                       </button>
@@ -468,13 +468,13 @@ const UpdateAccommodation = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   placeholder="Add valid Image url here"
-                  className="block w-full rounded-md border-0 py-2 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 />
                 <div className="flex justify-end">
                   <button
                     type="button"
                     onClick={pushToMediaArray}
-                    className="px-4 py-2 rounded bg-main hover:bg-hovercolor text-white mt-4 font-semibold place-self-end"
+                    className="mt-4 place-self-end rounded bg-main px-4 py-2 font-semibold text-white hover:bg-hovercolor"
                   >
                     Add
                   </button>
@@ -485,10 +485,10 @@ const UpdateAccommodation = () => {
               ) : null}
             </div>
             <div className="my-8">
-              <h3 className="font-paragraph text-center mt-16">
+              <h3 className="mt-16 text-center font-paragraph">
                 What kind of facilities does your place have?
               </h3>
-              <div className="flex justify-center space-x-4 mt-8">
+              <div className="mt-8 flex justify-center space-x-4">
                 {[
                   { id: 'wifi', icon: '/WifiHigh.svg', label: 'WiFi' },
                   { id: 'parking', icon: '/Car.svg', label: 'Parking' },
@@ -507,7 +507,7 @@ const UpdateAccommodation = () => {
                       htmlFor={id}
                       className="flex flex-col items-center justify-center"
                     >
-                      <div className="bg-lightblue rounded-full p-2 m-2">
+                      <div className="m-2 rounded-full bg-lightblue p-2">
                         <img src={icon} alt={label} className="h-4 w-4" />
                       </div>
                       <span className="text-xs">{label}</span>
@@ -526,21 +526,21 @@ const UpdateAccommodation = () => {
               </div>
             </div>
             <div className="flex flex-row justify-center">
-              <div className="flex justify-center my-8 mx-4">
+              <div className="mx-4 my-8 flex justify-center">
                 <Link to="/Profile">
                   <button
                     type="button"
-                    className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
+                    className="rounded-md bg-main px-4 py-2 font-semibold text-white hover:bg-hovercolor"
                   >
                     Cancel
                   </button>
                 </Link>
               </div>
-              <div className="flex justify-center my-8 mx-4">
+              <div className="mx-4 my-8 flex justify-center">
                 <button
                   type="submit"
                   onClick={formik.handleSubmit}
-                  className="px-4 py-2 text-white font-semibold rounded-md bg-main hover:bg-hovercolor"
+                  className="rounded-md bg-main px-4 py-2 font-semibold text-white hover:bg-hovercolor"
                 >
                   Update Accommodation
                 </button>

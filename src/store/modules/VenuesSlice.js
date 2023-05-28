@@ -33,7 +33,6 @@ const venuesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchVenues.fulfilled, (state, action) => {
-      console.log('Fetched venues data:', action.payload);
       state.venues = action.payload;
 
       let lowestPrice = Infinity;
@@ -63,7 +62,6 @@ const venuesSlice = createSlice({
     });
 
     builder.addCase(fetchSingleVenue.fulfilled, (state, action) => {
-      console.log('Fetched venues data:', action.payload);
       state.singleVenue = action.payload;
     });
   },
@@ -88,7 +86,6 @@ export const fetchVenues = createAsyncThunk(
     }
 
     const data = await response.json();
-    console.log(data);
     return data;
   }
 );
@@ -100,7 +97,6 @@ export const fetchSingleVenue = createAsyncThunk(
       `https://nf-api.onrender.com/api/v1/holidaze/venues/${id}?_owner=true&_bookings=true`
     );
     const data = await response.json();
-    console.log(data);
     return data;
   }
 );
@@ -124,14 +120,11 @@ export const createVenue = (venueData) => async (dispatch) => {
     if (!response.ok) {
       throw new Error(data.message || 'Something went wrong');
     }
-
-    console.log(data);
     dispatch(ADD_NEW_VENUE(data));
 
     return data;
   } catch (e) {
-    console.log(e);
-    throw e;
+    console.error(e);
   }
 };
 
@@ -145,9 +138,8 @@ export const deleteVenue = (id) => async (dispatch) => {
       },
     });
     dispatch(REMOVE_VENUE(id));
-    console.log('venue is deleted');
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 };
 
@@ -165,10 +157,9 @@ export const updateVenue = (id, venueData) => async (dispatch) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     dispatch(UPDATE_VENUE(data));
   } catch (e) {
-    console.log('error');
+    console.error(e);
   }
 };
 
@@ -186,11 +177,9 @@ export const bookVenue = (venueData) => async (dispatch) => {
       }
     );
     const data = await response.json();
-    console.log(data);
-    console.log('yees this place has been booked for you');
     dispatch(BOOK_VENUE(data));
   } catch (e) {
-    console.log('error');
+    console.error(e);
   }
 };
 

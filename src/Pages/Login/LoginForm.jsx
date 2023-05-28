@@ -37,7 +37,7 @@ export default function LoginForm() {
 
   return (
     <>
-      <div className="flex max-w-4xl mx-8  md:mx-auto bg-lightgray rounded-md">
+      <div className="mx-8 flex max-w-4xl  rounded-md bg-lightgray md:mx-auto">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div className="flex flex-col items-center">
@@ -53,14 +53,14 @@ export default function LoginForm() {
                   fill="#265399"
                 />
               </svg>
-              <h2 className="mt-4 text-2xl font-bold font-header leading-9 tracking-tight text-gray-900">
+              <h2 className="mt-4 font-header text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Login to your Account!
               </h2>
-              <p className="mt-2 text-sm leading-6 font-paragraph text-gray-500">
+              <p className="mt-2 font-paragraph text-sm leading-6 text-gray-500">
                 You dont have an account??{' '}
                 <Link
                   to="/Signup"
-                  className="font-semibold font-paragraph text-main hover:text-darkblue"
+                  className="font-paragraph font-semibold text-main hover:text-darkblue"
                 >
                   Click here to Signup
                 </Link>
@@ -77,7 +77,7 @@ export default function LoginForm() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                     >
                       Email address
                     </label>
@@ -91,10 +91,10 @@ export default function LoginForm() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full font-paragraph rounded-md px-2 border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-2 py-1.5 font-paragraph shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.email && formik.errors.email ? (
-                        <div className="text-red-600 text-sm">
+                        <div className="text-sm text-red-600">
                           {formik.errors.email}
                         </div>
                       ) : null}
@@ -103,7 +103,7 @@ export default function LoginForm() {
                   <div>
                     <label
                       htmlFor="password"
-                      className="block text-sm font-paragraph font-medium leading-6 text-gray-900"
+                      className="block font-paragraph text-sm font-medium leading-6 text-gray-900"
                     >
                       Password
                     </label>
@@ -117,10 +117,10 @@ export default function LoginForm() {
                         type="password"
                         autoComplete="current-password"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                       {formik.touched.password && formik.errors.password ? (
-                        <div className="text-red-600 text-sm">
+                        <div className="text-sm text-red-600">
                           {formik.errors.password}
                         </div>
                       ) : null}
@@ -129,16 +129,16 @@ export default function LoginForm() {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full font-header justify-center rounded-md bg-main px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center rounded-md bg-main px-3 py-1.5 font-header text-sm font-semibold leading-6 text-white shadow-sm hover:bg-darkblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Login
                     </button>
                   </div>
-                  <div className="flex flex-col justify-center items-center">
+                  <div className="flex flex-col items-center justify-center">
                     {error && (
                       <>
-                        <div className="text-red-700 text-md">{error}</div>
-                        <div className="text-red-600 text-sm">
+                        <div className="text-md text-red-700">{error}</div>
+                        <div className="text-sm text-red-600">
                           Oops! It appears that this user does not exist. Please
                           double-check the spelling or create an account.
                         </div>
@@ -152,7 +152,7 @@ export default function LoginForm() {
         </div>
         <div className="relative hidden w-0 flex-1 lg:block">
           <img
-            className="absolute inset-0 h-full w-96 object-cover rounded-tr-md rounded-br-md"
+            className="absolute inset-0 h-full w-96 rounded-br-md rounded-tr-md object-cover"
             src={LoginImage}
             alt="Image of a beach with lovely blue water"
           />

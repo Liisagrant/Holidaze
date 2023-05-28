@@ -50,11 +50,9 @@ export const signUpUser = (userData, dispatch) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       window.location.href = '/login';
     })
     .catch((error) => {
-      console.error('Error:', error);
       dispatch(SIGNUP_ERROR(error.message));
     });
 };
@@ -74,7 +72,6 @@ export const logInUser = (userData, dispatch) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       localStorage.setItem('userName', data.name);
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('avatar', data.avatar);
@@ -101,11 +98,10 @@ export const fetchSingleProfile = (name) => async (dispatch) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     dispatch(SET_SINGLE_PROFILE(data));
     dispatch(setLoadingState(false));
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 };
 
@@ -123,10 +119,8 @@ export const fetchBookingOwner = (name, profileData) => async (dispatch) => {
       }
     );
     const data = await response.json();
-    console.log(data);
-    console.log(response);
     dispatch(SET_SINGLE_PROFILE(data));
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 };

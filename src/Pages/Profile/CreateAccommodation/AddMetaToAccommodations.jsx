@@ -3,10 +3,10 @@ const AddMetaToAccommodations = ({ formik }) => {
   return (
     <>
       <div className="my-8">
-        <h3 className="font-paragraph text-center mt-16">
+        <h3 className="mt-16 text-center font-paragraph">
           What kind of facilities does your place have?
         </h3>
-        <div className="flex justify-center space-x-4 mt-8">
+        <div className="mt-8 flex justify-center space-x-4">
           {[
             { id: 'wifi', icon: '/WifiHigh.svg', label: 'WiFi' },
             { id: 'parking', icon: '/Car.svg', label: 'Parking' },
@@ -18,7 +18,7 @@ const AddMetaToAccommodations = ({ formik }) => {
                 htmlFor={id}
                 className="flex flex-col items-center justify-center"
               >
-                <div className="bg-lightblue rounded-full p-2 m-2">
+                <div className="m-2 rounded-full bg-lightblue p-2">
                   <img src={icon} alt={label} className="h-4 w-4" />
                 </div>
                 <span className="text-xs">{label}</span>

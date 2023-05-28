@@ -41,7 +41,7 @@ export function SearchBar() {
             </div>
             <input
               name="search"
-              className="block w-full rounded-md border-0 bg-backgroundwhite py-1.5 pl-10 pr-3 text-main placeholder:text-gray-400 focus:bg-white focus:placeholder:text-gray-500 sm:text-sm sm:leading-6 focus:outline-none"
+              className="block w-full rounded-md border-0 bg-backgroundwhite py-1.5 pl-10 pr-3 text-main placeholder:text-gray-400 focus:bg-white focus:outline-none focus:placeholder:text-gray-500 sm:text-sm sm:leading-6"
               placeholder="Search"
               type="search"
               onChange={handleSearchChange}

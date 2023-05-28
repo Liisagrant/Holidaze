@@ -1,9 +1,9 @@
 const Loader = () => {
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center">
-      <div className="bg-main rounded-lg p-12 h-40 flex flex-col items-center justify-center">
+    <div className="fixed bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center">
+      <div className="flex h-40 flex-col items-center justify-center rounded-lg bg-main p-12">
         <svg
-          className="animate-spin h-10 w-10 text-white text-center"
+          className="h-10 w-10 animate-spin text-center text-white"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -22,7 +22,7 @@ const Loader = () => {
             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
           ></path>
         </svg>
-        <p className="mt-3 text-lg font-medium text-center text-white">
+        <p className="mt-3 text-center text-lg font-medium text-white">
           Loading
         </p>
       </div>

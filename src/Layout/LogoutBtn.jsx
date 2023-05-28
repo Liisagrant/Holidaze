@@ -5,7 +5,7 @@ const LogoutBtn = ({ handleLogout }) => {
     <div>
       <button
         onClick={handleLogout}
-        className="text-main text-sm font-header bg-backgroundwhite px-4 py-0.5 rounded-md font-md hover:text-backgroundwhite hover:bg-main focus:outline-none"
+        className="font-md rounded-md bg-backgroundwhite px-4 py-0.5 font-header text-sm text-main hover:bg-main hover:text-backgroundwhite focus:outline-none"
       >
         Logout
       </button>

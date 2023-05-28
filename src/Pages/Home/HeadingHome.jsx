@@ -1,7 +1,7 @@
 const HeadingHome = () => {
   return (
     <div className="mx-auto max-w-7xl">
-      <h1 className="font-header text-center font-bold text-2xl mt-40 text-shadow-md p-2">
+      <h1 className="mt-40 p-2 text-center font-header text-2xl font-bold text-shadow-md">
         Holidaze&apos;s Hidden Gems: Our Top Rated Picks for the Perfect
         Vacation Stay
       </h1>
