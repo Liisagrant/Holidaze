@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { getUserDetails } from '../../utils/Auth';
 import formatDate from '../../Global/formatDate';
 import { fetchBookingOwner } from '../../store/modules/ProfileSlice';
+import BreadCrumbs from '../../Global/BreadCrumbs';
+import Breadcrumbs from '../../Global/BreadCrumbs';
 
 const SeeRentoutBookings = () => {
   const dispatch = useDispatch();
@@ -34,11 +36,18 @@ const SeeRentoutBookings = () => {
       .sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom));
   };
 
+  const breadcrumb = [
+    { name: 'Home', path: '/' },
+    { name: 'Profile', path: '/Profile' },
+    { name: 'Bookings on a Rentout', path: `/SeeRentoutBookings` },
+  ];
+
   return (
-    <div className="mx-auto max-w-7xl mt-40  px-5 flex justify-center">
-      <div className="my-2 flex gap-5">
-        <div className="w-full mx-2 max-w-4xl rounded-md bg-lightgray shadow-md p-2 md:p-16">
-          <h1 className="pb-5 font-heading text-xl md:text-4xl font-bold">
+    <div className="max-w-7xl mt-40">
+      <Breadcrumbs breadcrumb={breadcrumb} />
+      <div className="my-2 flex gap-5 justify-center ">
+        <div className="w-full mx-4 max-w-4xl rounded-md bg-lightgray shadow-md sm:p-2 py-4 md:p-16">
+          <h1 className="pb-5 px-4 font-heading text-xl md:text-4xl font-bold">
             Bookings on your Accommodation
           </h1>
           {singleProfile && singleProfile.length > 0 ? (
