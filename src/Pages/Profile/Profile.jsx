@@ -26,7 +26,6 @@ const Profile = () => {
   const [otherContentDisplayed, setOtherContentDisplayed] = useState(false);
   const isLoading = useSelector((state) => state.loader.isLoading);
 
-  console.log(userDetails.manager);
   const breadcrumb = [
     { name: 'Home', path: '/' },
     { name: 'Profile', path: '/Profile' },

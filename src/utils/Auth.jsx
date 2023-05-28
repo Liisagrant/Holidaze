@@ -14,8 +14,6 @@ export const getUserDetails = () => {
   const email = localStorage.getItem('email');
   const manager = localStorage.getItem('venueManager');
 
-  console.log(username, avatar, token, email, manager);
-
   return {
     username: username,
     avatar: avatar,

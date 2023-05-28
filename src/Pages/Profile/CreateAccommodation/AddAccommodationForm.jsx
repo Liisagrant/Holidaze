@@ -102,8 +102,6 @@ const AddAccommodationForm = () => {
           lng: 0,
         },
       };
-      console.log(venueData.media);
-      console.log(venueData);
       dispatch(setLoadingState(true));
       dispatch(createVenue(venueData))
         .then((newVenue) => {
@@ -113,7 +111,6 @@ const AddAccommodationForm = () => {
           dispatch(ADD_VENUE_TO_PROFILE(newVenue));
         })
         .catch((error) => {
-          console.log(error);
           dispatch(setLoadingState(false));
         });
     },

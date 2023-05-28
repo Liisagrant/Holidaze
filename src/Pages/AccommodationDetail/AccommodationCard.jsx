@@ -45,8 +45,6 @@ function AccommodationCard() {
     { name: name, path: `/Accommodation/${id}` },
   ];
 
-  console.log(singleAccommodation);
-
   return (
     <div className="max-w-7xl">
       <BreadCrumbs breadcrumb={breadcrumb} />
