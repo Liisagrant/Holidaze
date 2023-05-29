@@ -32,7 +32,7 @@ const TopRated = () => {
             >
               <Link to={`/Accommodation/${venue.id}`}>
                 <img
-                  className="h-64 w-full object-cover"
+                  className="h-64 w-72 object-cover"
                   src={venue.media ? venue.media : defaultTopRatedImage}
                   alt={venue.name}
                   onError={handleImageError}
