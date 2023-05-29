@@ -115,7 +115,6 @@ export const fetchBookingOwner = (name, profileData) => async (dispatch) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify(profileData),
       }
     );
     const data = await response.json();

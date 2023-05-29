@@ -20,27 +20,22 @@ const SeeRentoutBookings = () => {
     { name: 'Profile', path: '/Profile' },
     { name: 'Bookings on RentOuts', path: `/SeeRentoutBookings` },
   ];
+
   useEffect(() => {
     if (userDetails.username) {
       setLoading(true);
 
-      dispatch(fetchBookingOwner(userDetails.username))
-        .then((res) => {
-          setBookings(res.data);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      dispatch(fetchBookingOwner(userDetails.username)).finally(() => {
+        setLoading(false);
+      });
     }
   }, [dispatch, userDetails.username]);
 
   const truncateText = (text, maxWords) => {
     const words = text.split(' ');
-
     if (words.length <= maxWords) {
       return text;
     }
-
     const truncatedWords = words.slice(0, maxWords);
     return truncatedWords.join(' ') + '...';
   };
