@@ -21,6 +21,7 @@ const ProfileMenu = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [venueManager, setVenueManager] = useState(false);
+
   const handleImageError = (e) => {
     e.target.src = NoAvatar;
   };

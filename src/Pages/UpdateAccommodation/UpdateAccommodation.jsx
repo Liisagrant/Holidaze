@@ -17,7 +17,7 @@ import ForkKnifeIcon from '../../Image/ForkKnife.svg';
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(8, 'Must be 8 chars or more')
-    .max(60, 'Can not be longer than 50 chars')
+    .max(100, 'Can not be longer than 100 chars')
     .required('Required'),
   description: Yup.string()
     .min(20, 'Must be 20 chars or more')
@@ -33,15 +33,19 @@ const validationSchema = Yup.object().shape({
   location: Yup.object().shape({
     country: Yup.string()
       .required('Required')
+      .min(1, 'Must be 1 chars or more')
       .max(60, 'Cannot be longer than 60 chars'),
     continent: Yup.string()
       .required('Required')
+      .min(1, 'Must be 1 chars or more')
       .max(60, 'Cannot be longer than 60 chars'),
     city: Yup.string()
       .required('Required')
+      .min(1, 'Must be 1 chars or more')
       .max(60, 'Cannot be longer than 60 chars'),
     address: Yup.string()
       .required('Required')
+      .min(1, 'Must be 1 chars or more')
       .max(60, 'Cannot be longer than 60 chars'),
   }),
 });
