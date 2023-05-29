@@ -18,7 +18,7 @@ const AllAccommodations = () => {
     venue.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage] = useState(20);
   const displayedVenues = filteredVenues.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage

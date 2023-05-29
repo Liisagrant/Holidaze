@@ -49,7 +49,7 @@ export const signUpUser = (userData, dispatch) => {
       }
       return response.json();
     })
-    .then((data) => {
+    .then(() => {
       window.location.href = '/login';
     })
     .catch((error) => {
@@ -105,7 +105,7 @@ export const fetchSingleProfile = (name) => async (dispatch) => {
   }
 };
 
-export const fetchBookingOwner = (name, profileData) => async (dispatch) => {
+export const fetchBookingOwner = (name) => async (dispatch) => {
   try {
     const response = await fetch(
       `https://nf-api.onrender.com/api/v1/holidaze/profiles/${name}/venues?_bookings=true&_owner=true`,
