@@ -1,4 +1,9 @@
 import PropTypes from 'prop-types';
+import WifiHighIcon from '../../../Image/WifiHigh.svg';
+import CarIcon from '../../../image/Car.svg';
+import CatIcon from '../../../image/Cat.svg';
+import ForkKnifeIcon from '../../../image/ForkKnife.svg';
+
 const AddMetaToAccommodations = ({ formik }) => {
   return (
     <>
@@ -8,10 +13,10 @@ const AddMetaToAccommodations = ({ formik }) => {
         </h3>
         <div className="mt-8 flex justify-center space-x-4">
           {[
-            { id: 'wifi', icon: '/WifiHigh.svg', label: 'WiFi' },
-            { id: 'parking', icon: '/Car.svg', label: 'Parking' },
-            { id: 'pets', icon: '/Cat.svg', label: 'Pets' },
-            { id: 'breakfast', icon: '/ForkKnife.svg', label: 'Breakfast' },
+            { id: 'wifi', icon: WifiHighIcon, label: 'WiFi' },
+            { id: 'parking', icon: CarIcon, label: 'Parking' },
+            { id: 'pets', icon: CatIcon, label: 'Pets' },
+            { id: 'breakfast', icon: ForkKnifeIcon, label: 'Breakfast' },
           ].map(({ id, icon, label }) => (
             <div key={id} className="flex flex-col items-center space-y-2">
               <label

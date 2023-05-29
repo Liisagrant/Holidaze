@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchVenues } from '../../store/modules/VenuesSlice';
 import HeadingHome from './HeadingHome';
-import defaultTopRatedImage from '../../../public/defaultTopRated.jpg';
+import defaultTopRatedImage from '../../Image/defaultTopRated.jpg';
 import RatingStar from '../../Global/RatingStar';
 
 const TopRated = () => {

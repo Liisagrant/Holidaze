@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import NoRentOuts from '../../../public/NoRentOuts.svg';
-import NoImage from '../../../public/NoImage.png';
+import NoRentOuts from '../../Image/NoRentOuts.svg';
+import NoImage from '../../Image/NoImage.png';
 
 const UserBookings = () => {
   const singleProfile = useSelector((state) => state.Profile.singleProfile);

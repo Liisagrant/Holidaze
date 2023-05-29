@@ -1,4 +1,4 @@
-import Home from '../../../public/home.svg';
+import Home from '../../Image/home.svg';
 
 const SellPoint = () => {
   return (

@@ -1,3 +1,10 @@
+import Italy from '../../Image/italy.jpg';
+import Spain from '../../Image/spain.jpg';
+import England from '../../Image/england.jpg';
+import Norway from '../../Image/norway.jpg';
+import Iceland from '../../Image/iceland.jpg';
+import Danmark from '../../Image/danmark.jpg';
+
 const ImageGrid = () => {
   return (
     <div className="container mx-auto max-w-7xl ">
@@ -5,9 +12,8 @@ const ImageGrid = () => {
         <div className="relative mb-4 h-64 w-full px-2 md:h-auto md:w-1/2">
           <img
             className="block h-full w-full rounded-md object-cover"
-            href="#"
-            title="Link"
-            src="./spain.jpg"
+            src={Spain}
+            alt="Image of Spain"
           />
           <div className="absolute left-0 top-0 p-4">
             <span className="rounded-md bg-main bg-opacity-50 p-2 font-header text-xl font-semibold text-white">
@@ -20,9 +26,8 @@ const ImageGrid = () => {
             <div className="relative mb-4 h-48 w-full px-2 sm:mb-0 sm:w-1/2 md:mb-4 md:w-full xl:h-64">
               <img
                 className="block h-full w-full rounded-md object-cover"
-                href="#"
-                title="Link"
-                src="./norway.jpg"
+                alt="Image of Norway"
+                src={Norway}
               />
               <div className="absolute left-0 top-0 p-4">
                 <span className="rounded-md bg-main bg-opacity-50 p-2 font-header text-xl font-semibold text-white">
@@ -33,9 +38,8 @@ const ImageGrid = () => {
             <div className="relative h-48 w-full px-2 sm:w-1/2 md:w-full xl:h-64">
               <img
                 className="block h-full w-full rounded-md object-cover"
-                href="#"
-                title="Link"
-                src="./england.jpg"
+                alt="Image of England"
+                src={England}
               />
               <div className="absolute left-0 top-0 p-4">
                 <span className="rounded-md bg-main bg-opacity-50 p-2 font-header text-xl font-semibold text-white">
@@ -48,9 +52,8 @@ const ImageGrid = () => {
         <div className="relative mb-4 h-32 w-full px-2 sm:mb-0 sm:w-1/3 md:h-48">
           <img
             className="block h-full w-full rounded-md object-cover"
-            href="#"
-            title="Link"
-            src="./danmark.jpg"
+            alt="Image of Danmark"
+            src={Danmark}
           />
           <div className="absolute left-0 top-0 p-4">
             <span className="rounded-md bg-main bg-opacity-50 p-2 font-header text-xl font-semibold text-white">
@@ -61,9 +64,8 @@ const ImageGrid = () => {
         <div className="relative mb-4 h-32 w-full px-2 sm:mb-0 sm:w-1/3 md:h-48">
           <img
             className="block h-full w-full rounded-md object-cover"
-            href="#"
-            title="Link"
-            src="./iceland.jpg"
+            alt="Image of Iceland"
+            src={Iceland}
           />
           <div className="absolute left-0 top-0 p-4">
             <span className="rounded-md bg-main bg-opacity-50 p-2 font-header text-xl font-semibold text-white">
@@ -74,9 +76,8 @@ const ImageGrid = () => {
         <div className="relative h-32 w-full px-2 sm:w-1/3 md:h-48">
           <img
             className="block h-full w-full rounded-md object-cover"
-            href="#"
-            title="Link"
-            src="./italy.jpg"
+            alt="Image of Italy"
+            src={Italy}
           />
           <div className="absolute left-0 top-0 p-4">
             <span className="rounded-md bg-main bg-opacity-50 p-2 font-header text-xl font-semibold text-white">

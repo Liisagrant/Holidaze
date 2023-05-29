@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { deleteVenue, REMOVE_VENUE } from '../../store/modules/VenuesSlice';
 import { Link } from 'react-router-dom';
-import NoImage from '../../../public/NoImage.png';
-import NoRentOuts from '../../../public/NoRentOuts.svg';
+import NoImage from '../../Image/NoImage.png';
+import NoRentOuts from '../../Image/NoRentOuts.svg';
 
 const RentOuts = () => {
   const dispatch = useDispatch();

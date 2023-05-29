@@ -1,4 +1,4 @@
-import error from '../../public/error.svg';
+import error from '../Image/error.svg';
 
 const ErrorComponent = () => {
   return (
