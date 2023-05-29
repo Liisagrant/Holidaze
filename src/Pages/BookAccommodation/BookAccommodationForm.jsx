@@ -5,7 +5,7 @@ import { fetchSingleVenue } from '../../store/modules/VenuesSlice';
 import { bookVenue } from '../../store/modules/VenuesSlice';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
-import success from '../../../public/success.svg';
+import success from '../../Image/success.svg';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setLoadingState } from '../../store/modules/loaderSlice';

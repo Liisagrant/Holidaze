@@ -6,7 +6,7 @@ import formatDate from '../../Global/formatDate';
 import { fetchBookingOwner } from '../../store/modules/ProfileSlice';
 import SpinnerComponent from '../../Global/SpinnerComponent';
 import BreadCrumbs from '../../Global/BreadCrumbs';
-import NoImage from '../../../public/NoImage.png';
+import NoImage from '../../Image/NoImage.png';
 
 const SeeRentoutBookings = () => {
   const dispatch = useDispatch();

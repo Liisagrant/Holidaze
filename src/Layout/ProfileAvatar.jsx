@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import NoAvatar from '../../public/NoAvatar.jpg';
+import NoAvatar from '../Image/NoAvatar.jpg';
 
 const ProfileAvatar = ({ avatar }) => {
   const handleImageError = (e) => {

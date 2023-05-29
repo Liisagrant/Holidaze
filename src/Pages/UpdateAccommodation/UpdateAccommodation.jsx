@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
-import secondHelper from '../../../public/secondHelper.svg';
+import secondHelper from '../../Image/secondHelper.svg';
 import * as Yup from 'yup';
 import { updateVenue } from '../../store/modules/VenuesSlice';
 import { setLoadingState } from '../../store/modules/loaderSlice';
 import BreadCrumbs from '../../Global/BreadCrumbs';
+import WifiHighIcon from '../../Image/WifiHigh.svg';
+import CarIcon from '../../Image/Car.svg';
+import CatIcon from '../../Image/Cat.svg';
+import ForkKnifeIcon from '../../Image/ForkKnife.svg';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -490,14 +494,10 @@ const UpdateAccommodation = () => {
               </h3>
               <div className="mt-8 flex justify-center space-x-4">
                 {[
-                  { id: 'wifi', icon: '/WifiHigh.svg', label: 'WiFi' },
-                  { id: 'parking', icon: '/Car.svg', label: 'Parking' },
-                  { id: 'pets', icon: '/Cat.svg', label: 'Pets' },
-                  {
-                    id: 'breakfast',
-                    icon: '/ForkKnife.svg',
-                    label: 'Breakfast',
-                  },
+                  { id: 'wifi', icon: WifiHighIcon, label: 'WiFi' },
+                  { id: 'parking', icon: CarIcon, label: 'Parking' },
+                  { id: 'pets', icon: CatIcon, label: 'Pets' },
+                  { id: 'breakfast', icon: ForkKnifeIcon, label: 'Breakfast' },
                 ].map(({ id, icon, label }) => (
                   <div
                     key={id}

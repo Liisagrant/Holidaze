@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { logInUser } from '../../store/modules/ProfileSlice';
 import * as Yup from 'yup';
-import LoginImage from '../../../public/LoginImage.jpg';
+import LoginImage from '../../Image/LoginImage.jpg';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 

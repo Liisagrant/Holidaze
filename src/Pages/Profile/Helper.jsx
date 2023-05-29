@@ -1,4 +1,4 @@
-import helperSvg from '../../../public/helperSvg.svg';
+import helperSvg from '../../Image/helperSvg.svg';
 
 const Helper = () => {
   return (

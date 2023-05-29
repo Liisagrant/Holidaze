@@ -7,6 +7,7 @@ import Signup from '../Pages/Signup/Signup';
 import Profile from '../Pages/Profile/Profile';
 import UpdateAccommodation from '../Pages/UpdateAccommodation/UpdateAccommodation';
 import SeeRentoutBookings from '../Pages/SeeBookingsMade/SeeRentoutBookings';
+import NotFound from '../Pages/NotFound/NotFound';
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
           element={<UpdateAccommodation />}
         />
         <Route path="/SeeRentoutBookings" element={<SeeRentoutBookings />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

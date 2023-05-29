@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createVenue } from '../../../store/modules/VenuesSlice';
 import { ADD_VENUE_TO_PROFILE } from '../../../store/modules/ProfileSlice';
-import secondHelper from '../../../../public/secondHelper.svg';
+import secondHelper from '../../../Image/secondHelper.svg';
 import AddMediaToAccommodation from './AddMediaToAccommodation';
 import AddMetaToAccommodations from './AddMetaToAccommodations';
 import AddInfoAccommodation from './AddInfoAccommodation';

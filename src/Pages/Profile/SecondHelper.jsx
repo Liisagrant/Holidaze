@@ -1,4 +1,4 @@
-import secondHelper from '../../../public/secondHelper.svg';
+import secondHelper from '../../Image/secondHelper.svg';
 
 const SecondHelper = () => {
   return (

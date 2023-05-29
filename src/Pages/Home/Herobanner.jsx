@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import HerobannerImage from '../../../public/HerobannerImage.webp';
+import HerobannerImage from '../../Image/HerobannerImage.webp';
 
 const Herobanner = () => {
   return (
