@@ -3,7 +3,7 @@ import HerobannerImage from '../../Image/HerobannerImage.webp';
 
 const Herobanner = () => {
   return (
-    <div className="relative mt-10">
+    <div className="relative mt-10 lg:mt-20">
       <div className="h-[]">
         <img
           src={HerobannerImage}

@@ -110,7 +110,7 @@ const AddAccommodationForm = () => {
           window.scrollTo(0, 0);
           dispatch(ADD_VENUE_TO_PROFILE(newVenue));
         })
-        .catch((error) => {
+        .catch(() => {
           dispatch(setLoadingState(false));
         });
     },

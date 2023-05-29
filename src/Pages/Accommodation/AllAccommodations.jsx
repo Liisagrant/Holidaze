@@ -18,7 +18,7 @@ const AllAccommodations = () => {
     venue.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage] = useState(20);
   const displayedVenues = filteredVenues.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -67,7 +67,7 @@ const AllAccommodations = () => {
           key={venue.id}
           className="mx-4 mb-4 rounded-md border-2 border-lightgray bg-backgroundwhite shadow-md md:mx-auto lg:w-[900px]"
         >
-          <div className="flex flex-col md:flex-row lg:mx-4">
+          <div className="flex flex-col md:flex-row">
             <div>
               <img
                 className="h-80 w-full object-cover sm:rounded-t-md md:w-80 md:rounded-l-md md:rounded-tr-none lg:w-96 "
@@ -77,7 +77,7 @@ const AllAccommodations = () => {
               />
             </div>
             <div className="flex w-full flex-col items-center md:ml-8 md:items-start">
-              <h2 className="md:ml-none my-4 ml-2 max-w-md overflow-hidden font-header text-2xl font-bold tracking-tight text-darkblue">
+              <h2 className="md:ml-none my-4 ml-2 max-h-16 max-w-md overflow-hidden font-header text-2xl font-bold tracking-tight text-darkblue">
                 {venue.name}
               </h2>
               <div className="px-2">

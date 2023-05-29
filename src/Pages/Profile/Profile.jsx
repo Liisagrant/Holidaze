@@ -17,13 +17,13 @@ const Profile = () => {
   const userDetails = getUserDetails();
   const singleProfile = useSelector((state) => state.Profile.singleProfile);
   const [userAvatar, setUserAvatar] = useState(userDetails.avatar);
-  const [userEmail, setUserEmail] = useState(userDetails.email);
-  const [userName, setUserName] = useState(userDetails.username);
+  const [userEmail] = useState(userDetails.email);
+  const [userName] = useState(userDetails.username);
   const [showAddAccommodationForm, setShowAddAccommodationForm] =
     useState(false);
   const [showUserBookings, setShowUserBookings] = useState(false);
   const [showRentOuts, setShowRentOuts] = useState(false);
-  const [otherContentDisplayed, setOtherContentDisplayed] = useState(false);
+  const [, setOtherContentDisplayed] = useState(false);
   const isLoading = useSelector((state) => state.loader.isLoading);
 
   const breadcrumb = [
