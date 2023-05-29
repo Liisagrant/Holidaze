@@ -25,7 +25,7 @@ const AddAccommodationForm = () => {
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .min(8, 'Must be 8 chars or more')
-      .max(60, 'Can not be longer than 50 chars')
+      .max(100, 'Can not be longer than 100 chars')
       .required('Required'),
     description: Yup.string()
       .min(20, 'Must be 20 chars or more')
