@@ -72,7 +72,7 @@ const AllAccommodations = () => {
               <img
                 className="h-80 w-full object-cover sm:rounded-t-md md:w-80 md:rounded-l-md md:rounded-tr-none lg:w-96 "
                 src={venue.media.length > 0 ? venue.media[0] : NoImage}
-                alt={venue.name}
+                alt="Image of the Accommodation"
                 onError={handleImageError}
               />
             </div>

@@ -10,7 +10,7 @@ const Amenities = ({ wifi, parking, pets, breakfast }) => {
       {wifi && (
         <div className="flex flex-col items-center">
           <div className="m-2 rounded-full bg-lightblue p-2">
-            <img src={WifiHighIcon} alt="WiFi" className="h-4 w-4" />
+            <img src={WifiHighIcon} alt="WiFi icon" className="h-4 w-4" />
           </div>
           <span className="text-xs">WiFi</span>
         </div>
@@ -18,7 +18,7 @@ const Amenities = ({ wifi, parking, pets, breakfast }) => {
       {parking && (
         <div className="flex flex-col items-center">
           <div className="m-2 rounded-full bg-lightblue p-2">
-            <img src={CarIcon} alt="Parking" className="h-4 w-4" />
+            <img src={CarIcon} alt="Parking icon" className="h-4 w-4" />
           </div>
           <span className="text-xs">Parking</span>
         </div>
@@ -26,7 +26,7 @@ const Amenities = ({ wifi, parking, pets, breakfast }) => {
       {pets && (
         <div className="flex flex-col items-center">
           <div className="m-2 rounded-full bg-lightblue p-2">
-            <img src={CatIcon} alt="Pets" className="h-4 w-4" />
+            <img src={CatIcon} alt="Pets icon" className="h-4 w-4" />
           </div>
           <span className="text-xs">Pets</span>
         </div>
@@ -34,7 +34,7 @@ const Amenities = ({ wifi, parking, pets, breakfast }) => {
       {breakfast && (
         <div className="flex flex-col items-center">
           <div className="m-2 rounded-full bg-lightblue p-2">
-            <img src={ForkKnifeIcon} alt="Breakfast" className="h-4 w-4" />
+            <img src={ForkKnifeIcon} alt="Breakfast icon" className="h-4 w-4" />
           </div>
           <span className="text-xs">Breakfast</span>
         </div>
