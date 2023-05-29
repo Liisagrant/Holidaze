@@ -39,14 +39,26 @@ function AccommodationCard() {
   const { name, media, description, price, maxGuests, meta, location } =
     singleAccommodation || {};
 
-  const breadcrumb = [
-    { name: 'Home', path: '/' },
-    { name: 'Accommodations', path: '/Accommodations' },
-    {
-      name: name.length > 20 ? name.substring(0, 20) + '...' : name,
-      path: `/Accommodation/${id}`,
-    },
-  ];
+  let breadcrumb;
+  if (name) {
+    breadcrumb = [
+      { name: 'Home', path: '/' },
+      { name: 'Accommodations', path: '/Accommodations' },
+      {
+        name: name.length > 20 ? name.substring(0, 20) + '...' : name,
+        path: `/Accommodation/${id}`,
+      },
+    ];
+  } else {
+    breadcrumb = [
+      { name: 'Home', path: '/' },
+      { name: 'Accommodations', path: '/Accommodations' },
+      {
+        name: 'Loading...',
+        path: `/Accommodation/${id}`,
+      },
+    ];
+  }
 
   return (
     <div className="max-w-7xl">
@@ -179,7 +191,7 @@ function AccommodationCard() {
                 ) : (
                   <div className="my-4 flex max-w-sm flex-col">
                     <span className=" text-md mb-4 text-red-800">
-                      You are not Logged In.If you want to book this
+                      You are not Logged In. If you want to book this
                       accommodation, please log in first.
                     </span>
                     <Link to="/Login">

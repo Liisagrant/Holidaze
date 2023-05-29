@@ -7,26 +7,31 @@ import { fetchBookingOwner } from '../../store/modules/ProfileSlice';
 import SpinnerComponent from '../../Global/SpinnerComponent';
 import BreadCrumbs from '../../Global/BreadCrumbs';
 import NoImage from '../../Image/NoImage.png';
+import NoRentOutSvgs from '../../Image/NoRentOuts.svg';
 
 const SeeRentoutBookings = () => {
   const dispatch = useDispatch();
   const singleProfile = useSelector((state) => state.Profile.singleProfile);
   const userDetails = getUserDetails();
   const [loading, setLoading] = useState(true);
+  const [bookings, setBookings] = useState([]);
 
   const breadcrumb = [
     { name: 'Home', path: '/' },
     { name: 'Profile', path: '/Profile' },
     { name: 'Bookings on RentOuts', path: `/SeeRentoutBookings` },
   ];
-
   useEffect(() => {
     if (userDetails.username) {
       setLoading(true);
 
-      dispatch(fetchBookingOwner(userDetails.username)).finally(() => {
-        setLoading(false);
-      });
+      dispatch(fetchBookingOwner(userDetails.username))
+        .then((res) => {
+          setBookings(res.data);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   }, [dispatch, userDetails.username]);
 
@@ -59,7 +64,7 @@ const SeeRentoutBookings = () => {
             <SpinnerComponent />
           ) : (
             <>
-              {singleProfile && singleProfile.length > 0 ? (
+              {bookings && bookings.length > 0 ? (
                 singleProfile.map((booking) => {
                   const { id, name, media, bookings } = booking;
                   const venuesWithBookings = bookings.length > 0;
@@ -92,7 +97,7 @@ const SeeRentoutBookings = () => {
                           {sortedBookings.map((bookingItem) => (
                             <tr
                               key={bookingItem.id}
-                              className="font-body  my-2 rounded-md border-b bg-backgroundwhite text-sm font-light text-black"
+                              className="font-body my-2 rounded-md border-b bg-backgroundwhite text-sm font-light text-black"
                             >
                               <th className="h-24 w-24">
                                 <img
@@ -123,15 +128,16 @@ const SeeRentoutBookings = () => {
                   );
                 })
               ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center bg-white p-8 drop-shadow-md">
+                <div className="flex h-full w-full flex-col items-center justify-center rounded-md bg-white p-4 drop-shadow-md">
                   <h1 className="font-md font-heading w-full py-10 text-center font-paragraph text-xl font-bold">
-                    Sorry, you have no bookings right now{' '}
+                    Sorry, you have no bookings right now
                   </h1>
                   <Link to="/Profile">
-                    <button className="bg-blue font-body rounded-md px-5 py-2 text-white">
+                    <button className="bg-blue rounded-md px-5 py-2 font-paragraph text-main">
                       Return to Profile
                     </button>
                   </Link>
+                  <img src={NoRentOutSvgs} />
                 </div>
               )}
             </>
