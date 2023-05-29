@@ -14,7 +14,6 @@ const SeeRentoutBookings = () => {
   const singleProfile = useSelector((state) => state.Profile.singleProfile);
   const userDetails = getUserDetails();
   const [loading, setLoading] = useState(true);
-  const [bookings, setBookings] = useState([]);
 
   const breadcrumb = [
     { name: 'Home', path: '/' },
@@ -64,7 +63,7 @@ const SeeRentoutBookings = () => {
             <SpinnerComponent />
           ) : (
             <>
-              {bookings && bookings.length > 0 ? (
+              {singleProfile.some((profile) => profile.bookings.length > 0) ? (
                 singleProfile.map((booking) => {
                   const { id, name, media, bookings } = booking;
                   const venuesWithBookings = bookings.length > 0;
