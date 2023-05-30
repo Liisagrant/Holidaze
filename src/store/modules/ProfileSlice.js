@@ -50,7 +50,7 @@ export const signUpUser = (userData, dispatch) => {
       return response.json();
     })
     .then(() => {
-      window.location.href = '/login';
+      dispatch(logInUser(userData));
     })
     .catch((error) => {
       dispatch(SIGNUP_ERROR(error.message));
