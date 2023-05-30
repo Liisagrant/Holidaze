@@ -9,9 +9,12 @@ import { useSelector } from 'react-redux';
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .required('Required')
-    .test('Invalid email address. Must use a @noroff.no domain', (value) => {
-      return /^[A-Z0-9._%+-]+@noroff\.no$/i.test(value);
-    }),
+    .test(
+      'Invalid email address. Must use a @stud.noroff.no domain',
+      (value) => {
+        return /^[A-Z0-9._%+-]+@stud.noroff\.no$/i.test(value);
+      }
+    ),
   password: Yup.string()
     .min(8, 'Must be at least 8 characters')
     .required('Required'),
