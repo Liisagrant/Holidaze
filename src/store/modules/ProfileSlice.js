@@ -35,7 +35,7 @@ export default ProfileSlice.reducer;
 
 const accessToken = localStorage.getItem('accessToken');
 
-export const signUpUser = (userData, dispatch) => {
+export const signUpUser = (userData, loginData, dispatch) => {
   fetch('https://nf-api.onrender.com/api/v1/holidaze/auth/register', {
     method: 'POST',
     headers: {
@@ -50,7 +50,7 @@ export const signUpUser = (userData, dispatch) => {
       return response.json();
     })
     .then(() => {
-      dispatch(logInUser(userData));
+      dispatch(logInUser(userData, loginData));
     })
     .catch((error) => {
       dispatch(SIGNUP_ERROR(error.message));
