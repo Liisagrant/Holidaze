@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Home from '../Pages/Home/Home';
 import Accommodations from '../Pages/Accommodation/Accommodations';
 import AccommodationDetail from '../Pages/AccommodationDetail/AccommodationsDetail';
@@ -9,6 +9,13 @@ import UpdateAccommodation from '../Pages/UpdateAccommodation/UpdateAccommodatio
 import SeeRentoutBookings from '../Pages/SeeBookingsMade/SeeRentoutBookings';
 import NotFound from '../Pages/NotFound/NotFound';
 
+function requireAuth(component) {
+  const accessToken = localStorage.getItem('accessToken');
+  const loggedIn = Boolean(accessToken);
+
+  return loggedIn ? component : <Navigate to="/Login" />;
+}
+
 function Router() {
   return (
     <>
@@ -18,12 +25,15 @@ function Router() {
         <Route path="/Accommodation/:id" element={<AccommodationDetail />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Profile" element={requireAuth(<Profile />)} />
         <Route
           path="/UpdateAccommodation/:id"
-          element={<UpdateAccommodation />}
+          element={requireAuth(<UpdateAccommodation />)}
         />
-        <Route path="/SeeRentoutBookings" element={<SeeRentoutBookings />} />
+        <Route
+          path="/SeeRentoutBookings"
+          element={requireAuth(<SeeRentoutBookings />)}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

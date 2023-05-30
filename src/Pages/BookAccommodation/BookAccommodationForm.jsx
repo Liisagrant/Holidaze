@@ -87,8 +87,6 @@ const BookAccommodationForm = ({ setIsModalOpen }) => {
     singleAccommodation.price
   );
 
-  console.log(singleAccommodation.bookings);
-
   return (
     <div className="mx-4 mb-40 mt-10 flex max-w-4xl rounded-md bg-lightgray lg:mx-auto">
       {formSubmitted ? (
