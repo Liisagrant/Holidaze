@@ -121,8 +121,6 @@ const UpdateAccommodation = () => {
           lng: 0,
         },
       };
-      console.log(venueData);
-      console.log('form is submitted');
       dispatch(setLoadingState(true));
 
       dispatch(updateVenue(id, venueData))
@@ -132,7 +130,7 @@ const UpdateAccommodation = () => {
           dispatch(setLoadingState(false));
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
           dispatch(setLoadingState(false));
         });
     },
